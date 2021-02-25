@@ -1,3 +1,5 @@
+Target git repository: https://bitbucket.cdisc.org/scm/xml/odm-examples.git
+
 This example demonstrates transformation from BPMN2 to CDISC-ODMv2 "WorkflowDef"
 The example is about the patient having, during a visit 1, 
 the choice between getting physiotherapy, underwater therapy, or both.
