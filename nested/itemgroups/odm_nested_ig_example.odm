@@ -52,6 +52,10 @@
                 <StudyEventRef StudyEventOID="SCR"/>
                 <StudyEventGroupRef StudyEventGroupOID="TREAT"/>
             </Protocol>
+            <StudyEventDef OID="SCR" Name="Screening">
+                <FormRef FormOID="VISIT"/>
+                <FormDef FormOID="VITALS_SCR"/>
+            </StudyEventDef>
             <StudyEventGroupDef OID="TREAT" Name="Treatment">
                 <StudyEventRef StudyEventOID="DAY1"/>
                 <StudyEventRef StudyEventOID="DAY7"/>
@@ -62,10 +66,6 @@
                 <StudyEventRef StudyEventOID="RTR"/>
                 <StudyEventRef StudyEventOID="EOS"/>
             </StudyEventGroup>
-            <StudyEventDef OID="SCR" Name="Screening">
-                <FormRef FormOID="VISIT"/>
-                <FormDef FormOID="VITALS_SCR"/>
-            </StudyEventDef>
             <StudyEventDef OID="DAY1" Name="Day 1">
                 <FormRef FormOID="VISIT"/>
                 <FormDef FormOID="VITALS_TRT"/>
@@ -164,6 +164,12 @@
                     <TranslatedText xml:lang="en">Time of Vital Signs</TranslatedText>
                 </Question>
             </ItemDef>
+            <ItemDef OID="VSPOS" Name="Vital Signs Position" DataType="text">
+                <Question>
+                    <TranslatedText xml:lang="en">Vital Signs Body Position</TranslatedText>
+                </Question>
+                <CodeListRef CodeListOID="CL.VSPOS"/>
+            </ItemDef>
             <ItemDef OID="SYSBP" Name="Systolic BP" DataType="int">
                 <Question>
                     <TranslatedText xml:lang="en">Systolic BP</TranslatedText>
@@ -191,6 +197,26 @@
         </MetaDataVersion>
     </Study>
     <ClinicalData StudyOID="EXM01" MetaDataVersionOID="EXM01-01">
-        <SubjectData SubjectKey="SUBJECT1"></SubjectData>
+        <SubjectData SubjectKey="SUBJECT1">
+            <StudyEventData StudyEventOID="SCR">
+                <FormData FormOID="VISIT">
+                    <ItemGroupData ItemGroupOID="VISIT">
+                        <ItemData ItemOID="VISDAT" Value="2021-01-01" />
+                    </ItemGroupData>
+                </FormData>
+                <FormData FormOID="VITALS_SCR">
+                    <ItemGroupData ItemGroupOID="VSDAT">
+                        <ItemData ItemOID="VSDAT" Value="2021-01-01" />
+                    </ItemGroupData>
+                    <ItemGroupData ItemGroupOID="VITALS_BP">
+                        <ItemData ItemOID="VSTIM" Value="10:00:00" />
+                        <ItemData ItemOID="VSPOS" Value="SITTING" />
+                        <ItemData ParentOID="SYSBP" ItemGroupOID="VSTEST.SYSBP" Value="Systolic BP" >
+                            <MeasurementUnitRef MeasurementUnitOID="MMHG"/>
+                        </ItemData>
+                    </ItemGroupData>
+                </FormData>
+            </StudyEventData>
+        </SubjectData>
     </ClinicalData>
 </ODM>
