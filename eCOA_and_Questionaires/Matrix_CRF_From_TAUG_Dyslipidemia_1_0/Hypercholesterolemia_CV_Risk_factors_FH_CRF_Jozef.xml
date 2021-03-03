@@ -1,42 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ODM xmlns="http://www.cdisc.org/ns/odm/v1.3"
+<ODM xmlns="http://www.cdisc.org/ns/odm/v2.0"
      xmlns:xs="http://www.w3.org/2001/XMLSchema"
      xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
      xmlns:xlink="http://www.w3.org/1999/xlink"
      CreationDateTime="2020-07-15T18:05:00+01:00"
-     Description=""
+     Description="CRF Matrix example Hypercholesterolemia Family Risk Factors"
      FileOID="CRF_MATRIX_EXAMPLE"
      FileType="Snapshot"
      Granularity="Metadata"
-     ODMVersion="1.3.1"
-     SourceSystem="XML4Pharma CDISC ODM Study Designer"
-     SourceSystemVersion="2015-R1">
+     ODMVersion="2.0">
    <Study OID="MATRIX EXAMPLE">
       <GlobalVariables>
          <StudyName>Example of Matrix-CRF</StudyName>
-         <StudyDescription>Example of Matrix-CRF</StudyDescription>
+         <StudyDescription>Example of Matrix-CRF: Hypercholesterolemia Family Risk Factors</StudyDescription>
          <ProtocolName>Example of Matrix-CRF protocol</ProtocolName>
       </GlobalVariables>
       <BasicDefinitions/>
-      <MetaDataVersion Description="Version 1" Name="Version 1" OID="MV.1.0">
-         <StudyEventDef Name="Medical History - Family History" OID="SE.MH" Repeating="No"
-                        Type="Scheduled">
-            <FormRef FormOID="FO.HYPERCHOLESTEROLEMIA_FAMILY_RISK_FACTORS" Mandatory="Yes"/>
+      <MetaDataVersion Name="Version 1" OID="MV.1.0">
+         <Description>
+            <TranslatedText xml:lang="en">Example of Matrix-CRF: Hypercholesterolemia Family Risk Factors from CDISC TAUG Dyslipidemia v.1.0</TranslatedText>
+         </Description>
+         <StudyEventDef Name="Medical History - Family History" OID="SE.MH" Repeating="No" Type="Scheduled">
+            <ItemGroupRef ItemGroupOID="FO.HYPERCHOLESTEROLEMIA_FAMILY_RISK_FACTORS" Mandatory="Yes"/>
          </StudyEventDef>
-         <FormDef Name="Hypercholesterolemia Family Risk Factors"
+         <ItemGroupDef Type="Form" Name="Hypercholesterolemia Family Risk Factors"
                   OID="FO.HYPERCHOLESTEROLEMIA_FAMILY_RISK_FACTORS"
                   Repeating="No">
             <ItemGroupRef ItemGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP" Mandatory="Yes"/>
-         </FormDef>
+         </ItemGroupDef>
          <!-- A solution where we define an ItemGroup that iterates over two Items, 
          i.e. over the pre-defined term, and over the family relationship -->
+         <!-- Repeating values of Dynamic or Static indicate that the number of occurrences within the containing element is driven by the values in a codelist. 
+            Set Repeating to Dynamic when the ItemGroup repeats based on values in a codelist, 
+            and multiple repeats per codelist value may be created. 
+            Set Repeating to Static when the ItemGroup repeats based on values in a codelist, and only 1 repeat may occur per codelist entry.  -->
          <ItemGroupDef OID="IG.MH_TERM_FAMILY_RELATIONSHIP" Name="MH term / Family Relationship matrix" Repeating="Static">
-            <ItemRef ItemOID="IT.MHTERM" Mandatory="Yes"/>
-            <ItemRef ItemOID="IT.FAM_RELATION" Mandatory="Yes"/>
+            <ItemRef ItemOID="IT.MHTERM" Mandatory="Yes"/><!-- TODO: do we have to set Repeat=Yes here too? -->
+            <ItemRef ItemOID="IT.FAM_RELATION" Mandatory="Yes" Repeat="Yes"/><!-- Repeating over family relationship: Father, Mother, Brothers, Sisters, Sons, Daugthers -->
             <ItemRef ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP" Mandatory="Yes"/>
-            <!-- The repeats go over both IT.MHTERM AND IT.FAM_RELATION. 
-            This can be seen by the attribute RepeatItem="Yes" on the ItemDef (so not on the ItemRef)
-            of both IT.MHTERM and IT.FAM_RELATION -->
+            <!-- The repeats go over both IT.MHTERM (rows) AND IT.FAM_RELATION (columns). -->
+            <!-- TODO: how do we define repeats for the rows? Also by setting Repeat=Yes on IT.MHTERM? Or should each row then be an ItemRef itself? -->
          </ItemGroupDef>
          <!-- The allowed values (checkboxes) slightly differ between the cells, depending on some of the rows/columns,
             so we need a ValueList -->
@@ -54,14 +57,14 @@
             </ItemRef>
          </ValueListDef>
          <WhereClauseDef OID="WC.FATHER_MOTHER">
-            <!-- Relationship is either father or mother -->
+            <!-- Relationship is either father or mother, we use "IN" -->
             <RangeCheck Comparator="IN" SoftHard="Hard" ItemOID="IT.FAM_RELATION">
                <CheckValue>1</CheckValue><!-- Father -->
                <CheckValue>2</CheckValue><!-- Mother -->
             </RangeCheck>
          </WhereClauseDef>
          <WhereClauseDef OID="WC.NOT_FATHER_MOTHER">
-            <!-- Relationship is NOT father or mother -->
+            <!-- Relationship is NOT father or mother, we use "NOT IN" -->
             <RangeCheck Comparator="NOTIN" SoftHard="Hard" ItemOID="IT.FAM_RELATION">
                <CheckValue>1</CheckValue><!-- Father -->
                <CheckValue>2</CheckValue><!-- Mother -->
@@ -69,14 +72,14 @@
          </WhereClauseDef>
          <!-- Continuation of Individual ItemDefs -->
          <!-- Individual ItemDefs for REPEAT definitions, 
-            through the attribute RepeatItem="Yes" -->
-         <ItemDef DataType="integer" Length="1" Name="Medical History Term" OID="IT.MHTERM" 
-            RepeatItem="Yes" SDSVarName="MHTERM">
+            through the attribute Repeat="Yes" on the ItemRef -->
+         <ItemDef DataType="integer" Length="1" Name="Medical History Term" OID="IT.MHTERM">
             <CodeListRef CodeListOID="CL.MHTERM"/>
+            <Coding Code="MHTERM" CodeSystem="https://www.cdisc.org/standards/sdtm-ig" SystemName="SDTM-IG" SystemVersion="3.2"/><!-- MHTERM SDTM Variable Name -->
          </ItemDef>
-         <ItemDef DataType="integer" Length="1" Name="Family Relationship" OID="IT.FAM_RELATION" 
-            RepeatItem="Yes" SDSVarName="SREL">
+         <ItemDef DataType="integer" Length="1" Name="Family Relationship" OID="IT.FAM_RELATION">
             <CodeListRef CodeListOID="CL.FAMILY_RELATIONSHIP"/>
+            <Coding Code="APMH.SREL" CodeSystem="https://www.cdisc.org/standards/sdtm-ig-ap" SystemName="SDTM-IG-AP" SystemVersion="1.0"/><!-- APMH-SREL Variable Name --><!-- SREL SDTM variable name -->
          </ItemDef>
          <!-- Value List ItemDefs  -->
          <ItemDef DataType="integer" Length="1" Name="Presence of Family History 1"
@@ -200,138 +203,280 @@ For females: if diagnosed or event occurred at &lt;65 year of age.</TranslatedTe
    <ClinicalData StudyOID="MATRIX EXAMPLE" MetaDataVersionOID="MV.1.0">
       <SubjectData SubjectKey="001">
          <StudyEventData StudyEventOID="SE.MH">
-            <FormData FormOID="FO.HYPERCHOLESTEROLEMIA_FAMILY_RISK_FACTORS">
+            <!-- TODO: Reorganize the following when a decision has been made about how to treat "nested" data -->
+            <ItemGroupData FormOID="FO.HYPERCHOLESTEROLEMIA_FAMILY_RISK_FACTORS">
                <!-- One possibility of organizing the collected data:
                Each cell in the matrix comes as an ItemGroup with Row and Column ID, and the cell value itself -->
                <!-- each ItemGroupData is a single cell in the matrix, defined by row-ID and column-ID -->
-               <ItemGroupData ItenGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
-                  <ItemData ItemOID="IT.MHTERM" Value="1"/><!-- History of Hypercholesterolemia -->
-                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP" Value="1"/><!-- Father -->
-                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP" Value="1"/><!-- Yes -->
+               <ItemGroupData ItemGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
+                  <ItemData ItemOID="IT.MHTERM">
+                     <Value>1</Value><!-- History of Hypercholesterolemia -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP">
+                     <Value>1</Value><!-- Father -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP">
+                     <Value>1</Value><!-- Yes -->
+                  </ItemData>
                </ItemGroupData>
-               <ItemGroupData ItenGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
-                  <ItemData ItemOID="IT.MHTERM" Value="1"/><!-- History of Hypercholesterolemia -->
-                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP" Value="2"/><!-- mother -->
-                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP" Value="2"/><!-- No -->
+               <ItemGroupData ItemGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
+                  <ItemData ItemOID="IT.MHTERM">
+                     <Value>1</Value><!-- History of Hypercholesterolemia -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP">
+                     <Value>2</Value><!-- mother -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP">
+                     <Value>2</Value><!-- No -->
+                  </ItemData>
                </ItemGroupData>
-               <ItemGroupData ItenGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
-                  <ItemData ItemOID="IT.MHTERM" Value="1"/><!-- History of Hypercholesterolemia -->
-                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP" Value="3"/><!-- brothers -->
-                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP" Value="4"/><!-- Not Applicable -->
+               <ItemGroupData ItemGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
+                  <ItemData ItemOID="IT.MHTERM">
+                     <Value>1</Value><!-- History of Hypercholesterolemia -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP">
+                     <Value>3</Value><!-- brothers -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP">
+                     <Value>4</Value><!-- Not Applicable -->
+                  </ItemData>
                </ItemGroupData>
-               <ItemGroupData ItenGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
-                  <ItemData ItemOID="IT.MHTERM" Value="1"/><!-- History of Hypercholesterolemia -->
-                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP" Value="4"/><!-- sisters -->
-                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP" Value="3"/><!-- Unknown -->
+               <ItemGroupData ItemGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
+                  <ItemData ItemOID="IT.MHTERM">
+                     <Value>1</Value><!-- History of Hypercholesterolemia -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP">
+                     <Value>4</Value><!-- sisters -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP">
+                     <Value>3</Value><!-- Unknown -->
+                  </ItemData>
                </ItemGroupData>
-               <ItemGroupData ItenGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
-                  <ItemData ItemOID="IT.MHTERM" Value="1"/><!-- History of Hypercholesterolemia -->
-                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP" Value="5"/><!-- sons -->
-                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP" Value="2"/><!-- No -->
+               <ItemGroupData ItemGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
+                  <ItemData ItemOID="IT.MHTERM">
+                     <Value>1</Value><!-- History of Hypercholesterolemia -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP">
+                     <Value>5</Value><!-- sons -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP">
+                     <Value>2</Value><!-- No -->
+                  </ItemData>
                </ItemGroupData>
-               <ItemGroupData ItenGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
-                  <ItemData ItemOID="IT.MHTERM" Value="1"/><!-- History of Hypercholesterolemia -->
-                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP" Value="6"/><!-- sons -->
-                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP" Value="2"/><!-- No -->
+               <ItemGroupData ItemGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
+                  <ItemData ItemOID="IT.MHTERM">
+                     <Value>1</Value><!-- History of Hypercholesterolemia -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP">
+                     <Value>6</Value><!-- sons -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP">
+                     <Value>2</Value><!-- No -->
+                  </ItemData>
                </ItemGroupData>
                <!-- second "row" - History of premature CVD -->
-               <ItemGroupData ItenGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
-                  <ItemData ItemOID="IT.MHTERM" Value="2"/><!-- History of premature CVD -->
-                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP" Value="1"/><!-- Father -->
-                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP" Value="1"/><!-- Yes -->
+               <ItemGroupData ItemGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
+                  <ItemData ItemOID="IT.MHTERM">
+                     <Value>2</Value><!-- History of premature CVD -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP">
+                     <Value>1</Value><!-- Father -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP">
+                     <Value>1</Value><!-- Yes -->
+                  </ItemData>
                </ItemGroupData>
-               <ItemGroupData ItenGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
-                  <ItemData ItemOID="IT.MHTERM" Value="2"/><!-- History of premature CVD -->
-                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP" Value="2"/><!-- mother -->
-                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP" Value="3"/><!-- Unknown -->
+               <ItemGroupData ItemGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
+                  <ItemData ItemOID="IT.MHTERM">
+                     <Value>2</Value><!-- History of premature CVD -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP">
+                     <Value>2</Value><!-- mother -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP">
+                     <Value>3</Value><!-- Unknown -->
+                  </ItemData>
                </ItemGroupData>
-               <ItemGroupData ItenGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
-                  <ItemData ItemOID="IT.MHTERM" Value="2"/><!-- History of premature CVD -->
-                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP" Value="3"/><!-- brothers -->
-                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP" Value="4"/><!-- Not Applicable -->
+               <ItemGroupData ItemGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
+                  <ItemData ItemOID="IT.MHTERM">
+                     <Value>2</Value><!-- History of premature CVD -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP">
+                     <Value>3</Value><!-- brothers -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP">
+                     <Value>4</Value><!-- Not Applicable -->
+                  </ItemData>
                </ItemGroupData>
-               <ItemGroupData ItenGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
-                  <ItemData ItemOID="IT.MHTERM" Value="2"/><!-- History of premature CVD -->
-                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP" Value="4"/><!-- sisters -->
-                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP" Value="2"/><!-- No -->
+               <ItemGroupData ItemGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
+                  <ItemData ItemOID="IT.MHTERM">
+                     <Value>2</Value><!-- History of premature CVD -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP">
+                     <Value>4</Value><!-- sisters -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP">
+                     <Value>2</Value><!-- No -->
+                  </ItemData>
                </ItemGroupData>
-               <ItemGroupData ItenGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
-                  <ItemData ItemOID="IT.MHTERM" Value="2"/><!-- History of Hypercholesterolemia -->
-                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP" Value="5"/><!-- sons -->
-                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP" Value="3"/><!-- Unknown -->
+               <ItemGroupData ItemGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
+                  <ItemData ItemOID="IT.MHTERM" >
+                     <Value>2</Value><!-- History of Hypercholesterolemia -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP">
+                     <Value>5</Value><!-- sons -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP" Value="3">
+                     <Value>3</Value><!-- Unknown -->
+                  </ItemData>
                </ItemGroupData>
-               <ItemGroupData ItenGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
-                  <ItemData ItemOID="IT.MHTERM" Value="2"/><!-- History of Hypercholesterolemia -->
-                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP" Value="6"/><!-- sons -->
-                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP" Value="2"/><!-- No -->
+               <ItemGroupData ItemGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
+                  <ItemData ItemOID="IT.MHTERM">
+                     <Value>2</Value><!-- History of Hypercholesterolemia -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP">
+                     <Value>6</Value><!-- sons -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP">
+                     <Value>2</Value><!-- No -->
+                  </ItemData>
                </ItemGroupData>
                <!-- Third row: History of premature Myocardial Infarction -->
-               <ItemGroupData ItenGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
-                  <ItemData ItemOID="IT.MHTERM" Value="3"/><!-- History of premature Myocardial Infarction -->
-                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP" Value="1"/><!-- Father -->
-                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP" Value="2"/><!-- No -->
+               <ItemGroupData ItemGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
+                  <ItemData ItemOID="IT.MHTERM">
+                     <Value>3</Value><!-- History of premature Myocardial Infarction -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP">
+                     <Value>1</Value><!-- Father -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP">
+                     <Value>2</Value><!-- No -->
+                  </ItemData>
                </ItemGroupData>
-               <ItemGroupData ItenGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
-                  <ItemData ItemOID="IT.MHTERM" Value="3"/><!-- History of premature Myocardial Infarction -->
-                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP" Value="2"/><!-- mother -->
-                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP" Value="2"/><!-- No -->
+               <ItemGroupData ItemGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
+                  <ItemData ItemOID="IT.MHTERM">
+                     <Value>3</Value><!-- History of premature Myocardial Infarction -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP">
+                     <Value>2</Value><!-- mother -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP">
+                     <Value>2</Value><!-- No -->
+                  </ItemData>
                </ItemGroupData>
-               <ItemGroupData ItenGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
-                  <ItemData ItemOID="IT.MHTERM" Value="3"/><!-- History of premature Myocardial Infarction -->
-                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP" Value="3"/><!-- brothers -->
-                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP" Value="4"/><!-- Not Applicable -->
+               <ItemGroupData ItemGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
+                  <ItemData ItemOID="IT.MHTERM">
+                     <Value>3</Value><!-- History of premature Myocardial Infarction -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP">
+                     <Value>3</Value><!-- brothers -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP">
+                     <Value>4</Value><!-- Not Applicable -->
+                  </ItemData>
                </ItemGroupData>
-               <ItemGroupData ItenGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
-                  <ItemData ItemOID="IT.MHTERM" Value="3"/><!-- History of premature Myocardial Infarction -->
-                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP" Value="4"/><!-- sisters -->
-                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP" Value="3"/><!-- Unknown -->
+               <ItemGroupData ItemGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
+                  <ItemData ItemOID="IT.MHTERM">
+                     <Value>3</Value><!-- History of premature Myocardial Infarction -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP">
+                     <Value>4</Value><!-- sisters -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP">
+                     <Value>3</Value><!-- Unknown -->
+                  </ItemData>
                </ItemGroupData>
-               <ItemGroupData ItenGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
-                  <ItemData ItemOID="IT.MHTERM" Value="3"/><!-- History of premature Myocardial Infarction -->
-                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP" Value="5"/><!-- sons -->
-                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP" Value="2"/><!-- No -->
+               <ItemGroupData ItemGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
+                  <ItemData ItemOID="IT.MHTERM">
+                     <Value>3</Value><!-- History of premature Myocardial Infarction -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP">
+                     <Value>5</Value><!-- sons -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP">
+                     <Value>2</Value><!-- No -->
+                  </ItemData>
                </ItemGroupData>
-               <ItemGroupData ItenGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
-                  <ItemData ItemOID="IT.MHTERM" Value="3"/><!-- History of premature Myocardial Infarction -->
-                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP" Value="6"/><!-- sons -->
-                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP" Value="2"/><!-- No -->
+               <ItemGroupData ItemGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
+                  <ItemData ItemOID="IT.MHTERM">
+                     <Value>3</Value><!-- History of premature Myocardial Infarction -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP">
+                     <Value>6</Value><!-- sons -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP">
+                     <Value>2</Value><!-- No -->
+                  </ItemData>
                </ItemGroupData>
                <!-- Fourth row: History of premature Stroke -->
-               <ItemGroupData ItenGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
-                  <ItemData ItemOID="IT.MHTERM" Value="4"/><!-- History of premature Stroke -->
-                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP" Value="1"/><!-- Father -->
-                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP" Value="3"/><!-- Unknown -->
+               <ItemGroupData ItemGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
+                  <ItemData ItemOID="IT.MHTERM">
+                     <Value>4</Value><!-- History of premature Stroke -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP">
+                     <Value>1</Value><!-- Father -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP">
+                     <Value>3</Value><!-- Unknown -->
+                  </ItemData>
                </ItemGroupData>
-               <ItemGroupData ItenGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
-                  <ItemData ItemOID="IT.MHTERM" Value="4"/><!-- History of premature Stroke -->
-                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP" Value="2"/><!-- mother -->
-                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP" Value="2"/><!-- No -->
+               <ItemGroupData ItemGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
+                  <ItemData ItemOID="IT.MHTERM">
+                     <Value>4</Value><!-- History of premature Stroke -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP">
+                     <Value>2</Value><!-- mother -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP">
+                     <Value>2</Value><!-- No -->
+                  </ItemData>
                </ItemGroupData>
-               <ItemGroupData ItenGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
-                  <ItemData ItemOID="IT.MHTERM" Value="4"/><!-- History of premature Stroke -->
-                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP" Value="3"/><!-- brothers -->
-                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP" Value="4"/><!-- Not Applicable -->
+               <ItemGroupData ItemGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
+                  <ItemData ItemOID="IT.MHTERM">
+                     <Value>4</Value><!-- History of premature Stroke -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP">
+                     <Value>3</Value><!-- brothers -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP">
+                     <Value>4</Value><!-- Not Applicable -->
+                  </ItemData>
                </ItemGroupData>
-               <ItemGroupData ItenGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
-                  <ItemData ItemOID="IT.MHTERM" Value="4"/><!-- History of premature Stroke -->
-                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP" Value="4"/><!-- sisters -->
-                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP" Value="2"/><!-- No -->
+               <ItemGroupData ItemGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
+                  <ItemData ItemOID="IT.MHTERM">
+                     <Value>4</Value><!-- History of premature Stroke -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP">
+                     <Value>4</Value><!-- sisters -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP">
+                     <Value>2</Value><!-- No -->
+                  </ItemData>
                </ItemGroupData>
-               <ItemGroupData ItenGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
-                  <ItemData ItemOID="IT.MHTERM" Value="4"/><!-- History of premature Stroke -->
-                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP" Value="5"/><!-- sons -->
-                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP" Value="2"/><!-- No -->
+               <ItemGroupData ItemGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
+                  <ItemData ItemOID="IT.MHTERM">
+                     <Value>4</Value><!-- History of premature Stroke -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP">
+                     <Value>5</Value><!-- sons -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP">
+                     <Value>2</Value><!-- No -->
+                  </ItemData>
                </ItemGroupData>
-               <ItemGroupData ItenGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
-                  <ItemData ItemOID="IT.MHTERM" Value="4"/><!-- History of premature Stroke -->
-                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP" Value="6"/><!-- sons -->
-                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP" Value="1"/><!-- Yes -->
+               <ItemGroupData ItemGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP">
+                  <ItemData ItemOID="IT.MHTERM">
+                     <Value>4</Value><!-- History of premature Stroke -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.FAMILY_RELATIONSHIP">
+                     <Value>6</Value><!-- sons -->
+                  </ItemData>
+                  <ItemData ItemOID="IT.MH_TERM_FAMILY_RELATIONSHIP">
+                     <Value>1</Value><!-- Yes -->
+                  </ItemData>
                </ItemGroupData>
-            </FormData>
+            </ItemGroupData>
          </StudyEventData>
       </SubjectData>
-      
-      
    </ClinicalData>
-   
 </ODM>
