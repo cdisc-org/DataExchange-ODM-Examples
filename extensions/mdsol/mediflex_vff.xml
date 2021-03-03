@@ -1,0 +1,1143 @@
+
+<ODM ODMVersion="1.3" Granularity="Metadata" FileType="Snapshot" FileOID="9728ef45-9edd-4999-a285-4951a77caae5" CreationDateTime="2019-05-10T08:22:16.000-00:00" xmlns="http://www.cdisc.org/ns/odm/v1.3" xmlns:mdsol="http://www.mdsol.com/ns/odm/metadata">
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="SUBJECT" OrderNumber="0" Mandatory="No" mdsol:StudyEventDefName="Subject" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="SUBJECT" OrderNumber="0" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="1" FormOID="VISIT"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="SUBJECT" OrderNumber="0" Mandatory="No" mdsol:StudyEventDefName="Subject" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="SUBJECT" OrderNumber="0" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="2" FormOID="EX"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="SUBJECT" OrderNumber="0" Mandatory="No" mdsol:StudyEventDefName="Subject" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="SUBJECT" OrderNumber="0" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="3" FormOID="PE"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="SUBJECT" OrderNumber="0" Mandatory="No" mdsol:StudyEventDefName="Subject" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="SUBJECT" OrderNumber="0" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="4" FormOID="VS"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="SUBJECT" OrderNumber="0" Mandatory="No" mdsol:StudyEventDefName="Subject" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="SUBJECT" OrderNumber="0" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="5" FormOID="AE"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="SUBJECT" OrderNumber="0" Mandatory="No" mdsol:StudyEventDefName="Subject" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="SUBJECT" OrderNumber="0" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="6" FormOID="IMAGE"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="SUBJECT" OrderNumber="0" Mandatory="No" mdsol:StudyEventDefName="Subject" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="SUBJECT" OrderNumber="0" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="7" FormOID="BLOOD"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="SUBJECT" OrderNumber="0" Mandatory="No" mdsol:StudyEventDefName="Subject" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="SUBJECT" OrderNumber="0" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="8" FormOID="LAB_URINE"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="SUBJECT" OrderNumber="0" Mandatory="No" mdsol:StudyEventDefName="Subject" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="SUBJECT" OrderNumber="0" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="9" FormOID="SU_SMOKE"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="SUBJECT" OrderNumber="0" Mandatory="No" mdsol:StudyEventDefName="Subject" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="SUBJECT" OrderNumber="0" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="10" FormOID="SU_ALCOHOL"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="SUBJECT" OrderNumber="0" Mandatory="No" mdsol:StudyEventDefName="Subject" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="SUBJECT" OrderNumber="0" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="11" FormOID="EN"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="SUBJECT" OrderNumber="0" Mandatory="No" mdsol:StudyEventDefName="Subject" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="SUBJECT" OrderNumber="0" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="12" FormOID="DS_EOS"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="SUBJECT" OrderNumber="0" Mandatory="No" mdsol:StudyEventDefName="Subject" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="SUBJECT" OrderNumber="0" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="13" FormOID="RAND"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="SUBJECT" OrderNumber="0" Mandatory="No" mdsol:StudyEventDefName="Subject" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="SUBJECT" OrderNumber="0" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="14" FormOID="DS_DEATH"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="SUBJECT" OrderNumber="0" Mandatory="No" mdsol:StudyEventDefName="Subject" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="SUBJECT" OrderNumber="0" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="15" FormOID="PRO_ASSESS"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="SUBJECT" OrderNumber="0" Mandatory="No" mdsol:StudyEventDefName="Subject" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="SUBJECT" OrderNumber="0" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="16" FormOID="PRO_COMPARE"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="SUBJECT" OrderNumber="0" Mandatory="No" mdsol:StudyEventDefName="Subject" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="SUBJECT" OrderNumber="0" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="17" FormOID="REQUIRED"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="SUBJECT" OrderNumber="0" Mandatory="No" mdsol:StudyEventDefName="Subject" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="SUBJECT" OrderNumber="0" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="18" FormOID="ADDCYCLE"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="SUBJECT" OrderNumber="0" Mandatory="No" mdsol:StudyEventDefName="Subject" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="SUBJECT" OrderNumber="0" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="19" FormOID="INEX"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="SUBJECT" OrderNumber="0" Mandatory="No" mdsol:StudyEventDefName="Subject" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="SUBJECT" OrderNumber="0" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="20" FormOID="FORM_PAIN_SI"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="SUBJECT" OrderNumber="0" Mandatory="No" mdsol:StudyEventDefName="Subject" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="SUBJECT" OrderNumber="0" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="21" FormOID="LOGPAD_SIGNINGUNITDEF_939"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="SUBJECT" OrderNumber="0" Mandatory="No" mdsol:StudyEventDefName="Subject" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="SUBJECT" OrderNumber="0" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="22" FormOID="DM"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="SUBJECT" OrderNumber="0" Mandatory="No" mdsol:StudyEventDefName="Subject" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="SUBJECT" OrderNumber="0" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="23" FormOID="CM"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="SUBJECT" OrderNumber="0" Mandatory="No" mdsol:StudyEventDefName="Subject" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="SUBJECT" OrderNumber="0" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="24" FormOID="PRG"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="SUBJECT" OrderNumber="0" Mandatory="No" mdsol:StudyEventDefName="Subject" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="SUBJECT" OrderNumber="0" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="25" FormOID="EG"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="SUBJECT" OrderNumber="0" Mandatory="No" mdsol:StudyEventDefName="Subject" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="SUBJECT" OrderNumber="0" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="26" FormOID="LOGPAD_SIGNINGUNITDEF_903"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="SUBJECT" OrderNumber="0" Mandatory="No" mdsol:StudyEventDefName="Subject" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="SUBJECT" OrderNumber="0" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="27" FormOID="LOGPAD_SIGNINGUNITDEF_946"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="SUBJECT" OrderNumber="0" Mandatory="No" mdsol:StudyEventDefName="Subject" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="SUBJECT" OrderNumber="0" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="28" FormOID="MH"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="SUBJECT" OrderNumber="0" Mandatory="No" mdsol:StudyEventDefName="Subject" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="SUBJECT" OrderNumber="0" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="29" FormOID="TUMOR"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="SCREEN" OrderNumber="1" Mandatory="No" mdsol:StudyEventDefName="Screening" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="SCREEN" OrderNumber="1" mdsol:StudyEventDefRepeating="No"   mdsol:TargetDays="0"     >
+                <FormRef Mandatory="No" OrderNumber="1" FormOID="VISIT"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="SCREEN" OrderNumber="1" Mandatory="No" mdsol:StudyEventDefName="Screening" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="SCREEN" OrderNumber="1" mdsol:StudyEventDefRepeating="No"   mdsol:TargetDays="0"     >
+                <FormRef Mandatory="No" OrderNumber="3" FormOID="PE"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="SCREEN" OrderNumber="1" Mandatory="No" mdsol:StudyEventDefName="Screening" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="SCREEN" OrderNumber="1" mdsol:StudyEventDefRepeating="No"   mdsol:TargetDays="0"     >
+                <FormRef Mandatory="No" OrderNumber="4" FormOID="VS"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="SCREEN" OrderNumber="1" Mandatory="No" mdsol:StudyEventDefName="Screening" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="SCREEN" OrderNumber="1" mdsol:StudyEventDefRepeating="No"   mdsol:TargetDays="0"     >
+                <FormRef Mandatory="No" OrderNumber="15" FormOID="PRO_ASSESS"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="SCREEN" OrderNumber="1" Mandatory="No" mdsol:StudyEventDefName="Screening" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="SCREEN" OrderNumber="1" mdsol:StudyEventDefRepeating="No"   mdsol:TargetDays="0"     >
+                <FormRef Mandatory="No" OrderNumber="19" FormOID="INEX"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="SCREEN" OrderNumber="1" Mandatory="No" mdsol:StudyEventDefName="Screening" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="SCREEN" OrderNumber="1" mdsol:StudyEventDefRepeating="No"   mdsol:TargetDays="0"     >
+                <FormRef Mandatory="No" OrderNumber="22" FormOID="DM"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="SCREEN" OrderNumber="1" Mandatory="No" mdsol:StudyEventDefName="Screening" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="SCREEN" OrderNumber="1" mdsol:StudyEventDefRepeating="No"   mdsol:TargetDays="0"     >
+                <FormRef Mandatory="No" OrderNumber="28" FormOID="MH"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="LOGPAD_STUDYEVENTDEF_337" OrderNumber="2" Mandatory="No" mdsol:StudyEventDefName="DIARY" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="LOGPAD_STUDYEVENTDEF_337" OrderNumber="2" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="21" FormOID="LOGPAD_SIGNINGUNITDEF_939"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="LOGPAD_STUDYEVENTDEF_337" OrderNumber="2" Mandatory="No" mdsol:StudyEventDefName="DIARY" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="LOGPAD_STUDYEVENTDEF_337" OrderNumber="2" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="26" FormOID="LOGPAD_SIGNINGUNITDEF_903"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="LOGPAD_STUDYEVENTDEF_337" OrderNumber="2" Mandatory="No" mdsol:StudyEventDefName="DIARY" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="LOGPAD_STUDYEVENTDEF_337" OrderNumber="2" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="27" FormOID="LOGPAD_SIGNINGUNITDEF_946"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="VISIT01" OrderNumber="3" Mandatory="No" mdsol:StudyEventDefName="Visit 01" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="VISIT01" OrderNumber="3" mdsol:StudyEventDefRepeating="No"   mdsol:TargetDays="7"     >
+                <FormRef Mandatory="No" OrderNumber="1" FormOID="VISIT"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="VISIT01" OrderNumber="3" Mandatory="No" mdsol:StudyEventDefName="Visit 01" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="VISIT01" OrderNumber="3" mdsol:StudyEventDefRepeating="No"   mdsol:TargetDays="7"     >
+                <FormRef Mandatory="No" OrderNumber="4" FormOID="VS"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="VISIT01" OrderNumber="3" Mandatory="No" mdsol:StudyEventDefName="Visit 01" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="VISIT01" OrderNumber="3" mdsol:StudyEventDefRepeating="No"   mdsol:TargetDays="7"     >
+                <FormRef Mandatory="No" OrderNumber="7" FormOID="BLOOD"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="VISIT01" OrderNumber="3" Mandatory="No" mdsol:StudyEventDefName="Visit 01" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="VISIT01" OrderNumber="3" mdsol:StudyEventDefRepeating="No"   mdsol:TargetDays="7"     >
+                <FormRef Mandatory="No" OrderNumber="8" FormOID="LAB_URINE"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="VISIT01" OrderNumber="3" Mandatory="No" mdsol:StudyEventDefName="Visit 01" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="VISIT01" OrderNumber="3" mdsol:StudyEventDefRepeating="No"   mdsol:TargetDays="7"     >
+                <FormRef Mandatory="No" OrderNumber="15" FormOID="PRO_ASSESS"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="VISIT01" OrderNumber="3" Mandatory="No" mdsol:StudyEventDefName="Visit 01" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="VISIT01" OrderNumber="3" mdsol:StudyEventDefRepeating="No"   mdsol:TargetDays="7"     >
+                <FormRef Mandatory="No" OrderNumber="20" FormOID="FORM_PAIN_SI"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="VISIT02" OrderNumber="4" Mandatory="No" mdsol:StudyEventDefName="Visit 02" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="VISIT02" OrderNumber="4" mdsol:StudyEventDefRepeating="No"  mdsol:StartWinDays="7"   mdsol:TargetDays="14"   mdsol:EndWinDays="7"    >
+                <FormRef Mandatory="No" OrderNumber="1" FormOID="VISIT"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="VISIT02" OrderNumber="4" Mandatory="No" mdsol:StudyEventDefName="Visit 02" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="VISIT02" OrderNumber="4" mdsol:StudyEventDefRepeating="No"  mdsol:StartWinDays="7"   mdsol:TargetDays="14"   mdsol:EndWinDays="7"    >
+                <FormRef Mandatory="No" OrderNumber="3" FormOID="PE"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="VISIT02" OrderNumber="4" Mandatory="No" mdsol:StudyEventDefName="Visit 02" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="VISIT02" OrderNumber="4" mdsol:StudyEventDefRepeating="No"  mdsol:StartWinDays="7"   mdsol:TargetDays="14"   mdsol:EndWinDays="7"    >
+                <FormRef Mandatory="No" OrderNumber="4" FormOID="VS"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="VISIT02" OrderNumber="4" Mandatory="No" mdsol:StudyEventDefName="Visit 02" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="VISIT02" OrderNumber="4" mdsol:StudyEventDefRepeating="No"  mdsol:StartWinDays="7"   mdsol:TargetDays="14"   mdsol:EndWinDays="7"    >
+                <FormRef Mandatory="No" OrderNumber="7" FormOID="BLOOD"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="VISIT02" OrderNumber="4" Mandatory="No" mdsol:StudyEventDefName="Visit 02" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="VISIT02" OrderNumber="4" mdsol:StudyEventDefRepeating="No"  mdsol:StartWinDays="7"   mdsol:TargetDays="14"   mdsol:EndWinDays="7"    >
+                <FormRef Mandatory="No" OrderNumber="8" FormOID="LAB_URINE"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="VISIT02" OrderNumber="4" Mandatory="No" mdsol:StudyEventDefName="Visit 02" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="VISIT02" OrderNumber="4" mdsol:StudyEventDefRepeating="No"  mdsol:StartWinDays="7"   mdsol:TargetDays="14"   mdsol:EndWinDays="7"    >
+                <FormRef Mandatory="No" OrderNumber="15" FormOID="PRO_ASSESS"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="VISIT02" OrderNumber="4" Mandatory="No" mdsol:StudyEventDefName="Visit 02" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="VISIT02" OrderNumber="4" mdsol:StudyEventDefRepeating="No"  mdsol:StartWinDays="7"   mdsol:TargetDays="14"   mdsol:EndWinDays="7"    >
+                <FormRef Mandatory="No" OrderNumber="20" FormOID="FORM_PAIN_SI"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="VISIT03" OrderNumber="5" Mandatory="No" mdsol:StudyEventDefName="Visit 03" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="VISIT03" OrderNumber="5" mdsol:StudyEventDefRepeating="No"  mdsol:StartWinDays="14"   mdsol:TargetDays="21"   mdsol:EndWinDays="14"    >
+                <FormRef Mandatory="No" OrderNumber="1" FormOID="VISIT"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="VISIT03" OrderNumber="5" Mandatory="No" mdsol:StudyEventDefName="Visit 03" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="VISIT03" OrderNumber="5" mdsol:StudyEventDefRepeating="No"  mdsol:StartWinDays="14"   mdsol:TargetDays="21"   mdsol:EndWinDays="14"    >
+                <FormRef Mandatory="No" OrderNumber="4" FormOID="VS"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="VISIT03" OrderNumber="5" Mandatory="No" mdsol:StudyEventDefName="Visit 03" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="VISIT03" OrderNumber="5" mdsol:StudyEventDefRepeating="No"  mdsol:StartWinDays="14"   mdsol:TargetDays="21"   mdsol:EndWinDays="14"    >
+                <FormRef Mandatory="No" OrderNumber="7" FormOID="BLOOD"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="VISIT03" OrderNumber="5" Mandatory="No" mdsol:StudyEventDefName="Visit 03" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="VISIT03" OrderNumber="5" mdsol:StudyEventDefRepeating="No"  mdsol:StartWinDays="14"   mdsol:TargetDays="21"   mdsol:EndWinDays="14"    >
+                <FormRef Mandatory="No" OrderNumber="8" FormOID="LAB_URINE"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="VISIT03" OrderNumber="5" Mandatory="No" mdsol:StudyEventDefName="Visit 03" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="VISIT03" OrderNumber="5" mdsol:StudyEventDefRepeating="No"  mdsol:StartWinDays="14"   mdsol:TargetDays="21"   mdsol:EndWinDays="14"    >
+                <FormRef Mandatory="No" OrderNumber="15" FormOID="PRO_ASSESS"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="VISIT03" OrderNumber="5" Mandatory="No" mdsol:StudyEventDefName="Visit 03" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="VISIT03" OrderNumber="5" mdsol:StudyEventDefRepeating="No"  mdsol:StartWinDays="14"   mdsol:TargetDays="21"   mdsol:EndWinDays="14"    >
+                <FormRef Mandatory="No" OrderNumber="20" FormOID="FORM_PAIN_SI"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="VISIT04" OrderNumber="6" Mandatory="No" mdsol:StudyEventDefName="Visit 04" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="VISIT04" OrderNumber="6" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="1" FormOID="VISIT"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="VISIT04" OrderNumber="6" Mandatory="No" mdsol:StudyEventDefName="Visit 04" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="VISIT04" OrderNumber="6" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="3" FormOID="PE"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="VISIT04" OrderNumber="6" Mandatory="No" mdsol:StudyEventDefName="Visit 04" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="VISIT04" OrderNumber="6" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="4" FormOID="VS"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="VISIT04" OrderNumber="6" Mandatory="No" mdsol:StudyEventDefName="Visit 04" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="VISIT04" OrderNumber="6" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="20" FormOID="FORM_PAIN_SI"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="CYCLE1" OrderNumber="7" Mandatory="No" mdsol:StudyEventDefName="Cycle 01" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="CYCLE1" OrderNumber="7" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="1" FormOID="VISIT"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="CYCLE1" OrderNumber="7" Mandatory="No" mdsol:StudyEventDefName="Cycle 01" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="CYCLE1" OrderNumber="7" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="2" FormOID="EX"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="CYCLE1" OrderNumber="7" Mandatory="No" mdsol:StudyEventDefName="Cycle 01" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="CYCLE1" OrderNumber="7" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="3" FormOID="PE"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="CYCLE1" OrderNumber="7" Mandatory="No" mdsol:StudyEventDefName="Cycle 01" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="CYCLE1" OrderNumber="7" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="4" FormOID="VS"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="CYCLE1" OrderNumber="7" Mandatory="No" mdsol:StudyEventDefName="Cycle 01" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="CYCLE1" OrderNumber="7" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="7" FormOID="BLOOD"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="CYCLE1" OrderNumber="7" Mandatory="No" mdsol:StudyEventDefName="Cycle 01" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="CYCLE1" OrderNumber="7" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="28" FormOID="MH"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="CYCLE1" OrderNumber="7" Mandatory="No" mdsol:StudyEventDefName="Cycle 01" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="CYCLE1" OrderNumber="7" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="29" FormOID="TUMOR"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="CYCLE2" OrderNumber="8" Mandatory="No" mdsol:StudyEventDefName="Cycle 02" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="CYCLE2" OrderNumber="8" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="1" FormOID="VISIT"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="CYCLE2" OrderNumber="8" Mandatory="No" mdsol:StudyEventDefName="Cycle 02" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="CYCLE2" OrderNumber="8" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="2" FormOID="EX"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="CYCLE2" OrderNumber="8" Mandatory="No" mdsol:StudyEventDefName="Cycle 02" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="CYCLE2" OrderNumber="8" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="3" FormOID="PE"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="CYCLE2" OrderNumber="8" Mandatory="No" mdsol:StudyEventDefName="Cycle 02" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="CYCLE2" OrderNumber="8" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="7" FormOID="BLOOD"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="CYCLE2" OrderNumber="8" Mandatory="No" mdsol:StudyEventDefName="Cycle 02" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="CYCLE2" OrderNumber="8" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="18" FormOID="ADDCYCLE"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="CYCLE2" OrderNumber="8" Mandatory="No" mdsol:StudyEventDefName="Cycle 02" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="CYCLE2" OrderNumber="8" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="28" FormOID="MH"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+    <Study OID="Mediflex">
+        <GlobalVariables>
+            <StudyName>Mediflex</StudyName>
+            <StudyDescription />
+            <ProtocolName>Mediflex</ProtocolName>
+        </GlobalVariables>
+        <MetaDataVersion OID="1015" Name="19"     mdsol:MatrixOID="BASE"     mdsol:PrimaryFormOID="EN">
+            <Protocol>
+                <StudyEventRef StudyEventOID="CYCLE2" OrderNumber="8" Mandatory="No" mdsol:StudyEventDefName="Cycle 02" mdsol:StudyEventDefType="Common" mdsol:StudyEventDefRepeating="No"></StudyEventRef>
+            </Protocol>
+            <StudyEventDef mdsol:CRFVersionUUID="innovate_1015" OID="CYCLE2" OrderNumber="8" mdsol:StudyEventDefRepeating="No"      >
+                <FormRef Mandatory="No" OrderNumber="29" FormOID="TUMOR"/>
+            </StudyEventDef>
+        </MetaDataVersion>
+    </Study>
+</ODM>
