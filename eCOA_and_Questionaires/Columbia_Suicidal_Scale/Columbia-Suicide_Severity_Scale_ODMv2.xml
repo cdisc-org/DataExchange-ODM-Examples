@@ -3,8 +3,85 @@
 <!-- Source: https://suicidepreventionlifeline.org/wp-content/uploads/2016/09/Suicide-Risk-Assessment-C-SSRS-Lifeline-Version-2014.pdf -->
 <MetaDataVersion xmlns="http://www.cdisc.org/ns/odm/v2.0" OID="MV.CSSRS.001" Name="MetaDataVersion 1">
     <Description>
-        <TranslatedText xml:lang="en">Columbia Suicid Severity Rating Scale in ODMv2</TranslatedText>
+        <TranslatedText xml:lang="en">Columbia Suicid Severity Rating Scale in ODMv2, parts "Suicidal Ideation" and "Intensity of Ideation" </TranslatedText>
     </Description>
+    <!-- Workflow part: limited to the sections "Suicidal Ideation" and "Intensity of Ideation",
+    as the other parts do not have a workflow that is non-linear -->
+    <WorkflowDef OID="WF.CSSRS" Name="Workflow Columbia Suicid Severity Rating Scale questionnaire">
+        <Description>
+            <TranslatedText xml:lang="en">Workflow Columbia Suicid Severity Rating Scale questionnaire, sections "Suicidal Ideation" and "Intensity of Ideation"</TranslatedText>
+        </Description>
+        <WorkflowStart StartOID="IT.Wish_to_be_Dead_Lifetime"/><!-- Workflow starts with question "Whish to be dead" in section "SUICIDAL IDEATION" -->
+        <!-- Section "SUICIDAL IDEATION" -->
+        <!-- Transitions from first question 'Whish to be dead', including "description" -->
+        <Transition OID="TR.1" Name="Transition from 'Whish to be dead question' to  branching for 'Non-Specific Active Suicidal Thoughts' question and 'If yes, describe' question" 
+            SourceOID="IT.Wish_to_be_Dead_Lifetime" TargetOID="BR.1"/>
+        <Branching OID="BR.1" Name="Branching on conditional 'Non-Specific Active Suicidal Thoughts' question" Type="Exclusive">
+            <TargetTransition TargetTransitionOID="TR.Wish_to_be_Dead_Description_Lifetime" ConditionOID="COND.Wish_to_be_dead_yes"/>
+            <DefaultTransition TargetTransitionOID="TR.Non-Specific_Active_Suicidal_Thoughts_Lifetime" />
+        </Branching>  
+        <Transition OID="TR.Wish_to_be_Dead_Description_Lifetime" Name="Transition to question 'Wish to be Dead - Description'" 
+            SourceOID="BR.1" TargetOID="IT.Wish_to_be_Dead_Description_Lifetime"/>
+        <Transition OID="TR.Non-Specific_Active_Suicidal_Thoughts_Lifetime" Name="Default transition to question 'Non-Specific Active Suicidal Thoughts'"
+            SourceOID="BR.1" TargetOID="IT.Non-Specific_Active_Suicidal_Thoughts_Lifetime"/>
+        <Transition OID="TR.Wish_to_be_Dead_Description_Yes_Lifetime" Name="Transition from 'Wish to be Dead - Description' question to 'Non-Specific Active Suicidal Thoughts' question" 
+            SourceOID="IT.Wish_to_be_Dead_Description_Lifetime" TargetOID="IT.Non-Specific_Active_Suicidal_Thoughts_Lifetime" />
+        <!-- Transitions from second question 'Non-Specific Active Suicidal Thoughts', including 'description' -->
+        <Transition OID="TR.2" Name="Transition from 'Non-Specific Active Suicidal Thoughts' question to branching for 'Active Suicidal Ideation with Any Methods' question and If yes, describe' question" 
+            SourceOID="IT.Non-Specific_Active_Suicidal_Thoughts_Lifetime" TargetOID="BR.2"/>
+        <Branching OID="BR.2" Name="Branching on conditional 'Non-Specific Active Suicidal Thoughts' question" Type="Exclusive">
+            <TargetTransition TargetTransitionOID="TR.Non-Specific_Active_Suicidal_Thoughts_Lifetime_Description" ConditionOID="COND.Non-Specific_Active_Suicidal_Thoughts_Lifetime_Yes"/>
+            <DefaultTransition TargetTransitionOID="TR.Active_Suicidal_Ideation_with_Any_Methods_Lifetime"/>
+        </Branching>
+        <Transition OID="TR.Non-Specific_Active_Suicidal_Thoughts_Lifetime_Description" Name="Transition to question 'Non-Specific Active Suicidal Thoughts - Description'" SourceOID="BR.2" TargetOID="IT.Non-Specific_Active_Suicidal_Thoughts_Lifetime_Description"/>
+        <Transition OID="TR.Active_Suicidal_Ideation_with_Any_Methods_Lifetime" Name="Default transition to question 'Active Suicidal Ideation with Any Methods'" SourceOID="BR.2" TargetOID="IT.Active_Suicidal_Ideation_with_Any_Methods_Lifetime"/>
+        <Transition OID="TR.Non-Specific_Active_Suicidal_Thoughts_Lifetime_Description_Yes" Name="Transition from question 'Non-Specific Active Suicidal Thoughts - Description' to question 'Active Suicidal Ideation with Any Methods'" 
+            SourceOID="IT.Non-Specific_Active_Suicidal_Thoughts_Description_Lifetime" TargetOID="IT.Active_Suicidal_Ideation_with_Any_Methods_Lifetime"/>
+        <!-- TODO: special branching: if questions 1 and 2 were answered with "No", skip questions 3 to 5, 
+        and immediately go to the section "Suicidal Behavior"  -->
+        <!-- Transitions from third question 'Active Suicidal Ideation with Any Methods' -->
+        <Transition OID="TR.3" Name="Transition from 'Non-Specific Active Suicidal Thoughts' to branching for 'Non-Specific Active Suicidal Thoughts' and 'If yes, describe' question" 
+            SourceOID="IT.Non-Specific_Active_Suicidal_Thoughts_Lifetime" TargetOID="BR.3"/>
+        <Branching OID="BR.3" Name="Branching on conditional 'Active Suicidal Ideation with Any Methods' question" Type="Exclusive">
+            <TargetTransition TargetTransitionOID="TR.Active_Suicidal_Ideation_with_Any_Methods_Lifetime_Description" ConditionOID="COND.Active_Suicidal_Ideation_with_Any_Methods_Lifetime_Yes"/>
+            <DefaultTransition TargetTransitionOID="TR.Active_Suicidal_Ideation_with_Some_Intent_Lifetime"/>
+        </Branching>
+        <Transition OID="TR.Active_Suicidal_Ideation_with_Any_Methods_Lifetime_Description" Name="Transition to question 'Active Suicidal Ideation with Any Methods - Description'" SourceOID="BR.3" TargetOID="IT.Active_Suicidal_Ideation_with_Any_Methods_Lifetime_Description"/>
+        <Transition OID="TR.Active_Suicidal_Ideation_with_Any_Methods_Lifetime_Description_Yes" Name="Transition from question 'Active Suicidal Ideation with Any Methods - Description' to question 'Active Suicidal Ideation with Some Intent to Act'" 
+            SourceOID="IT.Active_Suicidal_Ideation_with_Any_Methods_Lifetime_Description" TargetOID="IT.Active_Suicidal_Ideation_with_Some_Intent_Lifetime" />
+        <!-- Transitions from fourth question 'Active Suicidal Ideation with Some Intent to Act' -->
+        <Transition OID="TR.4" Name="Transition from 'Active Suicidal Ideation with Some Intent to Act' to branching for 'Active Suicidal Ideation with Specific Plan and Intent' and 'If yes, describe' question" 
+            SourceOID="IT.Active_Suicidal_Ideation_with_Some_Intent_Lifetime" TargetOID="BR.4" />
+        <Branching OID="BR.4" Name="Branching on conditional 'Active Suicidal Ideation with Some Intent to Act' question" Type="Exclusive">
+            <TargetTransition TargetTransitionOID="TR.Active_Suicidal_Ideation_with_Some_Intent_Description" ConditionOID="Active_Suicidal_Ideation_with_Some_Intent_Yes" />
+            <DefaultTransition TargetTransitionOID="TR.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent_Lifetime" /> 
+        </Branching>    
+        <Transition OID="TR.Active_Suicidal_Ideation_with_Some_Intent_Description" Name="Transition to question 'Active Suicidal Ideation with Some Intent to Act - description'" 
+            SourceOID="IT.BR4" TargetOID="IT.Active_Suicidal_Ideation_with_Some_Intent_Description" />
+        <Transition OID="TR.Active_Suicidal_Ideation_with_Some_Intent_Description_Description_Yes" Name="Transition from question 'Active Suicidal Ideation with Some Intent to Act - description' to question 'Active Suicidal Ideation with Specific Plan and Intent'" 
+            SourceOID="IT.BR4" TargetOID="IT.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent_Lifetime"/>
+        <Transition OID="TR.Active_Suicidal_Ideation_with_Some_Intent_Description_Yes" Name="Transition from 'Active Suicidal Ideation with Some Intent to Act - Description' to 'Active Suicidal Ideation with Specific Plan and Intent'" 
+            SourceOID="IT.Active_Suicidal_Ideation_with_Some_Intent_Description" TargetOID="IT.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent_Lifetime"/>
+        <!-- Transitions from fifth question 'Active Suicidal Ideation with Specific Plan and Intent' -->
+        <Transition OID="TR.5" Name="Transition from 'Active Suicidal Ideation with specific plan' to branching for 'Itensity of Ideation section' and 'If yes, describe'" SourceOID="IT.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent_Lifetime" TargetOID="BR.5"/>
+        <Branching OID="BR.5" Name="" Type="Exclusive">
+            <TargetTransition TargetTransitionOID="TR.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent_Lifetime_Description" ConditionOID="COND.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent_Lifetime_Yes" />
+            <DefaultTransition TargetTransitionOID="TR.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent_Lifetime" />
+        </Branching>
+        <Transition OID="TR.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent_Lifetime" Name="Transition from branching to question 'Intensity of ideation'" 
+            SourceOID="BR.5" TargetOID="IG.Intensity_of_Ideation" />
+        <Transition OID="TR.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent_Lifetime_Description" Name="Transition to question 'Active Suicidation with specific plan - description'" 
+            SourceOID="BR.5" TargetOID="IT.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent_Lifetime_Description"/>
+        <Transition OID="TR.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent_Lifetime_Yes" Name="" 
+            SourceOID="IT.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent_Lifetime_Description" TargetOID="IG.Intensity_of_Ideation" />
+        <!-- Synthetic workflow end -->
+        <WorkflowEnd EndOID="IG.Intensity_of_Ideation"/><!-- Workflow ends when entering group "Intensity of Ideation -->
+    </WorkflowDef>
+    
+    <!-- TODO: Risk assessment part "Check all risk and protective factors that apply" -->
+    
+    <!-- TODO: Generate ItemGroups, e.g. "Intensity of ideation" with OID "IG.Intensity_of_Ideation" -->
+    
     <!-- TODO: make these "matrix" style -->
     <!-- Individual questions - ItemDef-s -->
     <!-- TODO: repeat each question for "past 1 month" -->
@@ -48,7 +125,7 @@
         </Question>
         <CodeListRef CodeListOID="CL.YesNo"/>
     </ItemDef>
-    <ItemDef OID="IT.Non-Specific_Active_Suicidal_Thoughts_Description" Name="3. Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act - Description" DataType="text">
+    <ItemDef OID="IT.Active_Suicidal_Ideation_with_Any_Methods_Lifetime_Description" Name="3. Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act - Description" DataType="text">
         <Question>
             <TranslatedText xml:lang="en">If yes, describe:</TranslatedText>
         </Question>
