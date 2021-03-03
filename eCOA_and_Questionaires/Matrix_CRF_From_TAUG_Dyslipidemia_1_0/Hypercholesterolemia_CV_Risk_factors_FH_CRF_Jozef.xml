@@ -204,7 +204,7 @@ For females: if diagnosed or event occurred at &lt;65 year of age.</TranslatedTe
       <SubjectData SubjectKey="001">
          <StudyEventData StudyEventOID="SE.MH">
             <!-- TODO: Reorganize the following when a decision has been made about how to treat "nested" data -->
-            <ItemGroupData FormOID="FO.HYPERCHOLESTEROLEMIA_FAMILY_RISK_FACTORS">
+            <ItemGroupData ItemGroupOID="FO.HYPERCHOLESTEROLEMIA_FAMILY_RISK_FACTORS">
                <!-- One possibility of organizing the collected data:
                Each cell in the matrix comes as an ItemGroup with Row and Column ID, and the cell value itself -->
                <!-- each ItemGroupData is a single cell in the matrix, defined by row-ID and column-ID -->
