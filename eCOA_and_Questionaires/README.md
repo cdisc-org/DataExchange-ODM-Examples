@@ -1,0 +1,1 @@
+Folder with eCOA (Electronic Clinical Outcome Assessment) and questionnaires examples
