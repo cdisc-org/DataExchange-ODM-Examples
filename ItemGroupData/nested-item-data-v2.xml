@@ -1,0 +1,327 @@
+<ODM>
+<Study>
+	<MetaDataVersion OID="Demographics CRF" Name="Demographics" Type="Form">
+		<ItemGroupDef OID="ITG.DM.Main" Name="DM - Demographics" Repeating="No" Domain="DM" Type='Form'>
+			<Description>
+				<TranslatedText xml:lang="en">DM - Demographics</TranslatedText>
+			</Description>
+			<ItemRef ItemOID="IT.SEX" Mandatory="No" OrderNumber="1"/>
+			<ItemRef ItemOID="IT.ETHNIC" Mandatory="No" OrderNumber="2"/>
+			<ItemGroupRef ItemGroupOID="ITG.DM.AGE" Mandatory="No"/>			
+			<ItemGroupRef ItemGroupOID="ITG.DM.Race" Mandatory="No"/>			
+		</ItemGroupDef>
+
+		<ItemGroupDef OID="ITG.DM.Age" Name="DM - Age" Repeating="No" Domain="DM">
+			<ItemRef ItemOID="IT.AGE" Mandatory="No" OrderNumber="3"/>
+			<ItemRef ItemOID="IT.AGEU" Mandatory="No" OrderNumber="4"/>			
+		</ItemGroupDef>
+
+		<ItemGroupDef OID="ITG.DM.Race" Name="DM - Race" Repeating="No" Domain="DM">
+			<ItemRef ItemOID="IT.RACE" Mandatory="No" OrderNumber="5"/>
+			<ItemRef ItemOID="IT.RACEOTH" Mandatory="No" OrderNumber="6"/>
+		</ItemGroupDef>
+
+		<!-- semantics of repeating with nested IGs - what are the valid Parent/Child combinations -->
+		<ItemGroupDef OID="ITG.AE.Main" Name="AE - Adverse Events" Repeating="Simple" Type="Form">
+			<Description>
+				<TranslatedText xml:lang="en">AE - Adverse Events</TranslatedText>
+			</Description>
+			<ItemRef ItemOID="IT.AEYN" Mandatory="No" OrderNumber="1"/>
+			<ItemRef ItemOID="IT.AETERM" Mandatory="Yes" OrderNumber="2"/>
+			<ItemRef ItemOID="IT.AESTDAT" Mandatory="Yes" OrderNumber="3"/>
+			<ItemRef ItemOID="IT.AEONGO" Mandatory="No" OrderNumber="4"/>
+			<ItemRef ItemOID="IT.AEENDAT" Mandatory="No" OrderNumber="5"/>
+			<ItemGroupRef ItemGroupOID="ITG.AE.Serious" Mandatory="Yes" OrderNumber="1"/>
+		</ItemGroupDef>
+
+		<ItemGroupDef OID="ITG.ITG.AE.Serious" Name="AE - Adverse Events" Repeating="Simple" Domain="AE">
+			<ItemRef ItemOID="IT.AESEV" Mandatory="No" OrderNumber="6"/>
+			<ItemRef ItemOID="IT.AESER" Mandatory="No" OrderNumber="7"/>
+			<ItemRef ItemOID="IT.AESLIFE" Mandatory="No" OrderNumber="9"/>
+		</ItemGroupDef>
+			
+		<ItemGroupDef OID="ITG.MH.Main" Name="MH - Medical History" Repeating="No" Domain="MH" Type="Form">
+			<ItemGroupRef ItemGroupOID="ITG.MH.PERF" Mandatory="Yes" OrderNumber="1"/>
+			<ItemGroupRef ItemGroupOID="ITG.MH.MEDHIST" Mandatory="No" OrderNumber="2"/>
+		</ItemGroupDef>
+
+		<ItemGroupDef OID="IG.MH.Perf" Name="Medical History" Repeating="No" SASDatasetName="MEDHIST" Domain="MH">
+			<ItemRef ItemOID="IT.MHYN" Mandatory="No" OrderNumber="1"/>
+			<ItemRef ItemOID="IT.MHDAT" Mandatory="No" OrderNumber="2"/>			
+		</ItemGroupDef>
+			
+		<ItemGroupDef OID="ITG.MH.MEDHIST" Name="Medical History" Repeating="Static" SASDatasetName="MEDHIST" Domain="MH">
+			<ItemRef ItemOID="I.MH.BODSYS" Mandatory="Yes" Repeat="Yes" OrderNumber="1"/>
+			<ItemRef ItemOID="I.MH.SYSOTH" Mandatory="No" Other="Yes" OrderNumber="2"/>
+			<ItemRef ItemOID="I.MH.TERM" Mandatory="No" OrderNumber="3"/>
+			<ItemRef ItemOID="I.MH.ACTIVE" Mandatory="No" OrderNumber="4"/>
+		</ItemGroupDef>
+		
+		<!-- additional levels of ITG -->
+		<ItemGroupDef OID="ITG.VS.Main" Name="Vital Signs" Repeating="No" Domain="VS">
+			<Description>
+				<TranslatedText xml:lang="en">VS - Vital Signs</TranslatedText>
+			</Description>
+			<ItemGroupRef ItemGroupOID="ITG.VS.BP" Mandatory="No" OrderNumber="1"/>
+			<ItemGroupRef ItemGroupOID="ITG.VS.WEIGHT" Mandatory="No" OrderNumber="2"/>
+			<ItemGroupRef ItemGroupOID="ITG.VS.HEIGHT" Mandatory="No" OrderNumber="3"/>
+			<ItemGroupRef ItemGroupOID="ITG.VS.TEMP" Mandatory="No" OrderNumber="4"/>
+		</ItemGroupDef>
+
+		<ItemGroupDef OID="ITG.VS.BP" Name="BP Vital Signs" Repeating="No" Domain="VS">
+			<ItemGroupDef OID="ITG.VS.BP.SYSBP" Name="SYSBP Vital Signs" Repeating="No" Domain="VS">
+				<ItemRef ItemOID="IT.SYSBP_VSORRES" Mandatory="No" OrderNumber="1"/>
+				<ItemRef ItemOID="IT.SYSBP_VSORRESU" Mandatory="Yes" OrderNumber="2"/>
+			</ItemGroupDef>
+			<ItemGroupDef OID="ITG.VS.BP.DIABP" Name="DIABP Vital Signs" Repeating="No" Domain="VS">
+				<ItemRef ItemOID="IT.DIABP_VSORRES" Mandatory="No" OrderNumber="3"/>
+				<ItemRef ItemOID="IT.DIABP_VSORRESU" Mandatory="Yes" OrderNumber="4"/>
+			</ItemGroupDef>	
+			<ItemGroupDef OID="ITG.VS.POS" Name="BP Position" Repeating="No" Domain="VS">
+				<ItemRef ItemOID="IT.BP_VSPOS" Mandatory="No" OrderNumber="5"/>
+			</ItemGroupDef>
+		</ItemGroupDef>
+
+		<ItemGroupDef OID="ITG.VS.HEIGHT" Name="Height Vital Signs" Repeating="No" Domain="VS">
+			<ItemRef ItemOID="IT.HEIGHT_VSORRES" Mandatory="No" OrderNumber="7"/>
+			<ItemRef ItemOID="IT.HEIGHT_VSORRESU" Mandatory="No" OrderNumber="8"/>
+		</ItemGroupDef>
+
+		<ItemGroupDef OID="ITG.VS.WEIGHT" Name="Weight Vital Signs" Repeating="No" Domain="VS">
+			<ItemRef ItemOID="IT.WEIGHT_VSORRES" Mandatory="No" OrderNumber="9"/>
+			<ItemRef ItemOID="IT.WEIGHT_VSORRESU" Mandatory="No" OrderNumber="10"/>
+		</ItemGroupDef>
+		
+		<ItemGroupDef OID="ITG.VS.TEMP" Name="Weight Vital Signs" Repeating="No" Domain="VS">
+			<ItemGroupDef OID="ITG.VS.TEMP.MEASURE" Name="Weight Vital Signs" Repeating="No" Domain="VS">
+				<ItemRef ItemOID="IT.TEMP_VSORRES" Mandatory="No" OrderNumber="11"/>
+				<ItemRef ItemOID="IT.TEMP_VSORRESU" Mandatory="No" OrderNumber="12"/>
+			</ItemGroupDef>
+			<ItemGroupDef OID="ITG.VS.TEMP.LOC" Name="Weight Vital Signs" Repeating="No" Domain="VS">
+				<ItemRef ItemOID="IT.TEMP_VSLOC" Mandatory="No" OrderNumber="13"/>
+			</ItemGroupDef>	
+		</ItemGroupDef>
+		
+	</MetaDataVersion>
+</Study>
+<ClinicalData StudyOID="P2006-101" MetadataVersionOID="101.01">
+	<SubjectData SubjectKey="1000" TransactionType="Insert">
+		<StudyEventData StudyEventOID="Screen">
+
+			<!-- basic case of a parent (form) ITGData for a non-repeating ITG --> 
+			<ItemGroupData ItemGroupOID='ITG.DM.Main'>
+				<ItemData ItemOID='IT.SEX'>
+					<Value>F</Value>
+					<AuditRecord>...</AuditRecord>
+					<Annotation>...</Annotation>
+				</ItemData>
+				<ItemData ItemOID='IT.ETHNIC'>
+					<Value>HISPANIC OR LATINO</Value>
+					<AuditRecord>...</AuditRecord>
+					<Annotation>...</Annotation>
+				</ItemData>
+			</ItemGroupData>
+	
+			<!-- basic case of a child (nested) ITGData that refers to a parent for a non-repeating ITG --> 
+			<ItemGroupData ItemGroupOID='ITG.DM.AGE' ParentOID='ITG.DM.Main'>
+				<ItemData ItemOID='IT.AGE'>
+					<Value>65</Value>
+					<AuditRecord>...</AuditRecord>
+					<Annotation>...</Annotation>
+				</ItemData>
+				<ItemData ItemOID='IT.AGEU'>
+					<Value>Years</Value>
+					<AuditRecord>...</AuditRecord>
+					<Annotation>...</Annotation>
+				</ItemData>
+			</ItemGroupData>
+
+			<!-- alternative to the above that pulls the data into the parent ITG - consider case where ITG has no ItemRefs -->
+			<ItemGroupData ItemGroupOID='ITG.DM.Main'>
+				<ItemData ItemOID='IT.SEX'>
+					<Value>F</Value>
+					<AuditRecord>...</AuditRecord>
+					<Annotation>...</Annotation>
+				</ItemData>
+				<ItemData ItemOID='IT.ETHNIC'>
+					<Value>HISPANIC OR LATINO</Value>
+					<AuditRecord>...</AuditRecord>
+					<Annotation>...</Annotation>
+				</ItemData>
+				<ItemData ItemOID='IT.AGE' ItemGroupOID='ITG.DM.AGE'>
+					<Value>65</Value>
+					<AuditRecord>...</AuditRecord>
+					<Annotation>...</Annotation>
+				</ItemData>
+				<ItemData ItemOID='IT.AGEU' ItemGroupOID='ITG.DM.AGE'>
+					<Value>Years</Value>
+					<AuditRecord>...</AuditRecord>
+					<Annotation>...</Annotation>
+				</ItemData>
+			</ItemGroupData>
+			
+			<!-- basic case of a parent (form) ITG with a repeating ITG -->
+			<ItemGroupData ItemGroupOID='ITG.AE.Main' ItemGroupRepeatKey='1'>
+				<ItemData ItemOID='IT.AEYN'>
+					<Value>Y</Value>
+					<AuditRecord>...</AuditRecord>
+				</ItemData>
+				<ItemData ItemOID='IT.AETERM'>
+					<Value>Cephalalgia</Value>
+					<AuditRecord>...</AuditRecord>
+				</ItemData>
+				<ItemData ItemOID='IT.AESTDAT'>
+					<Value>2021-02-02</Value>
+					<AuditRecord>...</AuditRecord>
+				</ItemData>
+				<ItemData ItemOID='IT.AEONGO'>
+					<Value>Y</Value>
+					<AuditRecord>...</AuditRecord>
+				</ItemData>
+			</ItemGroupData>
+			
+			<!-- basic case of a child ITG that repeats with the parent (parent and child have same repeats) -->
+			<ItemGroupData ItemGroupOID='ITG.AE.Serious' ItemGroupRepeatKey='1' ParentOID='ITG.AE.Main' ParentRepeatKey='1'>
+				<ItemData ItemOID='IT.AESEV'>
+					<Value>MODERATE</Value>
+					<AuditRecord>...</AuditRecord>
+				</ItemData>
+				<ItemData ItemOID='IT.AESER'>
+					<Value>N</Value>
+					<AuditRecord>...</AuditRecord>
+				</ItemData>
+				<ItemData ItemOID='IT.AESLIFE'>
+					<Value>N</Value>
+					<AuditRecord>...</AuditRecord>
+				</ItemData>
+			</ItemGroupData>
+
+			<!-- case that shows multiple repeats -->
+			<ItemGroupData ItemGroupOID='ITG.AE.Main' ItemGroupRepeatKey='2'>
+				<ItemData ItemOID='IT.AEYN'>
+					<Value>Y</Value>
+					<AuditRecord>...</AuditRecord>
+				</ItemData>
+				<ItemData ItemOID='IT.AETERM'>
+					<Value>Cephalalgia</Value>
+					<AuditRecord>...</AuditRecord>
+				</ItemData>
+				<ItemData ItemOID='IT.AESTDAT'>
+					<Value>2021-02-02</Value>
+					<AuditRecord>...</AuditRecord>
+				</ItemData>
+				<ItemData ItemOID='IT.AEONGO'>
+					<Value>N</Value>
+					<AuditRecord>...</AuditRecord>
+				</ItemData>
+				<ItemData ItemOID='IT.AEENDAT'>
+					<Value>2021-02-03</Value>
+					<AuditRecord>...</AuditRecord>
+				</ItemData>
+			</ItemGroupData>
+			
+			<!-- when would the child have an ITGRepeatKey="2", same as parent, and the ParentRepeatKey be something other than "2" 
+				- if child repeats independently of parent -->
+			<ItemGroupData ItemGroupOID='ITG.AE.Serious' ItemGroupRepeatKey='2' ParentOID='ITG.AE.Main' ParentRepeatKey='2'>
+				<ItemData ItemOID='IT.AESEV'>
+					<Value>MODERATE</Value>
+					<AuditRecord>...</AuditRecord>
+				</ItemData>
+				<ItemData ItemOID='IT.AESER'>
+					<Value>N</Value>
+					<AuditRecord>...</AuditRecord>
+				</ItemData>
+				<ItemData ItemOID='IT.AESLIFE'>
+					<Value>N</Value>
+					<AuditRecord>...</AuditRecord>
+				</ItemData>
+			</ItemGroupData>
+
+			<!-- case if ITG w/o ItemRefs and different Repeats across ITGs - parent does not repeat, 1 child does not repeat, 2nd child does repeat -->
+			<!-- this case shows the parent ITG as the container even though there are no ItemRefs -->
+			<ItemGroupData ItemGroupOID='ITG.MH.Main'>
+				<ItemData ItemOID='IT.MHYN'>
+					<Value>Y</Value>
+					<AuditRecord>...</AuditRecord>
+				</ItemData>
+				<ItemData ItemOID='IT.MHDAT'>
+					<Value>2021-02-02</Value>
+					<AuditRecord>...</AuditRecord>
+				</ItemData>
+			</ItemGroupData>
+
+			<ItemGroupData ItemGroupOID='ITG.MH.MEDHIST' ItemGroupRepeatKey='1' ParentOID='ITG.MH.Main'>
+				<ItemData ItemOID='I.MH.BODSYS'>
+					<Value>...</Value>
+					<AuditRecord>...</AuditRecord>
+				</ItemData>
+				<ItemData ItemOID='I.MH.TERM'>
+					<Value>...</Value>
+					<AuditRecord>...</AuditRecord>
+				</ItemData>
+				<ItemData ItemOID='I.MH.ACTIVE'>
+					<Value>...</Value>
+					<AuditRecord>...</AuditRecord>
+				</ItemData>
+			</ItemGroupData>
+
+			<ItemGroupData ItemGroupOID='ITG.MH.MEDHIST' ItemGroupRepeatKey='2' ParentOID='ITG.MH.Main'>
+				<ItemData ItemOID='I.MH.BODSYS'>
+					<Value>...</Value>
+					<AuditRecord>...</AuditRecord>
+				</ItemData>
+				<ItemData ItemOID='I.MH.TERM'>
+					<Value>...</Value>
+					<AuditRecord>...</AuditRecord>
+				</ItemData>
+				<ItemData ItemOID='I.MH.ACTIVE'>
+					<Value>...</Value>
+					<AuditRecord>...</AuditRecord>
+				</ItemData>
+			</ItemGroupData>
+
+			<!-- case if ITG w/o ItemRefs and different Repeats across ITGs - parent does not repeat, 1 child does not repeat, 2nd child does repeat -->
+			<!-- this case shows the parent ITG as the container even though there are no ItemRefs with the repeating ITGs embedded - should we allow this?  -->
+			<ItemGroupData ItemGroupOID='ITG.MH.Main'>
+				<ItemData ItemOID='IT.MHYN'>
+					<Value>Y</Value>
+					<AuditRecord>...</AuditRecord>
+				</ItemData>
+				<ItemData ItemOID='IT.MHDAT'>
+					<Value>2021-02-02</Value>
+					<AuditRecord>...</AuditRecord>
+				</ItemData>
+				<ItemGroupData ItemGroupOID='ITG.MH.MEDHIST' ItemGroupRepeatKey='1'>
+					<ItemData ItemOID='I.MH.BODSYS'>
+						<Value>...</Value>
+						<AuditRecord>...</AuditRecord>
+					</ItemData>
+					<ItemData ItemOID='I.MH.TERM'>
+						<Value>...</Value>
+						<AuditRecord>...</AuditRecord>
+					</ItemData>
+					<ItemData ItemOID='I.MH.ACTIVE'>
+						<Value>...</Value>
+						<AuditRecord>...</AuditRecord>
+					</ItemData>
+				</ItemGroupData>
+				<ItemGroupData ItemGroupOID='ITG.MH.MEDHIST' ItemGroupRepeatKey='2'>
+					<ItemData ItemOID='I.MH.BODSYS'>
+						<Value>...</Value>
+						<AuditRecord>...</AuditRecord>
+					</ItemData>
+					<ItemData ItemOID='I.MH.TERM'>
+						<Value>...</Value>
+						<AuditRecord>...</AuditRecord>
+					</ItemData>
+					<ItemData ItemOID='I.MH.ACTIVE'>
+						<Value>...</Value>
+						<AuditRecord>...</AuditRecord>
+					</ItemData>
+				</ItemGroupData>
+			</ItemGroupData>
+						
+		</StudyEventData>
+	</SubjectData>
+</ClinicalData>
+</ODM>
