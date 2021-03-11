@@ -8,6 +8,9 @@
 		</GlobalVariables>
 		<BasicDefinitions/>
 		<MetaDataVersion OID="MV.1.0" Name="Data acquisition" Description="Example of Matrix-CRF: Hypercholesterolemia Family Risk Factors from CDISC TAUG Dyslipidemia v.1.0">
+			<StudyEventDef Name="Medical History - Family History" OID="SE.MH" Repeating="No" Type="Scheduled">
+				<FormRef FormOID="FO.HYPERCHOLESTEROLEMIA_FAMILY_RISK_FACTORS" Mandatory="Yes"/>
+			</StudyEventDef>
 			<FormDef OID="FO.HYPERCHOLESTEROLEMIA_FAMILY_RISK_FACTORS" Name="Hypercholesterolemia Family Risk Factors" Repeating="No">
 				<ItemGroupRef ItemGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP" Mandatory="No" OrderNumber="1"/>
 			</FormDef>

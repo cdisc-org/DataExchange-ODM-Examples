@@ -14,8 +14,8 @@
 			<ItemGroupDef Type="Form" OID="FO.HYPERCHOLESTEROLEMIA_FAMILY_RISK_FACTORS" Name="Hypercholesterolemia Family Risk Factors" Repeating="No">
 				<ItemGroupRef ItemGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP" Mandatory="No" OrderNumber="1"/>
 			</ItemGroupDef>
-			<ItemGroupDef OID="IG.MH_TERM_FAMILY_RELATIONSHIP" Name="MH term / Family Relationship matrix" Repeating="Static">
-				<ItemRef ItemOID="I.MHTERM" Mandatory="No" OrderNumber="1" Repeat="Yes"/>
+			<ItemGroupDef OID="IG.MH_TERM_FAMILY_RELATIONSHIP" Name="MH term / Family Relationship matrix" Repeating="Static" RepeatingItemOID="I.MHTERM">
+				<ItemRef ItemOID="I.MHTERM" Mandatory="No" OrderNumber="1"/>
 				<ItemRef ItemOID="I.MHFATHER" Mandatory="No" OrderNumber="2"/>
 				<ItemRef ItemOID="I.MHMOTHER" Mandatory="No" OrderNumber="3"/>
 				<ItemRef ItemOID="I.MHBROTHERS" Mandatory="No" OrderNumber="4"/>

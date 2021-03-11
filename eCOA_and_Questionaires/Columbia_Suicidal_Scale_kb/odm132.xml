@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ODM xmlns="http://www.cdisc.org/ns/odm/v1.3" FileOID="SDY_1" FileType="Snapshot" CreationDateTime="2021-03-11T17:33:17" ODMVersion="1.3.2" Originator="">
+	<Study OID="SDY_1">
+		<GlobalVariables>
+			<StudyName>Study A</StudyName>
+			<StudyDescription/>
+			<ProtocolName/>
+		</GlobalVariables>
+		<BasicDefinitions/>
+		<MetaDataVersion OID="AG_CSS" Name="Columbia Suicide Scale" Description="">
+			<StudyEventDef Name="CSS" OID="SE.CSS" Repeating="No" Type="Scheduled">
+				<FormRef FormOID="F_C-SSRS_1" Mandatory="Yes"/>
+				<FormRef FormOID="F_C-SSRS_2" Mandatory="Yes"/>
+			</StudyEventDef>
+			<FormDef OID="F_C-SSRS_1" Name="COLUMBIA-SUICIDE SEVERITY RATING SCALE (version 1)" Repeating="No">
+				<ItemGroupRef ItemGroupOID="S_SUICIDAL_IDEATION_1" Mandatory="No" OrderNumber="1"/>
+			</FormDef>
+			<FormDef OID="F_C-SSRS_2" Name="COLUMBIA-SUICIDE SEVERITY RATING SCALE (version 2)" Repeating="No">
+				<ItemGroupRef ItemGroupOID="S_SUICIDAL_IDEATION_2" Mandatory="No" OrderNumber="1"/>
+			</FormDef>
+			<ItemGroupDef OID="S_SUICIDAL_IDEATION_2" Name="SUICIDAL IDEATION" Repeating="Yes">
+				<ItemRef ItemOID="Q_IDEATION_TYPE" Mandatory="No" OrderNumber="1"/>
+				<ItemRef ItemOID="Q_IDEATION_LIFETIME" Mandatory="No" OrderNumber="2"/>
+				<ItemRef ItemOID="Q_IDEATION_PASTMONTH" Mandatory="No" OrderNumber="3"/>
+				<ItemRef ItemOID="Q_IDEATION_DETAILS" Mandatory="No" OrderNumber="4"/>
+			</ItemGroupDef>
+			<ItemGroupDef OID="S_SUICIDAL_IDEATION_1" Name="SUICIDAL IDEATION" Repeating="Yes">
+				<ItemRef ItemOID="Q_IDEATION_TYPE" Mandatory="No" OrderNumber="1"/>
+				<ItemRef ItemOID="Q_IDEATION_LIFETIME" Mandatory="No" OrderNumber="2"/>
+				<ItemRef ItemOID="Q_IDEATION_DETAILS_LIFETIME" Mandatory="No" OrderNumber="3"/>
+				<ItemRef ItemOID="Q_IDEATION_PASTMONTH" Mandatory="No" OrderNumber="4"/>
+				<ItemRef ItemOID="Q_IDEATION_DETAILS_PASTMONTH" Mandatory="No" OrderNumber="5"/>
+			</ItemGroupDef>
+			<ItemDef OID="Q_IDEATION_DETAILS_PASTMONTH" Name="Ideation details (past month)" DataType="text" Length="200">
+				<Question>
+					<TranslatedText>If yes, describe:</TranslatedText>
+				</Question>
+			</ItemDef>
+			<ItemDef OID="Q_IDEATION_TYPE" Name="Suicidal Ideation type" DataType="integer" Length="1">
+				<Question>
+					<TranslatedText>Suicidal Ideation</TranslatedText>
+				</Question>
+				<CodeListRef CodeListOID="T_SUICIDAL_IDEATION"/>
+			</ItemDef>
+			<ItemDef OID="Q_IDEATION_DETAILS" Name="Ideation details" DataType="text" Length="200">
+				<Question>
+					<TranslatedText>If yes, describe:</TranslatedText>
+				</Question>
+			</ItemDef>
+			<ItemDef OID="Q_IDEATION_PASTMONTH" Name="Ideation (past month)" DataType="text" Length="1">
+				<Question>
+					<TranslatedText>Past 1 month</TranslatedText>
+				</Question>
+				<CodeListRef CodeListOID="CL.Y_N"/>
+			</ItemDef>
+			<ItemDef OID="Q_IDEATION_LIFETIME" Name="Ideation (lifetime)" DataType="text" Length="1">
+				<Question>
+					<TranslatedText>Lifetime: Time He/She Felt Most Suicidal</TranslatedText>
+				</Question>
+				<CodeListRef CodeListOID="CL.Y_N"/>
+			</ItemDef>
+			<ItemDef OID="Q_IDEATION_DETAILS_LIFETIME" Name="Ideation details (lifetime)" DataType="text" Length="200">
+				<Question>
+					<TranslatedText>If yes, describe:</TranslatedText>
+				</Question>
+			</ItemDef>
+			<CodeList OID="CL.Y_N" Name="Yes-No codelist" DataType="text">
+				<CodeListItem CodedValue="Y" OrderNumber="1">
+					<Decode>
+						<TranslatedText>Yes</TranslatedText>
+					</Decode>
+				</CodeListItem>
+				<CodeListItem CodedValue="N" OrderNumber="2">
+					<Decode>
+						<TranslatedText>No</TranslatedText>
+					</Decode>
+				</CodeListItem>
+			</CodeList>
+			<CodeList OID="T_SUICIDAL_IDEATION" Name="Suicidal Ideation type" DataType="integer">
+				<CodeListItem CodedValue="1" OrderNumber="1">
+					<Decode>
+						<TranslatedText>Wish to be Dead&lt;br /&gt;Subject endorses thoughts about a wish to be dead or not alive anymore, or wish to fall asleep and not wake up. &lt;br /&gt;&lt;i&gt;Have you wished you were dead or wished you could go to sleep and not wake up?&lt;/i&gt;</TranslatedText>
+					</Decode>
+				</CodeListItem>
+				<CodeListItem CodedValue="2" OrderNumber="2">
+					<Decode>
+						<TranslatedText>Non-Specific Active Suicidal Thoughts&lt;br /&gt;General non-specific thoughts of wanting to end one’s life/commit suicide (e.g., “I’ve thought about killing myself”) without thoughts of ways to kill oneself/associated methods, intent, or plan during the assessment period. &lt;br /&gt;&lt;i&gt;Have you actually had any thoughts of killing yourself?&lt;/i&gt;</TranslatedText>
+					</Decode>
+				</CodeListItem>
+				<CodeListItem CodedValue="3" OrderNumber="3">
+					<Decode>
+						<TranslatedText>Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act&lt;br /&gt;Subject endorses thoughts of suicide and has thought of at least one method during the assessment period. This is different than a specific plan with time, place or method details worked out (e.g., thought of method to kill self but not a specific plan). Includes person who would say, &lt;i&gt;“I thought about taking an overdose but I never made a specific plan as to when, where or how I would actually do it…and I would never go through with it.”&lt;/i&gt; &lt;br /&gt;&lt;i&gt;Have you been thinking about how you might do this?&lt;/i&gt;</TranslatedText>
+					</Decode>
+				</CodeListItem>
+				<CodeListItem CodedValue="4" OrderNumber="4">
+					<Decode>
+						<TranslatedText>Active Suicidal Ideation with Some Intent to Act, without Specific Plan&lt;br /&gt;Active suicidal thoughts of killing oneself and subject reports having &lt;u&gt;some intent to act on such thoughts&lt;/u&gt;, as opposed to &lt;i&gt;“I have the thoughts but I definitely will not do anything about them.”&lt;/i&gt; &lt;br /&gt;&lt;i&gt;Have you had these thoughts and had some intention of acting on them?&lt;/i&gt;</TranslatedText>
+					</Decode>
+				</CodeListItem>
+				<CodeListItem CodedValue="5" OrderNumber="5">
+					<Decode>
+						<TranslatedText>Active Suicidal Ideation with Specific Plan and Intent &lt;br /&gt;Thoughts of killing oneself with details of plan fully or partially worked out and subject has some intent to carry it out. &lt;br /&gt;&lt;i&gt;Have you started to work out or worked out the details of how to kill yourself? Do you intend to carry out this plan?&lt;/i&gt;</TranslatedText>
+					</Decode>
+				</CodeListItem>
+			</CodeList>
+		</MetaDataVersion>
+		<ClinicalData StudyOID="SDY_1" MetaDataVersionOID="AG_CSS">
+			<SubjectData SubjectKey="001">
+				<StudyEventData StudyEventOID="SE.CSS">
+					<FormData FormOID="F_C-SSRS_1">
+						<ItemGroupData ItemGroupOID="S_SUICIDAL_IDEATION_1" ItemGroupRepeatKey="1">
+							<ItemData ItemOID="Q_IDEATION_TYPE">
+								<Value>1</Value>
+							</ItemData>
+							<ItemData ItemOID="Q_IDEATION_LIFETIME">
+								<Value>Y</Value>
+							</ItemData>
+							<ItemData ItemOID="Q_IDEATION_DETAILS_LIFETIME">
+								<Value>Details</Value>
+							</ItemData>
+							<ItemData ItemOID="Q_IDEATION_PASTMONTH">
+								<Value>N</Value>
+							</ItemData>
+						</ItemGroupData>
+						<ItemGroupData ItemGroupOID="S_SUICIDAL_IDEATION_1" ItemGroupRepeatKey="2">
+							<ItemData ItemOID="Q_IDEATION_TYPE">
+								<Value>2</Value>
+							</ItemData>
+							<ItemData ItemOID="Q_IDEATION_LIFETIME">
+								<Value>Y</Value>
+							</ItemData>
+							<ItemData ItemOID="Q_IDEATION_DETAILS_LIFETIME">
+								<Value>Details</Value>
+							</ItemData>
+							<ItemData ItemOID="Q_IDEATION_PASTMONTH">
+								<Value>Y</Value>
+							</ItemData>
+							<ItemData ItemOID="Q_IDEATION_DETAILS_PASTMONTH">
+								<Value>Details</Value>
+							</ItemData>
+						</ItemGroupData>
+					</FormData>
+					<FormData FormOID="F_C-SSRS_2">
+						<ItemGroupData ItemGroupOID="S_SUICIDAL_IDEATION_2" ItemGroupRepeatKey="1">
+							<ItemData ItemOID="Q_IDEATION_TYPE">
+								<Value>1</Value>
+							</ItemData>
+							<ItemData ItemOID="Q_IDEATION_LIFETIME">
+								<Value>Y</Value>
+							</ItemData>
+							<ItemData ItemOID="Q_IDEATION_PASTMONTH">
+								<Value>N</Value>
+							</ItemData>
+							<ItemData ItemOID="Q_IDEATION_DETAILS">
+								<Value>Details</Value>
+							</ItemData>
+						</ItemGroupData>
+						<ItemGroupData ItemGroupOID="S_SUICIDAL_IDEATION_2" ItemGroupRepeatKey="2">
+							<ItemData ItemOID="Q_IDEATION_TYPE">
+								<Value>2</Value>
+							</ItemData>
+							<ItemData ItemOID="Q_IDEATION_LIFETIME">
+								<Value>Y</Value>
+							</ItemData>
+							<ItemData ItemOID="Q_IDEATION_PASTMONTH">
+								<Value>Y</Value>
+							</ItemData>
+							<ItemData ItemOID="Q_IDEATION_DETAILS">
+								<Value>Details</Value>
+							</ItemData>
+						</ItemGroupData>
+					</FormData>
+				</StudyEventData>
+			</SubjectData>
+		</ClinicalData>
+	</Study>
+</ODM>
