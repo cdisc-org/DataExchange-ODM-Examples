@@ -9,23 +9,22 @@
                 <TranslatedText xml:lang="en">Columbia Suicid Severity Rating Scale in ODMv2, parts "Risk Assessment", 
                     "Suicidal Ideation" and "Intensity of Ideation" </TranslatedText>
             </Description>
-            <!-- Workflow part: limited to the sections "Suicidal Ideation" and "Intensity of Ideation",
-    as the other parts do not have a workflow that is non-linear -->
+            <!-- Workflow part: limited to the section "Suicidal Ideation",
+                as the other parts do not have a workflow that is non-linear -->
             <!-- TODO 2021-03-11: adapt for new, improved mechanism for repeats: transitions must go to ItemGroups -->
-            <WorkflowDef OID="WF.CSSRS"
-                Name="Workflow Columbia Suicid Severity Rating Scale questionnaire">
+            <WorkflowDef OID="WF.CSSRS_SUICIDAL_IDEATION"
+                Name="Workflow Columbia Suicid Severity Rating Scale questionnaire, part Suicidal Ideation">
                 <Description>
                     <TranslatedText xml:lang="en">Workflow Columbia Suicid Severity Rating Scale
-                        questionnaire, sections "Suicidal Ideation" and "Intensity of
-                        Ideation"</TranslatedText>
+                        questionnaire, section "Suicidal Ideation"</TranslatedText>
                 </Description>
-                <WorkflowStart StartOID="IT.Wish_to_be_Dead"/>
+                <WorkflowStart StartOID="IT.1.Wish_to_be_Dead"/>
                 <!-- Workflow starts with question "Whish to be dead" in section "SUICIDAL IDEATION" -->
                 <!-- Section "SUICIDAL IDEATION" -->
                 <!-- Transitions from first question 'Whish to be dead', including "description" -->
                 <Transition OID="TR.1"
                     Name="Transition from 'Whish to be dead question' to  branching for 'Non-Specific Active Suicidal Thoughts' question and 'If yes, describe' question"
-                    SourceOID="IT.Wish_to_be_Dead" TargetOID="BR.1"/>
+                    SourceOID="IT.1.Wish_to_be_Dead" TargetOID="BR.1"/>
                 <Branching OID="BR.1"
                     Name="Branching on conditional 'Non-Specific Active Suicidal Thoughts' question"
                     Type="Exclusive">
@@ -36,44 +35,67 @@
                 </Branching>
                 <Transition OID="TR.Wish_to_be_Dead_Description"
                     Name="Transition to question 'Wish to be Dead - Description'" SourceOID="BR.1"
-                    TargetOID="IT.Wish_to_be_Dead_Description"/>
+                    TargetOID="IT.1.Wish_to_be_Dead_Description"/>
                 <Transition OID="TR.Non-Specific_Active_Suicidal_Thoughts"
                     Name="Default transition to question 'Non-Specific Active Suicidal Thoughts'"
-                    SourceOID="BR.1" TargetOID="IT.Non-Specific_Active_Suicidal_Thoughts"/>
+                    SourceOID="BR.1" TargetOID="IT.2.Non-Specific_Active_Suicidal_Thoughts"/>
                 <Transition OID="TR.Wish_to_be_Dead_Description_Yes"
                     Name="Transition from 'Wish to be Dead - Description' question to 'Non-Specific Active Suicidal Thoughts' question"
-                    SourceOID="IT.Wish_to_be_Dead_Description"
-                    TargetOID="IT.Non-Specific_Active_Suicidal_Thoughts"/>
+                    SourceOID="IT.1.Wish_to_be_Dead_Description"
+                    TargetOID="IT.2.Non-Specific_Active_Suicidal_Thoughts"/>
                 <!-- Transitions from second question 'Non-Specific Active Suicidal Thoughts', including 'description' -->
                 <Transition OID="TR.2"
                     Name="Transition from 'Non-Specific Active Suicidal Thoughts' question to branching for 'Active Suicidal Ideation with Any Methods' question and If yes, describe' question"
-                    SourceOID="IT.Non-Specific_Active_Suicidal_Thoughts" TargetOID="BR.2"/>
+                    SourceOID="IT.2.Non-Specific_Active_Suicidal_Thoughts" TargetOID="BR.2"/>
                 <Branching OID="BR.2"
                     Name="Branching on conditional 'Non-Specific Active Suicidal Thoughts' question"
                     Type="Exclusive">
                     <TargetTransition
                         TargetTransitionOID="TR.Non-Specific_Active_Suicidal_Thoughts_Description"
                         ConditionOID="COND.Non-Specific_Active_Suicidal_Thoughts_Yes"/>
+                    <!-- In case questions 1 and 2 are negative, proceed to "Suicidal Behavior" (next page in paper form) -->
+                    <TargetTransition
+                        TargetTransitionOID="TR.Go_To_Suicidal_Behavior"
+                        ConditionOID="COND.Questions_1_and_2_negative"/>
+                    <!-- default: question 2 = positive, continue to question 3 -->
                     <DefaultTransition
                         TargetTransitionOID="TR.Active_Suicidal_Ideation_with_Any_Methods"/>
                 </Branching>
+                <!-- Answer to question 2 is 'Y', then provide description -->
                 <Transition OID="TR.Non-Specific_Active_Suicidal_Thoughts_Description"
                     Name="Transition to question 'Non-Specific Active Suicidal Thoughts - Description'"
                     SourceOID="BR.2"
-                    TargetOID="IT.Non-Specific_Active_Suicidal_Thoughts_Description"/>
+                    TargetOID="IT.2.Non-Specific_Active_Suicidal_Thoughts_Description"/>
+                <!-- Transitions to branching point that can lead out of the current workflow -->
                 <Transition OID="TR.Active_Suicidal_Ideation_with_Any_Methods"
-                    Name="Default transition to question 'Active Suicidal Ideation with Any Methods'"
-                    SourceOID="BR.2" TargetOID="IT.Active_Suicidal_Ideation_with_Any_Methods"/>
+                    Name="Default transition to branching point where one one can get out of the current workflow"
+                    SourceOID="BR.2" TargetOID="BR.2_OUT"/>
                 <Transition OID="TR.Non-Specific_Active_Suicidal_Thoughts_Description_Yes"
                     Name="Transition from question 'Non-Specific Active Suicidal Thoughts - Description' to question 'Active Suicidal Ideation with Any Methods'"
-                    SourceOID="IT.Non-Specific_Active_Suicidal_Thoughts_Description"
-                    TargetOID="IT.Active_Suicidal_Ideation_with_Any_Methods"/>
-                <!-- TODO: special branching: if questions 1 and 2 were answered with "No", skip questions 3 to 5, 
-        and immediately go to the section "Suicidal Behavior"  -->
+                    SourceOID="IT.2.Non-Specific_Active_Suicidal_Thoughts_Description"
+                    TargetOID="BR.2_OUT"/>
+                <!-- Braching after question 2, also when "description" was added for question 2 -->
+                <Branching OID="BR.2_OUT" Name="Branching after question 2, different ways to leave the workflow for 'Suicidal Ideation'" 
+                    Type="Exclusive">
+                    <TargetTransition TargetTransitionOID="TR.Go_To_Suicidal_Behavior" ConditionOID="COND.1_and_2_negative"/>
+                    <TargetTransition TargetTransitionOID="TR.Go_To_Intensity_of_Ideation" ConditionOID="COND.2_negative"></TargetTransition>
+                    <DefaultTransition TargetTransitionOID="TR.2_Continue"></DefaultTransition>
+                </Branching>
+                <!-- Transition out of the workflow when questions 1 and 2 are negative: go to section "Suicidal Behavior" -->
+                <Transition OID="TR.Go_To_Suicidal_Behavior" Name="Transition after questions 1 and 2, to group 'Suicidal Behavior'" 
+                    SourceOID="BR.2_OUT" TargetOID="IG.SUICIDAL_BEHAVIOR"></Transition>
+                <!-- Transition out of the workflow when question 2 was negative -->
+                <Transition OID="TR.Go_To_Intensity_of_Ideation" Name="Transition after questions 1 and 2, to group 'Intensity of Ideation'" 
+                    SourceOID="BR.2_OUT" TargetOID="IG.Intensity_of_Ideation"/>
+                <!-- Transition from branching point after "2. Non-specific Active Suicidal Thoughts" to "3. Active Suicidal Ideation with Any Methods", 
+                i.e. from question 2 to 3 -->
+                <Transition OID="TR.2_Continue" Name="Transition after branching point after question 2 'Non-specific Active Suicidal Thoughts' to question 3 'Active Suicidal Ideation with Any Methods'"
+                    SourceOID="BR.2_OUT" TargetOID="IT.3.Active_Suicidal_Ideation_with_Any_Methods" />
                 <!-- Transitions from third question 'Active Suicidal Ideation with Any Methods' -->
                 <Transition OID="TR.3"
                     Name="Transition from 'Non-Specific Active Suicidal Thoughts' to branching for 'Active suicidation with some intent to act' and 'If yes, describe' question"
-                    SourceOID="IT.Non-Specific_Active_Suicidal_Thoughts" TargetOID="BR.3"/>
+                    SourceOID="IT.2.Non-Specific_Active_Suicidal_Thoughts" TargetOID="BR.3"/>
+                <!-- Something still wrong here ... -->
                 <Branching OID="BR.3"
                     Name="Branching on conditional 'Active Suicidal Ideation with Any Methods' question"
                     Type="Exclusive">
@@ -86,19 +108,24 @@
                 <Transition OID="TR.Active_Suicidal_Ideation_with_Any_Methods_Description"
                     Name="Transition to question 'Active Suicidal Ideation with Any Methods - Description'"
                     SourceOID="BR.3"
-                    TargetOID="IT.Active_Suicidal_Ideation_with_Any_Methods_Description"/>
+                    TargetOID="IT.3.Active_Suicidal_Ideation_with_Any_Methods_Description"/>
+                <!-- Default transition from question 3 to 4 -->
                 <Transition OID="TR.Active_Suicidal_Ideation_with_Some_Intent"
+                    Name="Transition from 'Active suicidal ideation with any methods' to 'Active suicidal ideation with some intent'"
+                    SourceOID="BR.3"
+                    TargetOID="IT.4.Active_Suicidal_Ideation_with_Some_Intent"/>
+                <Transition OID="TR.Active_Suicidal_Ideation_with_Some_Intent_Description_Yes"
                     Name="Transition from 'Active suicidal ideation with any methods - description' to 'Active suicidal ideation with some intent'"
-                    SourceOID="IT.Active_Suicidal_Ideation_with_Any_Methods_Description"
-                    TargetOID="IT.Active_Suicidal_Ideation_with_Some_Intent"/>
+                    SourceOID="IT.3.Active_Suicidal_Ideation_with_Any_Methods_Description"
+                    TargetOID="IT.4.Active_Suicidal_Ideation_with_Some_Intent"/>
                 <Transition OID="TR.Active_Suicidal_Ideation_with_Any_Methods_Description_Yes"
                     Name="Transition from question 'Active Suicidal Ideation with Any Methods - Description' to question 'Active Suicidal Ideation with Some Intent to Act'"
-                    SourceOID="IT.Active_Suicidal_Ideation_with_Any_Methods_Description"
-                    TargetOID="IT.Active_Suicidal_Ideation_with_Some_Intent"/>
+                    SourceOID="IT.3.Active_Suicidal_Ideation_with_Any_Methods_Description"
+                    TargetOID="IT.4.Active_Suicidal_Ideation_with_Some_Intent"/>
                 <!-- Transitions from fourth question 'Active Suicidal Ideation with Some Intent to Act' -->
                 <Transition OID="TR.4"
                     Name="Transition from 'Active Suicidal Ideation with Some Intent to Act' to branching for 'Active Suicidal Ideation with Specific Plan and Intent' and 'If yes, describe' question"
-                    SourceOID="IT.Active_Suicidal_Ideation_with_Some_Intent" TargetOID="BR.4"/>
+                    SourceOID="IT.4.Active_Suicidal_Ideation_with_Some_Intent" TargetOID="BR.4"/>
                 <Branching OID="BR.4"
                     Name="Branching on conditional 'Active Suicidal Ideation with Some Intent to Act' question"
                     Type="Exclusive">
@@ -112,20 +139,20 @@
                 <Transition OID="TR.Active_Suicidal_Ideation_with_Some_Intent_Description"
                     Name="Transition to question 'Active suicidal ideation with some intent - description"
                     SourceOID="BR.4"
-                    TargetOID="IT.Active_Suicidal_Ideation_with_Some_Intent_Description"/>
+                    TargetOID="IT.4.Active_Suicidal_Ideation_with_Some_Intent_Description"/>
                 <Transition OID="TR.Active_Suicidal_Ideation_with_Some_Intent_Description_Yes"
                     Name="Transition from 'Active Suicidal Ideation with Some Intent to Act - Description' to 'Active Suicidal Ideation with Specific Plan and Intent'"
-                    SourceOID="IT.Active_Suicidal_Ideation_with_Some_Intent_Description"
-                    TargetOID="IT.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent"/>
+                    SourceOID="IT.4.Active_Suicidal_Ideation_with_Some_Intent_Description"
+                    TargetOID="IT.5.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent"/>
                 <Transition OID="TR.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent"
                     Name="Transition from question 'Active Suicidal Ideation with Some Intent to Act - description' to question 'Active Suicidal Ideation with Specific Plan and Intent'"
                     SourceOID="IT.BR4"
-                    TargetOID="IT.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent"/>
+                    TargetOID="IT.5.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent"/>
 
                 <!-- Transitions from fifth question 'Active Suicidal Ideation with Specific Plan and Intent' -->
                 <Transition OID="TR.5"
                     Name="Transition from 'Active Suicidal Ideation with specific plan' to branching for 'Itensity of Ideation section' and 'If yes, describe'"
-                    SourceOID="IT.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent"
+                    SourceOID="IT.5.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent"
                     TargetOID="BR.5"/>
                 <Branching OID="BR.5"
                     Name="Branching on conditional 'Active suicidal ideation with some intent'"
@@ -144,11 +171,11 @@
                     OID="TR.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent_Description"
                     Name="Transition to question 'Active Suicidation with specific plan - description'"
                     SourceOID="BR.5"
-                    TargetOID="IT.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent_Description"/>
+                    TargetOID="IT.5.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent_Description"/>
                 <Transition
                     OID="TR.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent_Description_Yes"
                     Name="Transition from 'Active suicidal ideation with specific plan - descrition' to section ''Intensity of ideation"
-                    SourceOID="IT.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent_Description"
+                    SourceOID="IT.5.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent_Description"
                     TargetOID="IG.Intensity_of_Ideation"/>
                 <!-- Synthetic workflow end -->
                 <WorkflowEnd EndOID="IG.Intensity_of_Ideation"/>
@@ -195,37 +222,37 @@
             <!-- Suicidal and Self-Injury Behavior - repeats over "Past week" and "Lifetime" -->
             <ItemGroupDef OID="IG.Actual_suicide_attempt_with_Lifetime"
                 Name="Actual suicide attempt with Lifetime additional checkbox" Repeating="Static"
-                RepeatItemOID="IT.PAST_WEEK_LIFETIME" RepeatDisplay="Columns">
+                RepeatingItemOID="IT.PAST_WEEK_LIFETIME" RepeatDisplay="Columns">
                 <ItemRef ItemOID="IT.Actual_suicide_attempt" Mandatory="No"/>
             </ItemGroupDef>
             <!-- Interrupted attempt - repeats over "Past week" and "Lifetime" -->
             <ItemGroupDef OID="IG.Interrupted_attempt_with_Lifetime"
                 Name="Interrupted attempt with Lifetime additional checkbox" Repeating="Static"
-                RepeatItemOID="IT.PAST_WEEK_LIFETIME" RepeatDisplay="Columns">
+                RepeatingItemOID="IT.PAST_WEEK_LIFETIME" RepeatDisplay="Columns">
                 <ItemRef ItemOID="IT.Interrupted_attempt" Mandatory="No"/>
             </ItemGroupDef>
             <!-- Interrupted attempt - repeats over "Past week" and "Lifetime" -->
             <ItemGroupDef OID="IG.Aborted_attempt_with_Lifetime"
                 Name="Aborted attempt with Lifetime additional checkbox" Repeating="Static"
-                RepeatItemOID="IT.PAST_WEEK_LIFETIME" RepeatDisplay="Columns">
+                RepeatingItemOID="IT.PAST_WEEK_LIFETIME" RepeatDisplay="Columns">
                 <ItemRef ItemOID="IT.Aborted_attempt" Mandatory="No"/>
             </ItemGroupDef>
             <!-- Aborted attempt - repeats over "Past week" and "Lifetime" -->
             <ItemGroupDef OID="IG.Aborted_attempt_with_Lifetime"
                 Name="Aborted attempt with Lifetime additional checkbox" Repeating="Static"
-                RepeatItemOID="IT.PAST_WEEK_LIFETIME" RepeatDisplay="Columns">
+                RepeatingItemOID="IT.PAST_WEEK_LIFETIME" RepeatDisplay="Columns">
                 <ItemRef ItemOID="IT.Aborted_attempt" Mandatory="No"/>
             </ItemGroupDef>
             <!-- Other preparatory acts to kill self - repeats over "Past week" and "Lifetime" -->
             <ItemGroupDef OID="IG.Other_preparatory_acts"
                 Name="Other preparatory acts to kill self with Lifetime additional Checkbox"
-                Repeating="Static" RepeatItemOID="IT.PAST_WEEK_LIFETIME" RepeatDisplay="Columns">
+                Repeating="Static" RepeatingItemOID="IT.PAST_WEEK_LIFETIME" RepeatDisplay="Columns">
                 <ItemRef ItemOID="IT.Other_preparatory_acts" Mandatory="No"/>
             </ItemGroupDef>
             <!-- Self-injury behavior w/o suicide intent - repeats over "Past week" and "Lifetime" -->
             <ItemGroupDef OID="IG.Self-injury_behavior"
                 Name="Self-injury behavior with Lifetime additional Checkbox" Repeating="Static"
-                RepeatItemOID="IT.PAST_WEEK_LIFETIME" RepeatDisplay="Columns">
+                RepeatingItemOID="IT.PAST_WEEK_LIFETIME" RepeatDisplay="Columns">
                 <ItemRef ItemOID="IT.Self-injury_behavior" Mandatory="No"/>
             </ItemGroupDef>
             <!-- Section "Suicide Ideation (Most Severe in Past Week)" - there is no repeat -->
@@ -357,14 +384,14 @@
                 Name="'Wish to be dead group', with 'If yes: describe'" Repeating="No">
                 <ItemGroupRef ItemGroupOID="IG.Wish_to_be_Dead" Mandatory="No"/>
                 <!-- has 2 columns -->
-                <ItemRef ItemOID="IT.Wish_to_be_Dead_Description" Mandatory="No"/>
+                <ItemRef ItemOID="IT.1.Wish_to_be_Dead_Description" Mandatory="No"/>
                 <!-- only 1 column -->
             </ItemGroupDef>
             <!-- Repeats over "Lifetime / Past 1 month", but display is in columns, not in rows as by default  -->
             <ItemGroupDef OID="IG.Wish_to_be_Dead"
                 Name="'Wish to be dead group', repeating over 'Lifetime' and 'Past 1 month'"
-                Repeating="Static" RepeatItemOID="IT.Lifetime_Past_1_Month" RepeatDisplay="Columns">
-                <ItemRef ItemOID="IT.Wish_to_be_Dead" Mandatory="No"/>
+                Repeating="Static" RepeatingItemOID="IT.Lifetime_Past_1_Month" RepeatDisplay="Columns">
+                <ItemRef ItemOID="IT.1.Wish_to_be_Dead" Mandatory="No"/>
                 <!-- although repeat, there is only 1 item in it (no codelist) -->
             </ItemGroupDef>
             <!-- "Non-Specific Active Suicidal Thoughts" group -->
@@ -373,13 +400,13 @@
                 Repeating="No">
                 <ItemGroupRef ItemGoupOID="IG_Non-Specific_Active_Suicidal_Thoughts" Mandatory="No"/>
                 <!-- has 2 columns -->
-                <ItemRef ItemOID="IT.Non-Specific_Active_Suicidal_Thoughts_Description"
+                <ItemRef ItemOID="IT.2.Non-Specific_Active_Suicidal_Thoughts_Description"
                     Mandatory="No"/>
             </ItemGroupDef>
             <ItemGroupDef OID="IG_Non-Specific_Active_Suicidal_Thoughts"
                 Name="'Non-Specific Active Suicidal Thoughts' group, repeating over 'Lifetime' and 'Past 1 month'"
-                Repeating="Static" RepeatItemOID="IT.Lifetime_Past_1_Month" RepeatDisplay="Columns">
-                <ItemRef ItemOID="IT.Non-Specific_Active_Suicidal_Thoughts" Mandatory="No"/>
+                Repeating="Static" RepeatingItemOID="IT.Lifetime_Past_1_Month" RepeatDisplay="Columns">
+                <ItemRef ItemOID="IT.2.Non-Specific_Active_Suicidal_Thoughts" Mandatory="No"/>
                 <!-- although repeat, there is only 1 item in it (no codelist) -->
             </ItemGroupDef>
             <!-- "Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act" group -->
@@ -388,13 +415,13 @@
                 Repeating="No">
                 <ItemGroupRef ItemGroupOID="IG.Active_Suicidal_Ideation_with_Any_Methods"
                     Mandatory="No"/>
-                <ItemRef ItemOID="IT.Active_Suicidal_Ideation_with_Any_Methods_Description"
+                <ItemRef ItemOID="IT.3.Active_Suicidal_Ideation_with_Any_Methods_Description"
                     Mandatory="No"/>
             </ItemGroupDef>
             <ItemGroupDef OID="IG.Active_Suicidal_Ideation_with_Any_Methods"
                 Name="Active Suicidal Ideation with Any Methods ...' group, repeating over 'Lifetime' and 'Past 1 month'"
-                Repeating="Static" RepeatItemOID="IT.Lifetime_Past_1_Month" RepeatDisplay="Columns">
-                <ItemRef ItemOID="IT.Active_Suicidal_Ideation_with_Any_Methods" Mandatory="No"/>
+                Repeating="Static" RepeatingItemOID="IT.Lifetime_Past_1_Month" RepeatDisplay="Columns">
+                <ItemRef ItemOID="IT.3.Active_Suicidal_Ideation_with_Any_Methods" Mandatory="No"/>
             </ItemGroupDef>
             <!-- "Active Suicidal Ideation with Some Intent to Act, without Specific Plan" group -->
             <ItemGroupDef OID="IG.Active_Suicidal_Ideation_with_Some_Intent_to_Act_with_Description"
@@ -402,13 +429,13 @@
                 Repeating="No">
                 <ItemGroupRef ItemGroupOID="IG.Active_Suicidal_Ideation_with_Some_Intent_to_Act"
                     Mandatory="No"/>
-                <ItemRef ItemOID="IT.Active_Suicidal_Ideation_with_Some_Intent_Description"
+                <ItemRef ItemOID="IT.4.Active_Suicidal_Ideation_with_Some_Intent_Description"
                     Mandatory="No"/>
             </ItemGroupDef>
             <ItemGroupDef OID="IG.Active_Suicidal_Ideation_with_Some_Intent_to_Act"
                 Name="'Active Suicidal Ideation with Some Intent to Act, ...', repeating over 'Lifetime' and 'Past 1 month'"
-                Repeating="Static" RepeatItemOID="IT.Lifetime_Past_1_Month" RepeatDisplay="Columns">
-                <ItemRef ItemOID="IT.Active_Suicidal_Ideation_with_Some_Intent" Mandatory="Yes"/>
+                Repeating="Static" RepeatingItemOID="IT.Lifetime_Past_1_Month" RepeatDisplay="Columns">
+                <ItemRef ItemOID="IT.4.Active_Suicidal_Ideation_with_Some_Intent" Mandatory="Yes"/>
             </ItemGroupDef>
             <!-- "Active Suicidal Ideation with Specific Plan and Intent" group -->
             <ItemGroupDef
@@ -419,13 +446,13 @@
                     ItemGroupOID="IG.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent"
                     Mandatory="No"/>
                 <ItemRef
-                    ItemOID="IT.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent_Description"
+                    ItemOID="IT.5.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent_Description"
                     Mandatory="No"/>
             </ItemGroupDef>
             <ItemGroupDef OID="IG.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent"
                 Name="'Active Suicidal Ideation with Specific Plan and Intent' group, repeating over 'Lifetime' and 'Past 1 month'"
-                Repeating="Static" RepeatItemOID="IT.Lifetime_Past_1_Month" RepeatDisplay="Columns">
-                <ItemRef ItemOID="IT.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent"
+                Repeating="Static" RepeatingItemOID="IT.Lifetime_Past_1_Month" RepeatDisplay="Columns">
+                <ItemRef ItemOID="IT.5.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent"
                     Mandatory="No"/>
             </ItemGroupDef>
 
@@ -886,7 +913,7 @@
 
             <!-- Suicidal Ideation part -->
             <!-- "Wish to be Dead" questions -->
-            <ItemDef OID="IT.Wish_to_be_Dead" Name="1. Wish to be Dead" DataType="text">
+            <ItemDef OID="IT.1.Wish_to_be_Dead" Name="1. Wish to be Dead" DataType="text">
                 <Description>
                     <TranslatedText xml:lang="en">Subject endorses thoughts about a wish to be dead
                         or not alive anymore, or wish to fall asleep and not wake
@@ -898,14 +925,14 @@
                 </Question>
                 <CodeListRef CodeListOID="CL.YesNo"/>
             </ItemDef>
-            <ItemDef OID="IT.Wish_to_be_Dead_Description" Name="1. Wish to be Dead - Description"
+            <ItemDef OID="IT.1.Wish_to_be_Dead_Description" Name="1. Wish to be Dead - Description"
                 DataType="text">
                 <Question>
                     <TranslatedText xml:lang="en">If yes, describe:</TranslatedText>
                 </Question>
             </ItemDef>
             <!-- "Non-Specific Active Suicidal Thoughts" -->
-            <ItemDef OID="IT.Non-Specific_Active_Suicidal_Thoughts"
+            <ItemDef OID="IT.2.Non-Specific_Active_Suicidal_Thoughts"
                 Name="2. Non-Specific Active Suicidal Thoughts" DataType="text">
                 <Description>
                     <TranslatedText xml:lang="en">General non-specific thoughts of wanting to end
@@ -919,14 +946,14 @@
                 </Question>
                 <CodeListRef CodeListOID="CL.YesNo"/>
             </ItemDef>
-            <ItemDef OID="IT.Non-Specific_Active_Suicidal_Thoughts_Description"
+            <ItemDef OID="IT.2.Non-Specific_Active_Suicidal_Thoughts_Description"
                 Name="2. Non-Specific Active Suicidal Thoughts - Description" DataType="text">
                 <Question>
                     <TranslatedText xml:lang="en">If yes, describe:</TranslatedText>
                 </Question>
             </ItemDef>
             <!-- "Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act" questions -->
-            <ItemDef OID="IT.Active_Suicidal_Ideation_with_Any_Methods"
+            <ItemDef OID="IT.3.Active_Suicidal_Ideation_with_Any_Methods"
                 Name="3. Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act"
                 datatype="text">
                 <Description>
@@ -944,7 +971,7 @@
                 </Question>
                 <CodeListRef CodeListOID="CL.YesNo"/>
             </ItemDef>
-            <ItemDef OID="IT.Active_Suicidal_Ideation_with_Any_Methods_Description"
+            <ItemDef OID="IT.3.Active_Suicidal_Ideation_with_Any_Methods_Description"
                 Name="3. Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act - Description"
                 DataType="text">
                 <Question>
@@ -952,21 +979,21 @@
                 </Question>
             </ItemDef>
             <!-- "Active Suicidal Ideation with Some Intent to Act, without Specific Plan" questions -->
-            <ItemDef OID="IT.Active_Suicidal_Ideation_with_Some_Intent"
+            <ItemDef OID="IT.4.Active_Suicidal_Ideation_with_Some_Intent"
                 Name="4. Active Suicidal Ideation with Some Intent to Act, without Specific Plan"
                 DataType="text">
                 <Description>
                     <TranslatedText xml:lang="en">Active suicidal thoughts of killing oneself and
-                        subject reports having some intent to act on such thoughts, as opposed to “I
+                        subject reports having some intent to act on such thoughts, as opposed to 'I
                         have the thoughts but I definitely will not do anything about
-                        them.”</TranslatedText>
+                        them.'</TranslatedText>
                 </Description>
                 <Question>
                     <TranslatedText xml:lang="en">Have you had these thoughts and had some intention
                         of acting on them?</TranslatedText>
                 </Question>
             </ItemDef>
-            <ItemDef OID="IT.Active_Suicidal_Ideation_with_Some_Intent_Description"
+            <ItemDef OID="IT.4.Active_Suicidal_Ideation_with_Some_Intent_Description"
                 Name="4. Active Suicidal Ideation with Some Intent to Act, without Specific Plan - Description"
                 DataType="text">
                 <Question>
@@ -974,7 +1001,7 @@
                 </Question>
             </ItemDef>
             <!-- "Active Suicidal Ideation with Specific Plan and Intent" questions -->
-            <ItemDef OID="IT.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent"
+            <ItemDef OID="IT.5.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent"
                 Name="5. Active Suicidal Ideation with Specific Plan and Intent" DataType="text">
                 <Description>
                     <TranslatedText xml:lang="en">Thoughts of killing oneself with details of plan
@@ -987,7 +1014,7 @@
                         plan?</TranslatedText>
                 </Question>
             </ItemDef>
-            <ItemDef OID="IT.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent_Description"
+            <ItemDef OID="IT.5.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent_Description"
                 Name="5. Active Suicidal Ideation with Specific Plan and Intent - Description"
                 DataType="text">
                 <Question>
@@ -1622,6 +1649,12 @@
             </CodeList>
 
             <!-- Conditions -->
+            <ConditionDef OID="COND.Questions_1_and_2_negative" Name="Condition for moving to page/section 'Suicidal Behavior' after questions 1 and 2 of 'Suicidal Iedation'">
+                <Description>
+                    <TranslatedText xml:lang="en">If both questions 1 and 2 of section 'Suicidal Ideation' are negative, proceed to section/page 'Suicidal behavior'</TranslatedText>
+                </Description>
+                <FormalExpression Context="XPath">../ItemData[@ItemOID='IT.1.Wish_to_be_Dead']/Value='N' and ../ItemData[@ItemOID='IT.2.Non-Specific_Active_Suicidal_Thoughts']/Value='N'</FormalExpression>
+            </ConditionDef>
             <ConditionDef OID="COND.Way_to_end_your_life_5_Description"
                 Name="Condition for skipping the question 'If yes, describe', after question 'Or did you do it purely for other reasons / without ANY intention of killing yourself ...'">
                 <Description>
