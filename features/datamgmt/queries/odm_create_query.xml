@@ -13,7 +13,8 @@
                                 <UserRef UserOID="SYSTEM"/>
                                 <LocationRef LocationOID="WestWing"/>
                                 <DateTimeStamp>2021-03-10T13:36:51.668-00:00</DateTimeStamp>
-                            </AuditRecord> 
+                            </AuditRecord>
+                        </Query> 
                     </ItemData>
                 </ItemGroupData>
             </FormData>
