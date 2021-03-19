@@ -22,64 +22,59 @@
                 <!-- Workflow starts with question "Whish to be dead" in section "SUICIDAL IDEATION" -->
                 <!-- Section "SUICIDAL IDEATION" -->
                 <!-- Transitions from first question 'Whish to be dead', including "description" -->
-                <Transition OID="TR.1"
+                <Transition OID="TR.1-BRANCH"
                     Name="Transition from 'Whish to be dead question' to  branching for 'Non-Specific Active Suicidal Thoughts' question and 'If yes, describe' question"
                     SourceOID="IT.1.Wish_to_be_Dead" TargetOID="BR.1"/>
                 <Branching OID="BR.1"
                     Name="Branching on conditional 'Non-Specific Active Suicidal Thoughts' question"
                     Type="Exclusive">
-                    <TargetTransition TargetTransitionOID="TR.Wish_to_be_Dead_Description"
+                    <TargetTransition TargetTransitionOID="TR.1-BRANCH-DESC"
                         ConditionOID="COND.Wish_to_be_dead_yes"/>
                     <DefaultTransition
-                        TargetTransitionOID="TR.Non-Specific_Active_Suicidal_Thoughts"/>
+                        TargetTransitionOID="TR.1-BRANCH-2"/>
                 </Branching>
-                <Transition OID="TR.Wish_to_be_Dead_Description"
+                <Transition OID="TR.1-BRANCH-DESC"
                     Name="Transition to question 'Wish to be Dead - Description'" SourceOID="BR.1"
                     TargetOID="IT.1.Wish_to_be_Dead_Description"/>
-                <Transition OID="TR.Non-Specific_Active_Suicidal_Thoughts"
+                <Transition OID="TR.1-BRANCH-2"
                     Name="Default transition to question 'Non-Specific Active Suicidal Thoughts'"
                     SourceOID="BR.1" TargetOID="IT.2.Non-Specific_Active_Suicidal_Thoughts"/>
-                <Transition OID="TR.Wish_to_be_Dead_Description_Yes"
+                <Transition OID="TR.1-DESC-2"
                     Name="Transition from 'Wish to be Dead - Description' question to 'Non-Specific Active Suicidal Thoughts' question"
                     SourceOID="IT.1.Wish_to_be_Dead_Description"
                     TargetOID="IT.2.Non-Specific_Active_Suicidal_Thoughts"/>
                 <!-- Transitions from second question 'Non-Specific Active Suicidal Thoughts', including 'description' -->
-                <Transition OID="TR.2"
+                <Transition OID="TR.2-BRANCH"
                     Name="Transition from 'Non-Specific Active Suicidal Thoughts' question to branching for 'Active Suicidal Ideation with Any Methods' question and If yes, describe' question"
                     SourceOID="IT.2.Non-Specific_Active_Suicidal_Thoughts" TargetOID="BR.2"/>
                 <Branching OID="BR.2"
                     Name="Branching on conditional 'Non-Specific Active Suicidal Thoughts' question"
                     Type="Exclusive">
+                    <!--  -->
                     <TargetTransition
-                        TargetTransitionOID="TR.Non-Specific_Active_Suicidal_Thoughts_Description"
+                        TargetTransitionOID="TR.2-BRANCH-DESC"
                         ConditionOID="COND.Non-Specific_Active_Suicidal_Thoughts_Yes"/>
-                    <!-- In case questions 1 and 2 are negative, proceed to "Suicidal Behavior" (next page in paper form) -->
-                    <TargetTransition
-                        TargetTransitionOID="TR.Go_To_Suicidal_Behavior"
-                        ConditionOID="COND.Questions_1_and_2_negative"/>
-                    <!-- default: question 2 = positive, continue to question 3 -->
                     <DefaultTransition
-                        TargetTransitionOID="TR.Active_Suicidal_Ideation_with_Any_Methods"/>
+                        TargetTransitionOID="TR.2-BRANCH-BRANCH"/>
                 </Branching>
                 <!-- Answer to question 2 is 'Y', then provide description -->
-                <Transition OID="TR.Non-Specific_Active_Suicidal_Thoughts_Description"
+                <Transition OID="TR.2-BRANCH-DESC"
                     Name="Transition to question 'Non-Specific Active Suicidal Thoughts - Description'"
                     SourceOID="BR.2"
                     TargetOID="IT.2.Non-Specific_Active_Suicidal_Thoughts_Description"/>
+                <!-- After question 2, there is a branching point that can lead out of the workflow -->
+                <Transition OID="TR.2-DESC-BRANCH" Name="Non-Specific Active Suicidal Thoughts - Description' to next branching" 
+                    SourceOID="IT.2.Non-Specific_Active_Suicidal_Thoughts_Description" TargetOID="BR.2_OUT" />
                 <!-- Transitions to branching point that can lead out of the current workflow -->
-                <Transition OID="TR.Active_Suicidal_Ideation_with_Any_Methods"
+                <Transition OID="TR.2-BRANCH-BRANCH"
                     Name="Default transition to branching point where one one can get out of the current workflow"
                     SourceOID="BR.2" TargetOID="BR.2_OUT"/>
-                <Transition OID="TR.Non-Specific_Active_Suicidal_Thoughts_Description_Yes"
-                    Name="Transition from question 'Non-Specific Active Suicidal Thoughts - Description' to question 'Active Suicidal Ideation with Any Methods'"
-                    SourceOID="IT.2.Non-Specific_Active_Suicidal_Thoughts_Description"
-                    TargetOID="BR.2_OUT"/>
-                <!-- Braching after question 2, also when "description" was added for question 2 -->
+                <!-- Branching after question 2, also when "description" was added for question 2 -->
                 <Branching OID="BR.2_OUT" Name="Branching after question 2, different ways to leave the workflow for 'Suicidal Ideation'" 
                     Type="Exclusive">
                     <TargetTransition TargetTransitionOID="TR.Go_To_Suicidal_Behavior" ConditionOID="COND.1_and_2_negative"/>
                     <TargetTransition TargetTransitionOID="TR.Go_To_Intensity_of_Ideation" ConditionOID="COND.2_negative"></TargetTransition>
-                    <DefaultTransition TargetTransitionOID="TR.2_Continue"></DefaultTransition>
+                    <DefaultTransition TargetTransitionOID="TR.2-BRANCH-BRANCH-3"></DefaultTransition>
                 </Branching>
                 <!-- Transition out of the workflow when questions 1 and 2 are negative: go to section "Suicidal Behavior" -->
                 <Transition OID="TR.Go_To_Suicidal_Behavior" Name="Transition after questions 1 and 2, to group 'Suicidal Behavior'" 
@@ -89,68 +84,62 @@
                     SourceOID="BR.2_OUT" TargetOID="IG.Intensity_of_Ideation"/>
                 <!-- Transition from branching point after "2. Non-specific Active Suicidal Thoughts" to "3. Active Suicidal Ideation with Any Methods", 
                 i.e. from question 2 to 3 -->
-                <Transition OID="TR.2_Continue" Name="Transition after branching point after question 2 'Non-specific Active Suicidal Thoughts' to question 3 'Active Suicidal Ideation with Any Methods'"
+                <Transition OID="TR.2-BRANCH-BRANCH-3" Name="Transition after branching point after question 2 'Non-specific Active Suicidal Thoughts' to question 3 'Active Suicidal Ideation with Any Methods'"
                     SourceOID="BR.2_OUT" TargetOID="IT.3.Active_Suicidal_Ideation_with_Any_Methods" />
                 <!-- Transitions from third question 'Active Suicidal Ideation with Any Methods' -->
-                <Transition OID="TR.3"
+                <Transition OID="TR.3-BRANCH-DESC"
                     Name="Transition from 'Non-Specific Active Suicidal Thoughts' to branching for 'Active suicidation with some intent to act' and 'If yes, describe' question"
                     SourceOID="IT.2.Non-Specific_Active_Suicidal_Thoughts" TargetOID="BR.3"/>
-                <!-- Something still wrong here ... -->
+                <!-- Braching for description for question 3 -->
                 <Branching OID="BR.3"
                     Name="Branching on conditional 'Active Suicidal Ideation with Any Methods' question"
                     Type="Exclusive">
                     <TargetTransition
-                        TargetTransitionOID="TR.Active_Suicidal_Ideation_with_Any_Methods_Description"
+                        TargetTransitionOID="TR.3-BRANCH-DESC"
                         ConditionOID="COND.Active_Suicidal_Ideation_with_Any_Methods_Yes"/>
                     <DefaultTransition
-                        TargetTransitionOID="TR.Active_Suicidal_Ideation_with_Some_Intent"/>
+                        TargetTransitionOID="TR.3-BRANCH-4"/>
                 </Branching>
-                <Transition OID="TR.Active_Suicidal_Ideation_with_Any_Methods_Description"
+                <Transition OID="TR.3-BRANCH-DESC"
                     Name="Transition to question 'Active Suicidal Ideation with Any Methods - Description'"
                     SourceOID="BR.3"
                     TargetOID="IT.3.Active_Suicidal_Ideation_with_Any_Methods_Description"/>
                 <!-- Default transition from question 3 to 4 -->
-                <Transition OID="TR.Active_Suicidal_Ideation_with_Some_Intent"
+                <Transition OID="TR.3-BRANCH-4"
                     Name="Transition from 'Active suicidal ideation with any methods' to 'Active suicidal ideation with some intent'"
                     SourceOID="BR.3"
                     TargetOID="IT.4.Active_Suicidal_Ideation_with_Some_Intent"/>
-                <Transition OID="TR.Active_Suicidal_Ideation_with_Some_Intent_Description_Yes"
+                <Transition OID="TR.3-DESC-4"
                     Name="Transition from 'Active suicidal ideation with any methods - description' to 'Active suicidal ideation with some intent'"
                     SourceOID="IT.3.Active_Suicidal_Ideation_with_Any_Methods_Description"
                     TargetOID="IT.4.Active_Suicidal_Ideation_with_Some_Intent"/>
-                <Transition OID="TR.Active_Suicidal_Ideation_with_Any_Methods_Description_Yes"
-                    Name="Transition from question 'Active Suicidal Ideation with Any Methods - Description' to question 'Active Suicidal Ideation with Some Intent to Act'"
-                    SourceOID="IT.3.Active_Suicidal_Ideation_with_Any_Methods_Description"
-                    TargetOID="IT.4.Active_Suicidal_Ideation_with_Some_Intent"/>
                 <!-- Transitions from fourth question 'Active Suicidal Ideation with Some Intent to Act' -->
-                <Transition OID="TR.4"
+                <Transition OID="TR.4-BRANCH"
                     Name="Transition from 'Active Suicidal Ideation with Some Intent to Act' to branching for 'Active Suicidal Ideation with Specific Plan and Intent' and 'If yes, describe' question"
                     SourceOID="IT.4.Active_Suicidal_Ideation_with_Some_Intent" TargetOID="BR.4"/>
                 <Branching OID="BR.4"
                     Name="Branching on conditional 'Active Suicidal Ideation with Some Intent to Act' question"
                     Type="Exclusive">
                     <TargetTransition
-                        TargetTransitionOID="TR.Active_Suicidal_Ideation_with_Some_Intent_Description"
+                        TargetTransitionOID="TR.4-BRANCH-DESC"
                         ConditionOID="Active_Suicidal_Ideation_with_Some_Intent_Yes"/>
                     <DefaultTransition
-                        TargetTransitionOID="TR.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent"
-                    />
+                        TargetTransitionOID="TR.4-BRANCH-5" />
                 </Branching>
-                <Transition OID="TR.Active_Suicidal_Ideation_with_Some_Intent_Description"
+                <Transition OID="TR.4-BRANCH-DESC"
                     Name="Transition to question 'Active suicidal ideation with some intent - description"
                     SourceOID="BR.4"
                     TargetOID="IT.4.Active_Suicidal_Ideation_with_Some_Intent_Description"/>
-                <Transition OID="TR.Active_Suicidal_Ideation_with_Some_Intent_Description_Yes"
+                <Transition OID="TR.4-DESC-5"
                     Name="Transition from 'Active Suicidal Ideation with Some Intent to Act - Description' to 'Active Suicidal Ideation with Specific Plan and Intent'"
                     SourceOID="IT.4.Active_Suicidal_Ideation_with_Some_Intent_Description"
                     TargetOID="IT.5.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent"/>
-                <Transition OID="TR.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent"
-                    Name="Transition from question 'Active Suicidal Ideation with Some Intent to Act - description' to question 'Active Suicidal Ideation with Specific Plan and Intent'"
+                <Transition OID="TR.4-BRANCH-5"
+                    Name="Deault transition from question 'Active Suicidal Ideation with Some Intent to Act' to question 'Active Suicidal Ideation with Specific Plan and Intent'"
                     SourceOID="IT.BR4"
                     TargetOID="IT.5.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent"/>
-
                 <!-- Transitions from fifth question 'Active Suicidal Ideation with Specific Plan and Intent' -->
-                <Transition OID="TR.5"
+                <Transition OID="TR.5-BRANCH"
                     Name="Transition from 'Active Suicidal Ideation with specific plan' to branching for 'Itensity of Ideation section' and 'If yes, describe'"
                     SourceOID="IT.5.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent"
                     TargetOID="BR.5"/>
@@ -158,22 +147,20 @@
                     Name="Branching on conditional 'Active suicidal ideation with some intent'"
                     Type="Exclusive">
                     <TargetTransition
-                        TargetTransitionOID="TR.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent_Description"
+                        TargetTransitionOID="TR.5-BRANCH-DESC"
                         ConditionOID="COND.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent_Yes"/>
-                    <DefaultTransition
-                        TargetTransitionOID="TR.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent"
-                    />
+                    <DefaultTransition TargetTransitionOID="TR.5-BRANCH-END" />
                 </Branching>
-                <Transition OID="TR.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent"
+                <Transition OID="TR.5-BRANCH-END"
                     Name="Transition from branching to question 'Intensity of ideation'"
                     SourceOID="BR.5" TargetOID="IG.Intensity_of_Ideation"/>
                 <Transition
-                    OID="TR.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent_Description"
+                    OID="TR.5-BRANCH-DESC"
                     Name="Transition to question 'Active Suicidation with specific plan - description'"
                     SourceOID="BR.5"
                     TargetOID="IT.5.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent_Description"/>
                 <Transition
-                    OID="TR.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent_Description_Yes"
+                    OID="TR.5-DESC-END"
                     Name="Transition from 'Active suicidal ideation with specific plan - descrition' to section ''Intensity of ideation"
                     SourceOID="IT.5.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent_Description"
                     TargetOID="IG.Intensity_of_Ideation"/>
