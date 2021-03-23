@@ -2,6 +2,7 @@
 <!-- Author: Jozef Aerts -->
 <ODM xmlns="http://www.cdisc.org/ns/odm/v2.0" >
     <!-- Source: https://suicidepreventionlifeline.org/wp-content/uploads/2016/09/Suicide-Risk-Assessment-C-SSRS-Lifeline-Version-2014.pdf -->
+    <!-- 2021-03-23: TODO: score calculation -->
     <Study OID="STUDY.CSSRS" StudyName="Columbia Suicid Severity Rating Scale Example" ProtocolName="Protocol: Columbia Suicid Severity Rating Scale Example">
         <MetaDataVersion OID="MV.CSSRS.001"
             Name="MetaDataVersion 1">
@@ -1447,26 +1448,22 @@
                 </Description>
                 <CodeListItem CodedValue="1">
                     <Decode>
-                        <TranslatedText xml:lang="en">Easily able to control
-                            thoughts</TranslatedText>
+                        <TranslatedText xml:lang="en">Easily able to control thoughts</TranslatedText>
                     </Decode>
                 </CodeListItem>
                 <CodeListItem CodedValue="2">
                     <Decode>
-                        <TranslatedText xml:lang="en">Can control thoughts with little
-                            difficulty</TranslatedText>
+                        <TranslatedText xml:lang="en">Can control thoughts with little difficulty</TranslatedText>
                     </Decode>
                 </CodeListItem>
                 <CodeListItem CodedValue="3">
                     <Decode>
-                        <TranslatedText xml:lang="en">Can control thoughts with some
-                            difficulty</TranslatedText>
+                        <TranslatedText xml:lang="en">Can control thoughts with some difficulty</TranslatedText>
                     </Decode>
                 </CodeListItem>
                 <CodeListItem CodedValue="4">
                     <Decode>
-                        <TranslatedText xml:lang="en">Can control thoughts with a lot of
-                            difficulty</TranslatedText>
+                        <TranslatedText xml:lang="en">Can control thoughts with a lot of difficulty</TranslatedText>
                     </Decode>
                 </CodeListItem>
                 <CodeListItem CodedValue="5">
