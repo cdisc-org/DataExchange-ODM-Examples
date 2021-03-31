@@ -16,7 +16,7 @@
                                 <ReasonForChange>Edit check raised</ReasonForChange>
                             </AuditRecord> 
                         </Query>
-                        <Query Source="System" Type="System" OID="A529A2F2-F896-4AF7-AD4D-11B7110727BC" State="Reviewed" LastUpdateDate="2021-03-10T13:36:51.668-00:00" Name="VISDT_NOT_FUTURE">
+                        <Query Source="System" Type="System" OID="A529A2F2-F896-4AF7-AD4D-11B7110727BC" State="Reviewed" LastUpdateDate="2021-02-12T13:36:51.668-00:00" Name="VISDT_NOT_FUTURE">
                             
                             <Value>Value is in the future, please correct</Value>
                             <AuditRecord>
@@ -26,7 +26,7 @@
                                 <ReasonForChange>Reviewed</ReasonForChange>
                             </AuditRecord> 
                         </Query>
-                        <Query Source="System" Type="System" OID="A529A2F2-F896-4AF7-AD4D-11B7110727BC" State="Answered" LastUpdateDate="2021-03-10T13:36:51.668-00:00" Name="VISDT_NOT_FUTURE">
+                        <Query Source="System" Type="System" OID="A529A2F2-F896-4AF7-AD4D-11B7110727BC" State="Answered" LastUpdateDate="2021-02-14T13:36:51.668-00:00" Name="VISDT_NOT_FUTURE">
                             <AuditRecord>
                                 <UserRef UserOID="CRC01"/>
                                 <LocationRef LocationOID="TeaPot1"/>
@@ -34,7 +34,7 @@
                                 <ReasonForChange>Updated value to 2021-10-01 [Status Changed to "Answered"]</ReasonForChange>
                             </AuditRecord> 
                         </Query>
-                        <Query Source="System" Type="System" OID="A529A2F2-F896-4AF7-AD4D-11B7110727BC" State="Closed" LastUpdateDate="2021-03-10T13:36:51.668-00:00" Name="VISDT_NOT_FUTURE">
+                        <Query Source="System" Type="System" OID="A529A2F2-F896-4AF7-AD4D-11B7110727BC" State="Open" LastUpdateDate="2021-02-14T13:37:51.668-00:00" Name="VISDT_NOT_FUTURE">
                             <AuditRecord>
                                 <UserRef UserOID="SYSTEM"/>
                                 <LocationRef LocationOID="WestWing"/>
@@ -42,7 +42,7 @@
                                 <ReasonForChange>Edit check raised [Status Changed to "Open"]</ReasonForChange>
                             </AuditRecord> 
                         </Query>
-                        <Query Source="System" Type="System" OID="A529A2F2-F896-4AF7-AD4D-11B7110727BC" State="Closed" LastUpdateDate="2021-03-10T13:36:51.668-00:00" Name="VISDT_NOT_FUTURE">
+                        <Query Source="System" Type="System" OID="A529A2F2-F896-4AF7-AD4D-11B7110727BC" State="Reviewed" LastUpdateDate="2021-02-16T13:36:51.668-00:00" Name="VISDT_NOT_FUTURE">
                             <AuditRecord>
                                 <UserRef UserOID="CRC01"/>
                                 <LocationRef LocationOID="TeaPot1"/>
@@ -50,7 +50,7 @@
                                 <ReasonForChange>Reviewed</ReasonForChange>
                             </AuditRecord> 
                         </Query>
-                        <Query Source="System" Type="System" OID="A529A2F2-F896-4AF7-AD4D-11B7110727BC" State="Closed" LastUpdateDate="2021-03-10T13:36:51.668-00:00" Name="VISDT_NOT_FUTURE">
+                        <Query Source="System" Type="System" OID="A529A2F2-F896-4AF7-AD4D-11B7110727BC" State="Answered" LastUpdateDate="2021-02-18T13:36:51.668-00:00" Name="VISDT_NOT_FUTURE">
                             <AuditRecord>
                                 <UserRef UserOID="CRC01"/>
                                 <LocationRef LocationOID="TeaPot1"/>
@@ -58,7 +58,7 @@
                                 <ReasonForChange>Updated value to 2020-10-01 [Status Changed to "Answered"]</ReasonForChange>
                             </AuditRecord> 
                         </Query>
-                        <Query Source="System" Type="System" OID="A529A2F2-F896-4AF7-AD4D-11B7110727BC" State="Closed" LastUpdateDate="2021-03-10T13:36:51.668-00:00" Name="VISDT_NOT_FUTURE">
+                        <Query Source="System" Type="System" OID="A529A2F2-F896-4AF7-AD4D-11B7110727BC" State="Resolved" LastUpdateDate="2021-02-18T13:36:51.668-00:00" Name="VISDT_NOT_FUTURE">
                             <AuditRecord>
                                 <UserRef UserOID="SYSTEM"/>
                                 <LocationRef LocationOID="WestWing"/>
@@ -66,7 +66,7 @@
                                 <ReasonForChange>Edit check resolved by response [Status Changed to "Resolved"]</ReasonForChange>
                             </AuditRecord> 
                         </Query>
-                        <Query Source="System" Type="System" OID="A529A2F2-F896-4AF7-AD4D-11B7110727BC" State="Closed" LastUpdateDate="2021-03-10T13:36:51.668-00:00" Name="VISDT_NOT_FUTURE">
+                        <Query Source="System" Type="System" OID="A529A2F2-F896-4AF7-AD4D-11B7110727BC" State="Closed" LastUpdateDate="2021-02-25T13:36:51.668-00:00" Name="VISDT_NOT_FUTURE">
                             <AuditRecord>
                                 <UserRef UserOID="SYSTEM"/>
                                 <LocationRef LocationOID="WestWing"/>
