@@ -322,14 +322,18 @@
 			<!-- Section "SUICIDAL IDEATION" -->
 			<!-- Workflow starts with question "Whish to be dead" in section "SUICIDAL IDEATION" -->
 			<!-- Transitions from first question 'Whish to be dead', including "description" -->
+			<!-- 2021-05-12: TODO:
+				a) replace sources and targets OIDs by their FHIRPath expression (reference?)
+				b) replace conditions by those as described using ODMPath
+			-->
 			<Transition OID="TR.1-BRANCH"
 				Name="Transition from 'Whish to be dead question' to branching for 'Non-Specific Active Suicidal Thoughts' question and 'If yes, describe' question"
-				SourceOID="IT.1.Wish_to_be_Dead" TargetOID="BR.1"/>
+				SourceOID="ODMPATH.001.LIFETIME" TargetOID="BR.1"/>
 			<Branching OID="BR.1"
 				Name="Branching on conditional 'Non-Specific Active Suicidal Thoughts' question"
 				Type="Exclusive">
 				<TargetTransition TargetTransitionOID="TR.1-BRANCH-DESC"
-					ConditionOID="COND.Wish_to_be_dead_yes"/><!-- Subject answered "Yes" to question "Wish to be dead", either for "Lifetime" or "Past 1 month" -->
+					ConditionOID="COND_SUICIDAL_IDEATION_1_2_NEGATIVE"/><!-- Subject answered "Yes" to question "Wish to be dead", either for "Lifetime" or "Past 1 month" -->
 				<DefaultTransition
 					TargetTransitionOID="TR.1-BRANCH-2"/>
 			</Branching>
@@ -483,6 +487,8 @@
 			</ItemGroupDef>
 			<!-- @Kevin: do we need separate Q_IDEATION_DETAILS and  Q_IDEATION_DETAILS_PASTMONTH ? 
 			Or should this be 1 ItemDef, to be filled when either "Lifetime" or "Past 1 month" is checked? -->
+			<!-- Does S_SUICIDAL_IDEATION_2 describe the case where there is only 1 "If yes: describe" for both checkboxes 
+				"Lifetime" and "Past 1 month" ? -->
 			<ItemGroupDef OID="S_SUICIDAL_IDEATION_2" Name="SUICIDAL IDEATION" Repeating="Static" RepeatingItemOID="Q_IDEATION_TYPE">
 				<ItemRef ItemOID="Q_IDEATION_TYPE" Mandatory="No" OrderNumber="1"/>
 				<ItemRef ItemOID="Q_IDEATION_LIFETIME" Mandatory="No" OrderNumber="2"/>
@@ -569,6 +575,69 @@
 					</Decode>
 				</CodeListItem>
 			</CodeList>
+			<!-- Conditions -->
+			<!-- First attempts to describe ConditionDefs using ODMPath - Jozef 2021-05-12 -->
+			<ConditionDef OID="COND_SUICIDAL_IDEATION_1_LIFETIME" Name="Subject answered 'Wish to be dead' question with 'Yes' for 'Lifetime'">
+				<Description>
+					<TranslatedText xml:lang="en">Subject answered 'Wish to be dead' question with 'Yes' for 'Lifetime'</TranslatedText>
+					<FormalExpression Context="ODMPath">
+						<![CDATA[
+							ClinicalData.SubjectData.StudyEventData.ItemGroupData.where(ItemGroupOID='S_SUICIDAL_IDEATION_1' and ItemData.where(ItemOID='Q_IDEATION_TYPE' and Value='1'))
+							.ItemData.where(ItemOID='Q_IDEATION_LIFETIME' and Value='Y')
+						]]>
+					</FormalExpression>
+				</Description>
+			</ConditionDef>
+			<ConditionDef OID="COND_SUICIDAL_IDEATION_1_PASTMONTH" Name="Subject answered 'Wish to be dead' question with 'Yes' for 'Past 1 month'">
+				<Description>
+					<TranslatedText xml:lang="en">Subject answered 'Wish to be dead' question with 'Yes' for 'Past 1 month'</TranslatedText>
+					<FormalExpression Context="ODMPath">
+						<![CDATA[
+							ClinicalData.SubjectData.StudyEventData.ItemGroupData.where(ItemGroupOID='S_SUICIDAL_IDEATION_1' and ItemData.where(ItemOID='Q_IDEATION_TYPE' and Value='1'))
+							.ItemData.where(ItemOID='Q_IDEATION_PASTMONTH' and Value='Y')
+						]]>
+					</FormalExpression>
+				</Description>
+			</ConditionDef>
+			<ConditionDef OID="COND_SUICIDAL_IDEATION_2_LIFETIME" Name="Subject answered 'Non-Specific Active Suicidal Thoughts' question with 'Yes' for 'Lifetime'">
+				<Description>
+					<TranslatedText xml:lang="en">Subject answered 'Non-Specific Active Suicidal Thoughts' question with 'Yes' for 'Lifetime'</TranslatedText>
+					<FormalExpression Context="ODMPath">
+						<![CDATA[
+							ClinicalData.SubjectData.StudyEventData.ItemGroupData.where(ItemGroupOID='S_SUICIDAL_IDEATION_1' and ItemData.where(ItemOID='Q_IDEATION_TYPE' and Value='2'))
+							.ItemData.where(ItemOID='Q_IDEATION_LIFETIME' and Value='Y')
+						]]>
+					</FormalExpression>
+				</Description>
+			</ConditionDef>
+			<ConditionDef OID="COND_SUICIDAL_IDEATION_2_PASTMONTH" Name="Subject answered 'Wish to be dead' question with 'Yes' for 'Past 1 month'">
+				<Description>
+					<TranslatedText xml:lang="en">Subject answered 'Wish to be dead' question with 'Yes' for 'Past 1 month'</TranslatedText>
+					<FormalExpression Context="ODMPath">
+						<![CDATA[
+							ClinicalData.SubjectData.StudyEventData.ItemGroupData.where(ItemGroupOID='S_SUICIDAL_IDEATION_1' and ItemData.where(ItemOID='Q_IDEATION_TYPE' and Value='2'))
+							.ItemData.where(ItemOID='Q_IDEATION_PASTMONTH' and Value='Y')
+						]]>
+					</FormalExpression>
+				</Description>
+			</ConditionDef>
+			<!-- Subject answered questions "Whish to be dead" ("Lifetime" and/or "Past 1 month") AND
+				question "Non-specific Active Suicidal Thoughts" ("Lifetime" and/or "Past 1 month") negatively.
+				In this case, questions 3-5 must be skipped, and section "Suidical Behaviour" should be navigated to. -->
+			<ConditionDef OID="COND_SUICIDAL_IDEATION_1_2_NEGATIVE">
+				<Description>
+					<TranslatedText xml:lang="en">Subject answered questions "Whish to be dead" ("Lifetime" and/or "Past 1 month") AND
+						question "Non-specific Active Suicidal Thoughts" ("Lifetime" and/or "Past 1 month") negatively.</TranslatedText>
+				</Description>
+				<!-- covers the case that "Lifetime" is answered with "No", and either "Past 1 month" is answered with "No" or is not answered at all.
+				REMARK the the negation "not()" comes AFTER the expression (unlike in XPath) -->
+				<FormalExpression Context="ODMPath">
+					<![CDATA[
+						ClinicalData.SubjectData.StudyEventData.ItemGroupData.where(ItemGroupOID='S_SUICIDAL_IDEATION_1' and ItemData.where(ItemOID='Q_IDEATION_TYPE' and Value='1'))
+						.where(ItemData.where(ItemOID='Q_IDEATION_LIFETIME' and Value='N') and (ItemData.where(ItemOID='Q_IDEATION_PASTMONTH' and Value='N') or (ItemData.where(ItemOID='Q_IDEATION_PASTMONTH').not())) )
+					]]>
+				</FormalExpression>
+			</ConditionDef>
 		</MetaDataVersion>
 		<ClinicalData StudyOID="SDY_1" MetaDataVersionOID="AG_CSS">
 			<SubjectData SubjectKey="001">
