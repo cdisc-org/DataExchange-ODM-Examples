@@ -11,25 +11,22 @@
 		<!-- 2021-05-10: Workflow definitions attempt by Jozef Aerts using prototype ODMPath -->
 		<!-- REMARK: ODMPathDef is just prototype and not approved by the team at all yet! -->
 		<!-- CodeListItem.CodedValue describes the row (ItemDef with OID='Q_IDEATION_TYPE') -->
-		<!-- S_SUICIDAL_IDEATION_1 and S_SUICIDAL_IDEATION_2 describe the respective cases "Lifetime" and "Past 1 month" -->
+		<!-- We will ONLY develop the Workflow for the case "S_SUICIDAL_IDEATION_2", 
+			in which there is a single question "If yes: describe" for BOTH the respective cases "Lifetime" and "Past 1 month" -->
 		<!--                                     -->
 		<!-- ODMPaths for case "Wish to be dead" -->
 		<!--                                     -->
-		<ODMPathDef OID="ODMPATH.001">
-			<Description><TranslatedText xml:lang="en">Describes both cells "Wish to be dead" for "Lifetime" AND/OR "Past 1 month"</TranslatedText></Description>
-			<FormalExpression><![CDATA[
-				ItemGroupDef.where((OID='S_SUICIDAL_IDEATION_1' or OID='S_SUICIDAL_IDEATION_2') and ItemDef.where(
-						OID='Q_IDEATION_TYPE' and CodeList.where(
-							OID='T_SUICIDAL_IDEATION' and CodeListItem.CodedValue=1
-						)
-					)
-				).ItemDef.where(OID='Q_IDEATION_LIFETIME' or OID='Q_IDEATION')
-				]]></FormalExpression>
-		</ODMPathDef>
 		<ODMPathDef OID="ODMPATH.001.LIFETIME">
 			<Description><TranslatedText xml:lang="en">Describes cell "Wish to be dead" for "Lifetime"</TranslatedText></Description>
+			<FormalExpression>
+				<![CDATA[
+				ItemGroupData.where(ItemOID='S_SUICIDAL_IDEATION_2').where(ItemData.where(ItemOID='Q_IDEATIONTYPE' and Value='1'))
+				.ItemData.where(ItemOID='Q_IDEATION_LIFETIME')
+				]]>
+			</FormalExpression>
+			<!-- Alternative expression using "Def"s -->
 			<FormalExpression><![CDATA[
-				ItemGroupDef.where(OID='S_SUICIDAL_IDEATION_1' and ItemDef.where(
+				ItemGroupDef.where(OID='S_SUICIDAL_IDEATION_2' and ItemDef.where(
 						OID='Q_IDEATION_TYPE' and CodeList.where(
 							OID='T_SUICIDAL_IDEATION' and CodeListItem.CodedValue=1
 						)
@@ -39,6 +36,13 @@
 		</ODMPathDef>
 		<ODMPathDef OID="ODMPATH.001.PAST_1_MONTH">
 			<Description><TranslatedText xml:lang="en">Describes cell "Wish to be dead" for "Past 1 month"</TranslatedText></Description>
+			<FormalExpression>
+				<![CDATA[
+				ItemGroupData.where(ItemOID='S_SUICIDAL_IDEATION_2').where(ItemData.where(ItemOID='Q_IDEATIONTYPE' and Value='1'))
+				.ItemData.where(ItemOID='Q_IDEATION')
+				]]>
+			</FormalExpression>
+			<!-- Alternative expression using "Def"s -->
 			<FormalExpression><![CDATA[
 				ItemGroupDef.where(OID='S_SUICIDAL_IDEATION_2' and ItemDef.where(
 						OID='Q_IDEATION_TYPE' and CodeList.where(
@@ -48,10 +52,17 @@
 				).ItemDef.where(OID='Q_IDEATION')		
 				]]></FormalExpression>
 		</ODMPathDef>
-		<ODMPathDef OID="ODMPATH.001.LIFETIME.DESCRIBE">
-			<Description><TranslatedText xml:lang="en">Describes cell "If yes: describe", for case "wish to be dead" for "Lifetime"</TranslatedText></Description>
+		<ODMPathDef OID="ODMPATH.001.DESCRIBE">
+			<Description><TranslatedText xml:lang="en">Describes cell "If yes: describe", for case "wish to be dead" for BOTH "Lifetime" and "Past 1 month"</TranslatedText></Description>
+			<FormalExpression>
+				<![CDATA[
+				ItemGroupData.where(ItemOID='S_SUICIDAL_IDEATION_2').where(ItemData.where(ItemOID='Q_IDEATIONTYPE' and Value='1'))
+				.ItemData.where(ItemOID='Q_IDEATION_DETAILS')
+				]]>
+			</FormalExpression>
+			<!-- Alternative expression using "Def"s -->
 			<FormalExpression><![CDATA[
-				ItemGroupDef.where(OID='S_SUICIDAL_IDEATION_1' and ItemDef.where(
+				ItemGroupDef.where(OID='S_SUICIDAL_IDEATION_2' and ItemDef.where(
 						OID='Q_IDEATION_TYPE' and CodeList.where(
 							OID='T_SUICIDAL_IDEATION' and CodeListItem.CodedValue=1
 						)
@@ -59,35 +70,22 @@
 				).ItemDef.where(OID='Q.IDEATION_DETAILS_LIFETIME')	
 				]]></FormalExpression>
 		</ODMPathDef>
-		<ODMPathDef OID="ODMPATH.001.PAST_1_MONTH.DESCRIBE">
-			<Description><TranslatedText xml:lang="en">Describes cell "If yes: describe", for case "wish to be dead" for "Past 1 month"</TranslatedText></Description>
-			<FormalExpression><![CDATA[
-				ItemGroupDef.where(OID='S_SUICIDAL_IDEATION_1' and ItemDef.where(
-						OID='Q_IDEATION_TYPE' and CodeList.where(
-							OID='T_SUICIDAL_IDEATION' and CodeListItem.CodedValue=1
-						)
-					)
-				).ItemDef.where(OID='Q.IDEATION_DETAILS')		
-				]]></FormalExpression>
-		</ODMPathDef>
 		<!--                                                           -->
 		<!-- ODMPaths for case "Non-Specific Active Suicidal Thoughts" -->
 		<!--                                                           -->
-		<ODMPathDef OID="ODMPATH.002">
-			<Description><TranslatedText xml:lang="en">Describes both cells "Non-Specific Active Suicidal Thoughts" for "Lifetime" AND/OR "Past 1 month"</TranslatedText></Description>
-			<FormalExpression><![CDATA[
-				ItemGroupDef.where((OID='S_SUICIDAL_IDEATION_1' or OID='S_SUICIDAL_IDEATION_2') and ItemDef.where(
-						OID='Q_IDEATION_TYPE' and CodeList.where(
-							OID='T_SUICIDAL_IDEATION' and CodeListItem.CodedValue=2
-						)
-					)
-				).ItemDef.where(OID='Q_IDEATION_LIFETIME' or OID='Q_IDEATION')
-				]]></FormalExpression>
-		</ODMPathDef>
 		<ODMPathDef OID="ODMPATH.002.LIFETIME">
 			<Description><TranslatedText xml:lang="en">Describes cell "Non-Specific Active Suicidal Thoughts" for "Lifetime"</TranslatedText></Description>
+			<FormalExpression>
+				<FormalExpression>
+				<![CDATA[
+				ItemGroupData.where(ItemOID='S_SUICIDAL_IDEATION_2').where(ItemData.where(ItemOID='Q_IDEATIONTYPE' and Value='2'))
+				.ItemData.where(ItemOID='Q_IDEATION_LIFETIME')
+				]]>
+				</FormalExpression>
+			</FormalExpression>
+			<!-- Alternative expression using "Def"s -->
 			<FormalExpression><![CDATA[
-				ItemGroupDef.where(OID='S_SUICIDAL_IDEATION_1' and ItemDef.where(
+				ItemGroupDef.where(OID='S_SUICIDAL_IDEATION_2' and ItemDef.where(
 						OID='Q_IDEATION_TYPE' and CodeList.where(
 							OID='T_SUICIDAL_IDEATION' and CodeListItem.CodedValue=2
 						)
@@ -97,6 +95,13 @@
 		</ODMPathDef>
 		<ODMPathDef OID="ODMPATH.002.PAST_1_MONTH">
 			<Description><TranslatedText xml:lang="en">Describes cell "Non-Specific Active Suicidal Thoughts" for "Past 1 month"</TranslatedText></Description>
+			<FormalExpression>
+				<![CDATA[
+				ItemGroupData.where(ItemOID='S_SUICIDAL_IDEATION_2').where(ItemData.where(ItemOID='Q_IDEATIONTYPE' and Value='2'))
+				.ItemData.where(ItemOID='Q_IDEATION')
+				]]>	
+			</FormalExpression>
+			<!-- Alternative expression using "Def"s -->
 			<FormalExpression><![CDATA[
 				ItemGroupDef.where(OID='S_SUICIDAL_IDEATION_2' and ItemDef.where(
 						OID='Q_IDEATION_TYPE' and CodeList.where(
@@ -106,55 +111,55 @@
 				).ItemDef.where(OID='Q_IDEATION')		
 				]]></FormalExpression>
 		</ODMPathDef>
-		<ODMPathDef OID="ODMPATH.002.LIFETIME.DESCRIBE">
-			<Description><TranslatedText xml:lang="en">Describes cell "If yes: describe", for case "Non-Specific Active Suicidal Thoughts" for "Lifetime"</TranslatedText></Description>
+		<ODMPathDef OID="ODMPATH.002.DESCRIBE">
+			<Description><TranslatedText xml:lang="en">Describes cell "If yes: describe", for case "Non-Specific Active Suicidal Thoughts" for BOTH "Lifetime" and "Past 1 month</TranslatedText></Description>
+			<FormalExpression>
+				<![CDATA[
+				ItemGroupData.where(ItemOID='S_SUICIDAL_IDEATION_2').where(ItemData.where(ItemOID='Q_IDEATIONTYPE' and Value='2'))
+				.ItemData.where(ItemOID='Q_IDEATION_DETAILS')
+				]]>
+			</FormalExpression>
+			<!-- Alternative expression using "Def"s -->
 			<FormalExpression><![CDATA[
-				ItemGroupDef.where(OID='S_SUICIDAL_IDEATION_1' and ItemDef.where(
+				ItemGroupDef.where(OID='S_SUICIDAL_IDEATION_2' and ItemDef.where(
 						OID='Q_IDEATION_TYPE' and CodeList.where(
 							OID='T_SUICIDAL_IDEATION' and CodeListItem.CodedValue=2
 						)
 					) 
 				).ItemDef.where(OID='Q.IDEATION_DETAILS_LIFETIME')	
-				]]></FormalExpression>
-		</ODMPathDef>
-		<ODMPathDef OID="ODMPATH.002.PAST_1_MONTH.DESCRIBE">
-			<Description><TranslatedText xml:lang="en">Describes cell "If yes: describe", for case "Non-Specific Active Suicidal Thoughts" for "Past 1 month"</TranslatedText></Description>
-			<FormalExpression><![CDATA[
-				ItemGroupDef.where(OID='S_SUICIDAL_IDEATION_1' and ItemDef.where(
-						OID='Q_IDEATION_TYPE' and CodeList.where(
-							OID='T_SUICIDAL_IDEATION' and CodeListItem.CodedValue=2
-						)
-					)
-				).ItemDef.where(OID='Q.IDEATION_DETAILS')		
 				]]></FormalExpression>
 		</ODMPathDef>
 		<!--                                                                                                -->
 		<!-- ODMPaths for case "Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act" -->
 		<!--                                                                                                -->
-		<ODMPathDef OID="ODMPATH.003">
-			<Description><TranslatedText xml:lang="en">Describes both cells "Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act" for "Lifetime" AND/OR "Past 1 month"</TranslatedText></Description>
-			<FormalExpression><![CDATA[
-				ItemGroupDef.where((OID='S_SUICIDAL_IDEATION_1' or OID='S_SUICIDAL_IDEATION_2') and ItemDef.where(
-						OID='Q_IDEATION_TYPE' and CodeList.where(
-							OID='T_SUICIDAL_IDEATION' and CodeListItem.CodedValue=3
-						)
-					)
-				).ItemDef.where(OID='Q_IDEATION_LIFETIME' or OID='Q_IDEATION')
-				]]></FormalExpression>
-		</ODMPathDef>
 		<ODMPathDef OID="ODMPATH.003.LIFETIME">
 			<Description><TranslatedText xml:lang="en">Describes cell "Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act" for "Lifetime"</TranslatedText></Description>
+			<FormalExpression>
+				<![CDATA[
+				ItemGroupData.where(ItemOID='S_SUICIDAL_IDEATION_2').where(ItemData.where(ItemOID='Q_IDEATIONTYPE' and Value='3'))
+				.ItemData.where(ItemOID='Q_IDEATION_LIFETIME')
+				]]>
+			</FormalExpression>	
+			<!-- Alternative expression using "Def"s -->
 			<FormalExpression><![CDATA[
-				ItemGroupDef.where(OID='S_SUICIDAL_IDEATION_1' and ItemDef.where(
-						OID='Q_IDEATION_TYPE' and CodeList.where(
-							OID='T_SUICIDAL_IDEATION' and CodeListItem.CodedValue=3
-						)
+			ItemGroupDef.where(OID='S_SUICIDAL_IDEATION_1' and ItemDef.where(
+					OID='Q_IDEATION_TYPE' and CodeList.where(
+						OID='T_SUICIDAL_IDEATION' and CodeListItem.CodedValue=3
 					)
-				).ItemDef.where(OID='Q_IDEATION_LIFETIME')	
-				]]></FormalExpression>
+				)
+			).ItemDef.where(OID='Q_IDEATION_LIFETIME')	
+			]]>
+			</FormalExpression>
 		</ODMPathDef>
 		<ODMPathDef OID="ODMPATH.003.PAST_1_MONTH">
 			<Description><TranslatedText xml:lang="en">Describes cell "Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act" for "Past 1 month"</TranslatedText></Description>
+			<FormalExpression>
+				<![CDATA[
+				ItemGroupData.where(ItemOID='S_SUICIDAL_IDEATION_2').where(ItemData.where(ItemOID='Q_IDEATIONTYPE' and Value='3'))
+				.ItemData.where(ItemOID='Q_IDEATION')
+				]]>
+			</FormalExpression>	
+			<!-- Alternative expression using "Def"s -->
 			<FormalExpression><![CDATA[
 				ItemGroupDef.where(OID='S_SUICIDAL_IDEATION_2' and ItemDef.where(
 						OID='Q_IDEATION_TYPE' and CodeList.where(
@@ -164,46 +169,38 @@
 				).ItemDef.where(OID='Q_IDEATION')		
 				]]></FormalExpression>
 		</ODMPathDef>
-		<ODMPathDef OID="ODMPATH.003.LIFETIME.DESCRIBE">
-			<Description><TranslatedText xml:lang="en">Describes cell "If yes: describe", for case "Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act" for "Lifetime"</TranslatedText></Description>
+		<ODMPathDef OID="ODMPATH.003.DESCRIBE">
+			<Description><TranslatedText xml:lang="en">Describes cell "If yes: describe", for case "Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act" for BOTH "Lifetime" and "Past 1 month"</TranslatedText></Description>
+			<FormalExpression>
+				<![CDATA[
+				ItemGroupData.where(ItemOID='S_SUICIDAL_IDEATION_2').where(ItemData.where(ItemOID='Q_IDEATIONTYPE' and Value='3'))
+				.ItemData.where(ItemOID='Q_IDEATION_DETAILS')
+				]]>
+			</FormalExpression>
+			<!-- Alternative expression using "Def"s -->
 			<FormalExpression><![CDATA[
-				ItemGroupDef.where(OID='S_SUICIDAL_IDEATION_1' and ItemDef.where(
+				ItemGroupDef.where(OID='S_SUICIDAL_IDEATION_2' and ItemDef.where(
 						OID='Q_IDEATION_TYPE' and CodeList.where(
 							OID='T_SUICIDAL_IDEATION' and CodeListItem.CodedValue=3
 						)
 					) 
-				).ItemDef.where(OID='Q.IDEATION_DETAILS_LIFETIME')	
-				]]></FormalExpression>
-		</ODMPathDef>
-		<ODMPathDef OID="ODMPATH.003.PAST_1_MONTH.DESCRIBE">
-			<Description><TranslatedText xml:lang="en">Describes cell "If yes: describe", for case "Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act" for "Past 1 month"</TranslatedText></Description>
-			<FormalExpression><![CDATA[
-				ItemGroupDef.where(OID='S_SUICIDAL_IDEATION_1' and ItemDef.where(
-						OID='Q_IDEATION_TYPE' and CodeList.where(
-							OID='T_SUICIDAL_IDEATION' and CodeListItem.CodedValue=3
-						)
-					)
-				).ItemDef.where(OID='Q.IDEATION_DETAILS')		
+				).ItemDef.where(OID='Q_IDEATION_DETAILS')	
 				]]></FormalExpression>
 		</ODMPathDef>
 		<!--                                                                                             -->
 		<!-- ODMPaths for case "Active Suicidal Ideation with Some Intent to Act, without Specific Plan" -->
 		<!--                                                                                             -->
-		<ODMPathDef OID="ODMPATH.004">
-			<Description><TranslatedText xml:lang="en">Describes both cells "Active Suicidal Ideation with Some Intent to Act, without Specific Plan" for "Lifetime" AND/OR "Past 1 month"</TranslatedText></Description>
-			<FormalExpression><![CDATA[
-				ItemGroupDef.where((OID='S_SUICIDAL_IDEATION_1' or OID='S_SUICIDAL_IDEATION_2') and ItemDef.where(
-						OID='Q_IDEATION_TYPE' and CodeList.where(
-							OID='T_SUICIDAL_IDEATION' and CodeListItem.CodedValue=4
-						)
-					)
-				).ItemDef.where(OID='Q_IDEATION_LIFETIME' or OID='Q_IDEATION')
-				]]></FormalExpression>
-		</ODMPathDef>
 		<ODMPathDef OID="ODMPATH.004.LIFETIME">
 			<Description><TranslatedText xml:lang="en">Describes cell "Active Suicidal Ideation with Some Intent to Act, without Specific Plan" for "Lifetime"</TranslatedText></Description>
+			<FormalExpression>
+				<![CDATA[
+				ItemGroupData.where(ItemOID='S_SUICIDAL_IDEATION_2').where(ItemData.where(ItemOID='Q_IDEATIONTYPE' and Value='4'))
+				.ItemData.where(ItemOID='Q_IDEATION_LIFETIME')
+				]]>
+			</FormalExpression>
+			<!-- Alternative expression using "Def"s -->
 			<FormalExpression><![CDATA[
-				ItemGroupDef.where(OID='S_SUICIDAL_IDEATION_1' and ItemDef.where(
+				ItemGroupDef.where(OID='S_SUICIDAL_IDEATION_2' and ItemDef.where(
 						OID='Q_IDEATION_TYPE' and CodeList.where(
 							OID='T_SUICIDAL_IDEATION' and CodeListItem.CodedValue=4
 						)
@@ -213,6 +210,11 @@
 		</ODMPathDef>
 		<ODMPathDef OID="ODMPATH.004.PAST_1_MONTH">
 			<Description><TranslatedText xml:lang="en">Describes cell "Active Suicidal Ideation with Some Intent to Act, without Specific Plan" for "Past 1 month"</TranslatedText></Description>
+			<![CDATA[
+				ItemGroupData.where(ItemOID='S_SUICIDAL_IDEATION_2').where(ItemData.where(ItemOID='Q_IDEATIONTYPE' and Value='4'))
+				.ItemData.where(ItemOID='Q_IDEATION')
+				]]>
+			<!-- Alternative expression using "Def"s -->
 			<FormalExpression><![CDATA[
 				ItemGroupDef.where(OID='S_SUICIDAL_IDEATION_2' and ItemDef.where(
 						OID='Q_IDEATION_TYPE' and CodeList.where(
@@ -222,10 +224,17 @@
 				).ItemDef.where(OID='Q_IDEATION')		
 				]]></FormalExpression>
 		</ODMPathDef>
-		<ODMPathDef OID="ODMPATH.004.LIFETIME.DESCRIBE">
-			<Description><TranslatedText xml:lang="en">Describes cell "If yes: describe", for case "Active Suicidal Ideation with Some Intent to Act, without Specific Plan" for "Lifetime"</TranslatedText></Description>
+		<ODMPathDef OID="ODMPATH.004.DESCRIBE">
+			<Description><TranslatedText xml:lang="en">Describes cell "If yes: describe", for case "Active Suicidal Ideation with Some Intent to Act, without Specific Plan" for BOTH "Lifetime" and "Past 1 month"</TranslatedText></Description>
+			<FormalExpression>
+				<![CDATA[
+				ItemGroupData.where(ItemOID='S_SUICIDAL_IDEATION_2').where(ItemData.where(ItemOID='Q_IDEATIONTYPE' and Value='4'))
+				.ItemData.where(ItemOID='Q_IDEATION_DETAILS')
+				]]>
+			</FormalExpression>
+			<!-- Alternative expression using "Def"s -->
 			<FormalExpression><![CDATA[
-				ItemGroupDef.where(OID='S_SUICIDAL_IDEATION_1' and ItemDef.where(
+				ItemGroupDef.where(OID='S_SUICIDAL_IDEATION_2' and ItemDef.where(
 						OID='Q_IDEATION_TYPE' and CodeList.where(
 							OID='T_SUICIDAL_IDEATION' and CodeListItem.CodedValue=4
 						)
@@ -233,33 +242,18 @@
 				).ItemDef.where(OID='Q.IDEATION_DETAILS_LIFETIME')	
 				]]></FormalExpression>
 		</ODMPathDef>
-		<ODMPathDef OID="ODMPATH.004.PAST_1_MONTH.DESCRIBE">
-			<Description><TranslatedText xml:lang="en">Describes cell "If yes: describe", for case "Active Suicidal Ideation with Some Intent to Act, without Specific Plan" for "Past 1 month"</TranslatedText></Description>
-			<FormalExpression><![CDATA[
-				ItemGroupDef.where(OID='S_SUICIDAL_IDEATION_1' and ItemDef.where(
-						OID='Q_IDEATION_TYPE' and CodeList.where(
-							OID='T_SUICIDAL_IDEATION' and CodeListItem.CodedValue=4
-						)
-					)
-				).ItemDef.where(OID='Q.IDEATION_DETAILS')		
-				]]></FormalExpression>
-		</ODMPathDef>
 		<!--                                                                            -->
 		<!-- ODMPaths for case "Active Suicidal Ideation with Specific Plan and Intent" -->
 		<!--                                                                            -->
-		<ODMPathDef OID="ODMPATH.005">
-			<Description><TranslatedText xml:lang="en">Describes both cells "Active Suicidal Ideation with Specific Plan and Intent" for "Lifetime" AND/OR "Past 1 month"</TranslatedText></Description>
-			<FormalExpression><![CDATA[
-				ItemGroupDef.where((OID='S_SUICIDAL_IDEATION_1' or OID='S_SUICIDAL_IDEATION_2') and ItemDef.where(
-						OID='Q_IDEATION_TYPE' and CodeList.where(
-							OID='T_SUICIDAL_IDEATION' and CodeListItem.CodedValue=5
-						)
-					)
-				).ItemDef.where(OID='Q_IDEATION_LIFETIME' or OID='Q_IDEATION')
-				]]></FormalExpression>
-		</ODMPathDef>
 		<ODMPathDef OID="ODMPATH.005.LIFETIME">
 			<Description><TranslatedText xml:lang="en">Describes cell "Active Suicidal Ideation with Specific Plan and Intent" for "Lifetime"</TranslatedText></Description>
+			<FormalExpression>
+				<![CDATA[
+				ItemGroupData.where(ItemOID='S_SUICIDAL_IDEATION_2').where(ItemData.where(ItemOID='Q_IDEATIONTYPE' and Value='5'))
+				.ItemData.where(ItemOID='Q_IDEATION_LIFETIME')
+				]]>
+			</FormalExpression>
+			<!-- Alternative expression using "Def"s -->
 			<FormalExpression><![CDATA[
 				ItemGroupDef.where(OID='S_SUICIDAL_IDEATION_1' and ItemDef.where(
 						OID='Q_IDEATION_TYPE' and CodeList.where(
@@ -271,6 +265,13 @@
 		</ODMPathDef>
 		<ODMPathDef OID="ODMPATH.005.PAST_1_MONTH">
 			<Description><TranslatedText xml:lang="en">Describes cell "Active Suicidal Ideation with Specific Plan and Intent" for "Past 1 month"</TranslatedText></Description>
+			<FormalExpression>
+				<![CDATA[
+				ItemGroupData.where(ItemOID='S_SUICIDAL_IDEATION_2').where(ItemData.where(ItemOID='Q_IDEATIONTYPE' and Value='5'))
+				.ItemData.where(ItemOID='Q_IDEATION')
+				]]>
+			</FormalExpression>
+			<!-- Alternative expression using "Def"s -->
 			<FormalExpression><![CDATA[
 				ItemGroupDef.where(OID='S_SUICIDAL_IDEATION_2' and ItemDef.where(
 						OID='Q_IDEATION_TYPE' and CodeList.where(
@@ -280,10 +281,17 @@
 				).ItemDef.where(OID='Q_IDEATION')		
 				]]></FormalExpression>
 		</ODMPathDef>
-		<ODMPathDef OID="ODMPATH.005.LIFETIME.DESCRIBE">
-			<Description><TranslatedText xml:lang="en">Describes cell "If yes: describe", for case "Active Suicidal Ideation with Specific Plan and Intent" for "Lifetime"</TranslatedText></Description>
+		<ODMPathDef OID="ODMPATH.005.DESCRIBE">
+			<Description><TranslatedText xml:lang="en">Describes cell "If yes: describe", for case "Active Suicidal Ideation with Specific Plan and Intent" for BOTH "Lifetime" and "Past 1 month"</TranslatedText></Description>
+			<FormalExpression>
+				<![CDATA[
+				ItemGroupData.where(ItemOID='S_SUICIDAL_IDEATION_2').where(ItemData.where(ItemOID='Q_IDEATIONTYPE' and Value='5'))
+				.ItemData.where(ItemOID='Q_IDEATION_DETAILS')
+				]]>
+			</FormalExpression>
+			<!-- Alternative expression using "Def"s -->
 			<FormalExpression><![CDATA[
-				ItemGroupDef.where(OID='S_SUICIDAL_IDEATION_1' and ItemDef.where(
+				ItemGroupDef.where(OID='S_SUICIDAL_IDEATION_2' and ItemDef.where(
 						OID='Q_IDEATION_TYPE' and CodeList.where(
 							OID='T_SUICIDAL_IDEATION' and CodeListItem.CodedValue=5
 						)
@@ -291,20 +299,23 @@
 				).ItemDef.where(OID='Q.IDEATION_DETAILS_LIFETIME')	
 				]]></FormalExpression>
 		</ODMPathDef>
-		<ODMPathDef OID="ODMPATH.005.PAST_1_MONTH.DESCRIBE">
-			<Description><TranslatedText xml:lang="en">Describes cell "If yes: describe", for case "Active Suicidal Ideation with Specific Plan and Intent" for "Past 1 month"</TranslatedText></Description>
-			<FormalExpression><![CDATA[
-				ItemGroupDef.where(OID='S_SUICIDAL_IDEATION_1' and ItemDef.where(
-						OID='Q_IDEATION_TYPE' and CodeList.where(
-							OID='T_SUICIDAL_IDEATION' and CodeListItem.CodedValue=4
-						)
-					)
-				).ItemDef.where(OID='Q.IDEATION_DETAILS')		
-				]]></FormalExpression>
-		</ODMPathDef>
-		
 		<!-- 2021-05-10: TODO: add the ConditionDef elements for the workflow conditional transitions.
 		I presume these should be written in ODMPath -->
+		
+		<!-- ODM Path for section "Suicidal Behavior" -->
+		<ODMPathDef OID="ODMPATH.SUICIDAL_BEHAVIOR">
+			<Description>
+				<TranslatedText xml:lang="en">Path for section 'Suicidal Behavior'</TranslatedText>
+			</Description>
+			<FormalExpression>TODO</FormalExpression>
+		</ODMPathDef>
+		<!-- ODM Path for section "Intensity of Ideation" -->
+		<ODMPathDef OID="ODMPATH.INTENSITY_OF_IDEATION">
+			<Description>
+				<TranslatedText xml:lang="en">Path for section 'Intensity of Ideation'</TranslatedText>
+			</Description>
+			<FormalExpression>TODO</FormalExpression>
+		</ODMPathDef>
 		
 		<!-- Workflow, referencing ODMPathDef elements -->
 		<WorkflowDef OID="WF.CSSRS_SUICIDAL_IDEATION"
@@ -313,168 +324,177 @@
 				<TranslatedText xml:lang="en">Workflow Columbia Suicid Severity Rating Scale
 					questionnaire, section "Suicidal Ideation"</TranslatedText>
 			</Description>
-			
-			
-			<!-- 2021-05-10: TODO: we currently distinguish between "If yes: describe" for "Lifetime" and for "Past 1 month".
-			Either apply this, or "Unite" the two "If yes: describe"
+			<!-- 2021-05-13: We only describe the workflow for the case that there is one single question "If yes: describe" for BOTH the cases "Lifetime" and "Past 1 month"
 			-->
-			<WorkflowStart StartOID="ODMPath.001"/>
 			<!-- Section "SUICIDAL IDEATION" -->
 			<!-- Workflow starts with question "Whish to be dead" in section "SUICIDAL IDEATION" -->
-			<!-- Transitions from first question 'Whish to be dead', including "description" -->
-			<!-- 2021-05-12: TODO:
-				a) replace sources and targets OIDs by their FHIRPath expression (reference?)
-				b) replace conditions by those as described using ODMPath
+			<WorkflowStart StartOID="ODMPath.001.LIFETIME"/>
+			<!-- Workflow part for "Wish to be dead" -->
+			<!-- If the question "Wish to be dead" for "Lifetime" is answered with "Yes", navigate to "Wish to be dead" for "Past 1 month".
+			If the question "Wish to be dead" for "Lifetime" is answered with "No", navigate to question "Non-specific Active Suicidal Thought" for "Lifetime" -->
+			<Transition OID="TR.1-BRANCH-LIFETIME-PAST_1_MONTH"
+				Name="Transition from 'Whish to be dead question' for 'Lifetime' 
+				to branching for 'Whish to be dead question' for 'Lifetime'
+				and 'Non-Specific Active Suicidal Thoughts' for 'Lifetime'"
+				SourceOID="ODMPATH.001.LIFETIME" TargetOID="BR.1.LIFETIME_PAST_1_MONTH"/>
+			<!-- The branch itself -->
+			<Branching OID="BR.1.LIFETIME_PAST_1_MONTH" Name="Branching after question 'Wish to be dead' - 'Lifetime'" Type="Exclusive">
+				<!-- Subject answered "Yes" to "Wish to be dead" for "Lifetime": 
+				move to "Wish to be dead" with "Past 1 month" -->
+				<TargetTransition TargetTransitionOID="TR.001.LIFETIME_PAST_1_MONTH" ConditionOID="" />
+				<!-- Default transition, move to question 2 "Non-specific Active Suicidal Thoughts" - "Lifetime" -->
+				<DefaultTransition TargetTransitionOID="TR.1-2"></DefaultTransition>
+			</Branching>
+			<!-- Transition fron "Wish to be dead" branch to question 2 "Non-specific Active Suicidal Thought" - "Lifetime" -->
+			<Transition OID="TR.1-2" Name="Default transition from 'Wish to be dead' to 'Non-specific Active Suicidal Thoughts'"
+				SourceOID="BR.1.LIFETIME_PAST_1_MONTH" TargetOID="ODMPath.002.LIFETIME"></Transition>
+			<!-- Transition from the branch to "Wish to be dead" - "Past 1 month", when subject answered "Yes" to "Wish to be dead" - "Lifetime" -->
+			<Transition OID="TR.001.LIFETIME_PAST_1_MONTH" 
+				Name="Transition from the branch to 'Wish to be dead' - 'Past 1 month', when subject answered 'Yes' to 'Wish to be dead' - 'Lifetime'" 
+				SourceOID="BR.1.LIFETIME_PAST_1_MONTH" TargetOID="ODMPATH.001.PAST_1_MONTH"></Transition>
+			<!-- Transition fron "Wish to be dead" - "Past 1 month" to "Describe".
+			Reason is that "Wish to be dead" - "Past 1 month" is only reached when "Wish to be dead" - "Lifetime" is answered with "Yes". 
+			So "If yes: Described" is reached independent on whether "Past 1 month" was answered by "Yes" or "No" -->
+			<Transition OID="TR.001.DESCRIBE" Name="Transition to 'If yes:describe' for 'Wish to be dead'"
+				SourceOID="ODMPATH.001.PAST_1_MONTH" TargetOID="ODMPATH.001.DESCRIBE"></Transition>
+			<!-- Transition from "If yes:describe" for "Wish to be dead" to question 2 "Non-specific Active Suicidial Thoughts" - "Lifetime" -->
+			<Transition OID="TR.001.DESCRIBE_002" 
+				Name="Transition from 'If yes:describe' for 'Wish to be dead' to question 2 'Non-specific Active Suicidial Thoughts' - 'Lifetime'"
+				SourceOID="ODMPATH.001.DESCRIBE"
+				TargetOID="ODMPATH.002.LIFETIME"></Transition>
+			<!-- Workflow part for "Non-specific Active Suicidal Thoughts".
+			REMARK that is there is an important branch after this "row" in the form -->
+			<!-- If the question "Non-specific Active Suicidal Thoughts" for "Lifetime" is answered with "Yes", navigate to "Non-specific Active Suicidal Thoughts" for "Past 1 month".
+			If the question "Non-specific Active Suicidal Thoughts" for "Lifetime" is answered with "No", navigate to the branch after "Non-specific Active Suicidal Thoughts" 
+			and before questions "Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act"  -->
+			<Transition OID="TR.2-BRANCH-LIFETIME-PAST_1_MONTH"
+				Name="Transition from 'Non-specific Active Suicidal Thoughts' for 'Lifetime' 
+				to branching for 'Non-specific Active Suicidal Thoughts' for 'Lifetime'
+				and branching after questions 'Non-specific Active Suicidal Thoughts' 
+				and before questions 'Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act'"
+				SourceOID="ODMPATH.002.LIFETIME" TargetOID="BR.2.LIFETIME_PAST_1_MONTH"/>
+			<!-- The branch itself -->
+			<Branching OID="BR.2.LIFETIME_PAST_1_MONTH" Name="Branching after question 'Non-specific Active Suicidal Thoughts' - 'Lifetime'" Type="Exclusive">
+				<!-- Subject answered "Yes" to "Non-specific Active Suicidal Thoughts" for "Lifetime": 
+				move to "Non-specific Active Suicidal Thoughts" with "Past 1 month" -->
+				<TargetTransition TargetTransitionOID="TR.002.LIFETIME_PAST_1_MONTH" ConditionOID="" />
+				<!-- Default transition, move to branch before question 3 "Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act" -->
+				<DefaultTransition TargetTransitionOID="TR.2_BRANCH_2_OTHER"></DefaultTransition>
+			</Branching>
+			<!-- Transition from "Non-specific Active Suicidal Thoughts" branch to branch before question 3 "Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act" - "Lifetime" -->
+			<Transition OID="TR.2_BRANCH2_OTHER" Name="Default transition from 'Non-specific Active Suicidal Thoughts' to 'Non-specific Active Suicidal Thoughts'"
+				SourceOID="BR.2.LIFETIME_PAST_1_MONTH" TargetOID="BR.2_OTHER"></Transition>
+			<!-- Transition from the branch to "Non-specific Active Suicidal Thoughts" - "Past 1 month", when subject answered "Yes" to "Non-specific Active Suicidal Thoughts" - "Lifetime" -->
+			<Transition OID="TR.002.LIFETIME_PAST_1_MONTH" 
+				Name="Transition from the branch to 'Non-specific Active Suicidal Thoughts' - 'Past 1 month', when subject answered 'Yes' to 'Non-specific Active Suicidal Thoughts' - 'Lifetime'" 
+				SourceOID="BR.2.LIFETIME_PAST_1_MONTH" TargetOID="ODMPATH.002.PAST_1_MONTH"></Transition>
+			<!-- Transition fron "Non-specific Active Suicidal Thoughts" - "Past 1 month" to "Describe".
+			Reason is that "Non-specific Active Suicidal Thoughts" - "Past 1 month" is only reached when "Non-specific Active Suicidal Thoughts" - "Lifetime" is answered with "Yes". 
+			So "If yes: Described" is reached independent on whether "Past 1 month" was answered by "Yes" or "No" -->
+			<Transition OID="TR.002.DESCRIBE" Name="Transition to 'If yes:describe' for 'Non-specific Active Suicidal Thoughts'"
+				SourceOID="ODMPATH.002.PAST_1_MONTH" TargetOID="ODMPATH.002.DESCRIBE"></Transition>
+			<!-- Transition from "If yes:describe" for "Non-specific Active Suicidal Thoughts" to branch before question 3 "Non-specific Active Suicidial Thoughts" - "Lifetime" -->
+			<Transition OID="TR.002.DESCRIBE_BRANCH_2_OTHER" 
+				Name="Transition from 'If yes:describe' for 'Non-specific Active Suicidal Thoughts' to branch before question 3 'Non-specific Active Suicidial Thoughts' - 'Lifetime'"
+				SourceOID="ODMPATH.002.DESCRIBE"
+				TargetOID="BR.2_OTHER"></Transition>
+			<!-- Workflow STARTING AFTER question 2 "Non-specific Active Suicidal Thoughts".
+			This part starts with an important branch:
+			- If both questions 1 and 2 ("Wish to be dead" and "Non-specific Active Suicidal Thoughts" were answered with "No", proceed to section "Suicidal Behavior"
+			- If the answer to question 2 ("Non-specific Active Suicidal Thoughts") is answered with "Yes", ask questions 3, 4 and 5.
+			- If the answer to question 1 or 2 is "Yes", complete section "Intensity of Ideation".
 			-->
-			<Transition OID="TR.1-BRANCH"
-				Name="Transition from 'Whish to be dead question' to branching for 'Non-Specific Active Suicidal Thoughts' question and 'If yes, describe' question"
-				SourceOID="ODMPATH.001.LIFETIME" TargetOID="BR.1"/>
-			<Branching OID="BR.1"
-				Name="Branching on conditional 'Non-Specific Active Suicidal Thoughts' question"
-				Type="Exclusive">
-				<TargetTransition TargetTransitionOID="TR.1-BRANCH-DESC"
-					ConditionOID="COND_SUICIDAL_IDEATION_1_2_NEGATIVE"/><!-- Subject answered "Yes" to question "Wish to be dead", either for "Lifetime" or "Past 1 month" -->
-				<DefaultTransition
-					TargetTransitionOID="TR.1-BRANCH-2"/>
+			<Branching OID="BR.3" Name="Branching after questions 'Non-Specific Active Suicidal Thoughts'">
+				<!-- when question 2 is answered with "Yes": transition to question 3 -->
+				<TargetTransition TargetTransitionOID="TR.003.LIFETIME" ConditionOID="COND_SUICIDAL_IDEATION_2_POSITIVE"></TargetTransition>
+				<!-- when question 1 is answered with "Yes": transition to section "Intensity of Ideation" -->
+				<TargetTransition TargetTransitionOID="TR.BRANCH_TO_INTENSITY_OF_IDEATION" ConditionOID="COND_SUICIDAL_IDEATION_1_POSITIVE"></TargetTransition>
+				<!-- Questions 1 and 2 ("Wish to be Dead" and "Non-Specific Active Suicidal Thoughts" were answered with "No", proceed to section "Suicidal Beavior" -->
+				<!-- Here modeled as the default transition (there are also other ways however ...) -->
+				<DefaultTransition TargetTransitionOID="TR.BRANCH_TO_SUICIDAL_BEHAVIOR"></DefaultTransition>
 			</Branching>
-			<Transition OID="TR.1-BRANCH-DESC"
-				Name="Transition to question 'Wish to be Dead - Description'" SourceOID="BR.1"
-				TargetOID="IT.1.Wish_to_be_Dead_Description"/>
-			<Transition OID="TR.1-BRANCH-2"
-				Name="Default transition to question 'Non-Specific Active Suicidal Thoughts'"
-				SourceOID="BR.1" TargetOID="IT.2.Non-Specific_Active_Suicidal_Thoughts"/>
-			<Transition OID="TR.1-DESC-2"
-				Name="Transition from 'Wish to be Dead - Description' question to 'Non-Specific Active Suicidal Thoughts' question"
-				SourceOID="IT.1.Wish_to_be_Dead_Description"
-				TargetOID="IT.2.Non-Specific_Active_Suicidal_Thoughts"/>
-			<!-- Transitions from second question 'Non-Specific Active Suicidal Thoughts', including 'description' -->
-			<Transition OID="TR.2-BRANCH"
-				Name="Transition from 'Non-Specific Active Suicidal Thoughts' question to branching for 'Active Suicidal Ideation with Any Methods' question and If yes, describe' question"
-				SourceOID="IT.2.Non-Specific_Active_Suicidal_Thoughts" TargetOID="BR.2"/>
-			<Branching OID="BR.2"
-				Name="Branching on conditional 'Non-Specific Active Suicidal Thoughts' question"
-				Type="Exclusive">
-				<!--  -->
-				<TargetTransition
-					TargetTransitionOID="TR.2-BRANCH-DESC"
-					ConditionOID="COND.Non-Specific_Active_Suicidal_Thoughts_Yes"/>
-				<DefaultTransition
-					TargetTransitionOID="TR.2-BRANCH-BRANCH"/>
+			<!-- Transition to question 3 "Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act -->
+			<Transition OID="TR.003.LIFETIME" Name="Transition to question 3 'Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act'" 
+				SourceOID="BR.3" TargetOID="ODMPATH.003.LIFETIME"></Transition>
+			<!-- Conditional Transition to section "Intensity of Ideation" -->
+			<Transition OID="TR.BRANCH_TO_INTENSITY_OF_IDEATION" Name="Conditional Transition to section 'Intensity of Ideation'" 
+				SourceOID="BR.3" TargetOID="ODMPATH.INTENSITY_OF_IDEATION"></Transition>
+			<!-- Conditional Transition to section "Suicidal Behavior" -->
+			<Transition OID="TR.BRANCH_TO_SUICIDAL_BEHAVIOR" Name="Transition to section 'Suicidal Behavior' from Section 'Suicidal Ideation'"
+				SourceOID="BR.3" TargetOID="ODMPATH.SUICIDAL_BEHAVIOR"></Transition>
+			<!-- Transition to Branch after question "Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act - Lifetime" -->
+			<Transition OID="TR.3-BRANCH-LIFETIME-PAST_1_MONTH" Name="Transition to Branch after question 'Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act - Lifetime'" 
+				SourceOID="ODMPATH.003.LIFETIME" TargetOID="BR.3.LIFETIME_PAST_1_MONTH"></Transition>
+			<!-- Branch after question 3 "Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act - Lifetime" -->
+			<Branching OID="BR.3.LIFETIME_PAST_1_MONTH" Name="Branching after question 'Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act' - 'Lifetime'">
+				<TargetTransition TargetTransitionOID="TR.003.LIFETIME_PAST_1_MONTH" ConditionOID=""></TargetTransition>
+				<DefaultTransition TargetTransitionOID="TR.3-4"></DefaultTransition>
 			</Branching>
-			<!-- Answer to question 2 is 'Y', then provide description -->
-			<Transition OID="TR.2-BRANCH-DESC"
-				Name="Transition to question 'Non-Specific Active Suicidal Thoughts - Description'"
-				SourceOID="BR.2"
-				TargetOID="IT.2.Non-Specific_Active_Suicidal_Thoughts_Description"/>
-			<!-- After question 2, there is a branching point that can lead out of the workflow -->
-			<Transition OID="TR.2-DESC-BRANCH" Name="Non-Specific Active Suicidal Thoughts - Description' to next branching" 
-				SourceOID="IT.2.Non-Specific_Active_Suicidal_Thoughts_Description" TargetOID="BR.2_OUT" />
-			<!-- Transitions to branching point that can lead out of the current workflow -->
-			<Transition OID="TR.2-BRANCH-BRANCH"
-				Name="Default transition to branching point where one one can get out of the current workflow"
-				SourceOID="BR.2" TargetOID="BR.2_OUT"/>
-			<!-- Branching after question 2, also when "description" was added for question 2 -->
-			<Branching OID="BR.2_OUT" Name="Branching after question 2, different ways to leave the workflow for 'Suicidal Ideation'" 
-				Type="Exclusive">
-				<TargetTransition TargetTransitionOID="TR.Go_To_Suicidal_Behavior" ConditionOID="COND.1_and_2_negative"/>
-				<TargetTransition TargetTransitionOID="TR.Go_To_Intensity_of_Ideation" ConditionOID="COND.2_negative"></TargetTransition>
-				<DefaultTransition TargetTransitionOID="TR.2-BRANCH-BRANCH-3"></DefaultTransition>
+			<!-- Transition to "Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act - Past 1 month" -->
+			<Transition OID="TR.003.LIFETIME_PAST_1_MONTH" Name="Transition to 'Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act - Past 1 month'" 
+				SourceOID="BR.3.LIFETIME_PAST_1_MONTH" TargetOID="ODMPATH.003.PAST_1_MONTH"></Transition>
+			<!-- (Unconditional) Transition to "If yes: describe" after question "Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act - Past 1 month"  -->
+			<Transition OID="TR.003.DESCRIBE" Name="Transition to 'If yes: describe' after question 'Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act - Past 1 month'" 
+				SourceOID="ODMPATH.003.PAST_1_MONTH" TargetOID="ODMPATH.003.DESCRIBE"></Transition>
+			<!-- Transition after "Describe" for question "If yes: describe" after question "Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act - Past 1 month" -->
+			<Transition OID="TR.003.DESCRIBE_004" Name="Transition to 'Active Suicidal Ideation with Some Intent to Act, without Specific Plan' 
+				from 'If yes: describe' after question 'Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act - Past 1 month'" 
+				SourceOID="ODMPATH.003.DESCRIBE" TargetOID="ODMPATH.004.LIFETIME"></Transition>
+			<!-- Default transition from question 3 'Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act - Lifetime' 
+				to question 4 'Active Suicidal Ideation with Some Intent to Act, without Specific Plan - Lifetime' -->
+			<Transition OID="TR.3-4" Name="Default transition from question 3 'Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act - Lifetime' 
+				to question 4 'Active Suicidal Ideation with Some Intent to Act, without Specific Plan - Lifetime'" 
+				SourceOID="ODMPATH.003.LIFETIME" TargetOID="ODMPATH.004.LIFETIME"></Transition>
+			<!-- Branch after question 4: 'Active Suicidal Ideation with Some Intent to Act, without Specific Plan - Lifetime' -->
+			<Transition OID="TR.4-BRANCH-LIFETIME-PAST_1_MONTH" Name="Transition to Branch after question 'Active Suicidal Ideation with Some Intent to Act, without Specific Plan - Lifetime'" 
+				SourceOID="ODMPATH.004.LIFETIME" TargetOID="BR.4.LIFETIME_PAST_1_MONTH" ></Transition>
+			<Branching OID="BR.4.LIFETIME_PAST_1_MONTH" Name="Branching after question 'Active Suicidal Ideation with Some Intent to Act, without Specific Plan - Lifetime'">
+				<TargetTransition TargetTransitionOID="TR.004.LIFETIME_PAST_1_MONTH" ConditionOID=""></TargetTransition>
+				<DefaultTransition TargetTransitionOID="TR.4-5"></DefaultTransition>
 			</Branching>
-			<!-- Transition out of the workflow when questions 1 and 2 are negative: go to section "Suicidal Behavior" -->
-			<Transition OID="TR.Go_To_Suicidal_Behavior" Name="Transition after questions 1 and 2, to group 'Suicidal Behavior'" 
-				SourceOID="BR.2_OUT" TargetOID="IG.SUICIDAL_BEHAVIOR"></Transition>
-			<!-- Transition out of the workflow when question 2 was negative -->
-			<Transition OID="TR.Go_To_Intensity_of_Ideation" Name="Transition after questions 1 and 2, to group 'Intensity of Ideation'" 
-				SourceOID="BR.2_OUT" TargetOID="IG.Intensity_of_Ideation"/>
-			<!-- Transition from branching point after "2. Non-specific Active Suicidal Thoughts" to "3. Active Suicidal Ideation with Any Methods", 
-                i.e. from question 2 to 3 -->
-			<Transition OID="TR.2-BRANCH-BRANCH-3" Name="Transition after branching point after question 2 'Non-specific Active Suicidal Thoughts' to question 3 'Active Suicidal Ideation with Any Methods'"
-				SourceOID="BR.2_OUT" TargetOID="IT.3.Active_Suicidal_Ideation_with_Any_Methods" />
-			<!-- Transitions from third question 'Active Suicidal Ideation with Any Methods' -->
-			<Transition OID="TR.3-BRANCH-DESC"
-				Name="Transition from 'Non-Specific Active Suicidal Thoughts' to branching for 'Active suicidation with some intent to act' and 'If yes, describe' question"
-				SourceOID="IT.2.Non-Specific_Active_Suicidal_Thoughts" TargetOID="BR.3"/>
-			<!-- Braching for description for question 3 -->
-			<Branching OID="BR.3"
-				Name="Branching on conditional 'Active Suicidal Ideation with Any Methods' question"
-				Type="Exclusive">
-				<TargetTransition
-					TargetTransitionOID="TR.3-BRANCH-DESC"
-					ConditionOID="COND.Active_Suicidal_Ideation_with_Any_Methods_Yes"/>
-				<DefaultTransition
-					TargetTransitionOID="TR.3-BRANCH-4"/>
+			<Transition OID="TR.004.LIFETIME_PAST_1_MONTH" Name="Transition to 'Active Suicidal Ideation with Some Intent to Act, without Specific Plan - Past 1 Month'" 
+				SourceOID="BR.4.LIFETIME_PAST_1_MONTH" TargetOID="ODMPATH.004.PAST_1_MONTH"></Transition>
+			<!-- Transition to "If yes: describe -->
+			<Transition OID="TR.004.DESCRIBE" Name="Transition to 'If yes: describe' after question 'Active Suicidal Ideation with Some Intent to Act, without Specific Plan - Past 1 month'"
+				SourceOID="ODMPATH.004.PAST_1_MONTH" TargetOID="ODMPATH.004.DESCRIBE"></Transition>
+			<!-- Transition after "If yes: describe" -->
+			<Transition OID="TR.004.DESCRIBE_005" Name="Transition to 'Active Suicidal Ideation with Specific Plan and Intent' 
+				from 'If yes: describe' after question 'Active Suicidal Ideation with Some Intent to Act, without Specific Plan - Past 1 month'" 
+				SourceOID="ODMPATH.004.DESCRIBE" TargetOID="ODMPATH.005.LIFETIME"></Transition>
+			<!-- Default transition 4 to 5 -->
+			<Transition OID="TR.4-5" Name="Default transition from 'Active Suicidal Ideation with Some Intent to Act, without Specific Plan - Lifetime' 
+				to 'Active Suicidal Ideation with Specific Plan and Intent - Lifetime'" 
+				SourceOID="BR.4.LIFETIME_PAST_1_MONTH" TargetOID="ODMPATH.005.LIFETIME"></Transition>
+			<!-- Question 5 'Active Suicidal Ideation with Specific Plan and Intent - Lifetime' -->
+			<Transition OID="TR.5-BRANCH-LIFETIME-PAST_1_MONTH" Name="Transition to Branch after question 'Active Suicidal Ideation with Specific Plan and Intent - Lifetime'" 
+				SourceOID="ODMPATH.005.LIFETIME" TargetOID="BR.5.LIFETIME_PAST_1_MONTH"></Transition>
+			<Branching OID="BR.5.LIFETIME_PAST_1_MONTH" Name="Branching after question 'Active Suicidal Ideation with Specific Plan and Intent' - 'Lifetime'">
+				<TargetTransition TargetTransitionOID="TR.005.LIFETIME_PAST_1_MONTH" ConditionOID=""></TargetTransition>
+				<DefaultTransition TargetTransitionOID="TR.5-INTENSITY_OF_IDEATION"></DefaultTransition>
 			</Branching>
-			<Transition OID="TR.3-BRANCH-DESC"
-				Name="Transition to question 'Active Suicidal Ideation with Any Methods - Description'"
-				SourceOID="BR.3"
-				TargetOID="IT.3.Active_Suicidal_Ideation_with_Any_Methods_Description"/>
-			<!-- Default transition from question 3 to 4 -->
-			<Transition OID="TR.3-BRANCH-4"
-				Name="Transition from 'Active suicidal ideation with any methods' to 'Active suicidal ideation with some intent'"
-				SourceOID="BR.3"
-				TargetOID="IT.4.Active_Suicidal_Ideation_with_Some_Intent"/>
-			<Transition OID="TR.3-DESC-4"
-				Name="Transition from 'Active suicidal ideation with any methods - description' to 'Active suicidal ideation with some intent'"
-				SourceOID="IT.3.Active_Suicidal_Ideation_with_Any_Methods_Description"
-				TargetOID="IT.4.Active_Suicidal_Ideation_with_Some_Intent"/>
-			<!-- Transitions from fourth question 'Active Suicidal Ideation with Some Intent to Act' -->
-			<Transition OID="TR.4-BRANCH"
-				Name="Transition from 'Active Suicidal Ideation with Some Intent to Act' to branching for 'Active Suicidal Ideation with Specific Plan and Intent' and 'If yes, describe' question"
-				SourceOID="IT.4.Active_Suicidal_Ideation_with_Some_Intent" TargetOID="BR.4"/>
-			<Branching OID="BR.4"
-				Name="Branching on conditional 'Active Suicidal Ideation with Some Intent to Act' question"
-				Type="Exclusive">
-				<TargetTransition
-					TargetTransitionOID="TR.4-BRANCH-DESC"
-					ConditionOID="Active_Suicidal_Ideation_with_Some_Intent_Yes"/>
-				<DefaultTransition
-					TargetTransitionOID="TR.4-BRANCH-5" />
-			</Branching>
-			<Transition OID="TR.4-BRANCH-DESC"
-				Name="Transition to question 'Active suicidal ideation with some intent - description"
-				SourceOID="BR.4"
-				TargetOID="IT.4.Active_Suicidal_Ideation_with_Some_Intent_Description"/>
-			<Transition OID="TR.4-DESC-5"
-				Name="Transition from 'Active Suicidal Ideation with Some Intent to Act - Description' to 'Active Suicidal Ideation with Specific Plan and Intent'"
-				SourceOID="IT.4.Active_Suicidal_Ideation_with_Some_Intent_Description"
-				TargetOID="IT.5.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent"/>
-			<Transition OID="TR.4-BRANCH-5"
-				Name="Deault transition from question 'Active Suicidal Ideation with Some Intent to Act' to question 'Active Suicidal Ideation with Specific Plan and Intent'"
-				SourceOID="IT.BR4"
-				TargetOID="IT.5.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent"/>
-			<!-- Transitions from fifth question 'Active Suicidal Ideation with Specific Plan and Intent' -->
-			<Transition OID="TR.5-BRANCH"
-				Name="Transition from 'Active Suicidal Ideation with specific plan' to branching for 'Itensity of Ideation section' and 'If yes, describe'"
-				SourceOID="IT.5.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent"
-				TargetOID="BR.5"/>
-			<Branching OID="BR.5"
-				Name="Branching on conditional 'Active suicidal ideation with some intent'"
-				Type="Exclusive">
-				<TargetTransition
-					TargetTransitionOID="TR.5-BRANCH-DESC"
-					ConditionOID="COND.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent_Yes"/>
-				<DefaultTransition TargetTransitionOID="TR.5-BRANCH-END" />
-			</Branching>
-			<Transition OID="TR.5-BRANCH-END"
-				Name="Transition from branching to question 'Intensity of ideation'"
-				SourceOID="BR.5" TargetOID="IG.Intensity_of_Ideation"/>
-			<Transition
-				OID="TR.5-BRANCH-DESC"
-				Name="Transition to question 'Active Suicidation with specific plan - description'"
-				SourceOID="BR.5"
-				TargetOID="IT.5.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent_Description"/>
-			<Transition
-				OID="TR.5-DESC-END"
-				Name="Transition from 'Active suicidal ideation with specific plan - descrition' to section ''Intensity of ideation"
-				SourceOID="IT.5.Active_Suicidal_Ideation_with_Specific_Plan_and_Intent_Description"
-				TargetOID="IG.Intensity_of_Ideation"/>
+			<!-- Transition after branch after question 'Active Suicidal Ideation with Specific Plan and Intent - Lifetime' to 'Active Suicidal Ideation with Specific Plan and Intent - Past 1 month' -->
+			<Transition OID="TR.005.LIFETIME_PAST_1_MONTH" Name="Transition after branch after question 'Active Suicidal Ideation with Specific Plan and Intent - Lifetime' to 'Active Suicidal Ideation with Specific Plan and Intent - Past 1 month'" 
+				SourceOID="BR.5.LIFETIME_PAST_1_MONTH" TargetOID="ODMPATH.005.PAST_1_MONTH"></Transition>
+			<!-- Transition to 'If yes: describe' after question 'Active Suicidal Ideation with Specific Plan and Intent - Past 1 month' -->
+			<Transition OID="TR.005.DESCRIBE" Name="Transition to 'If yes: describe' after question 'Active Suicidal Ideation with Specific Plan and Intent - Past 1 month'" 
+				SourceOID="ODMPATH.005.PAST_1_MONTH" TargetOID="ODMPATH.005.DESCRIBE"></Transition>
+			<!-- Transition to Section 'Intensity of Ideation'
+			from 'If yes: describe' after question 'Active Suicidal Ideation with Specific Plan and Intent - Past 1 month' -->
+			<Transition OID="TR.006.DESCRIBE_INTENSITY_OF_IDEATION" Name=""
+				SourceOID="ODMPATH.005.DESCRIBE" TargetOID="ODMPATH.INTENSITY_OF_IDEATION"></Transition>
+			<!-- Default Transition from 'Active Suicidal Ideation with Specific Plan and Intent - Lifetime' to Section 'Intensity of Ideation' -->
+			<Transition OID="TR.5-INTENSITY_OF_IDEATION" Name="Default Transition from 'Active Suicidal Ideation with Specific Plan and Intent - Lifetime' to Section 'Intensity of Ideation'" 
+				SourceOID="BR.5.LIFETIME_PAST_1_MONTH" TargetOID="ODMPATH.INTENSITY_OF_IDEATION"></Transition>
+			
+			
+			<!-- 2021-05-16: TODO: all ConditionDef elements for the branching -->
+			
 			<!-- Synthetic workflow end -->
-			<WorkflowEnd EndOID="IG.Intensity_of_Ideation"/>
-			<!-- Workflow ends when entering group "Intensity of Ideation -->
+			<WorkflowEnd EndOID="WORKFLOW_END"/>
 		</WorkflowDef>
 		<!-- End of addition -->
 		<MetaDataVersion OID="AG_CSS" Name="Columbia Suicide Scale" Description="">
-			<!-- All StudyEvent, ItemGroup and Item work, courtesy of Kevin Burges, Formedix -->
+			<!-- All StudyEvent, ItemGroup, Item and CodeList work, courtesy of Kevin Burges, Formedix -->
 			<StudyEventDef Name="CSS" OID="SE.CSS" Repeating="No" Type="Scheduled">
 				<ItemGroupRef ItemGroupOID="F_C-SSRS_1" Mandatory="Yes"/>
 				<ItemGroupRef ItemGroupOID="F_C-SSRS_2" Mandatory="Yes"/>
@@ -624,7 +644,8 @@
 			<!-- Subject answered questions "Whish to be dead" ("Lifetime" and/or "Past 1 month") AND
 				question "Non-specific Active Suicidal Thoughts" ("Lifetime" and/or "Past 1 month") negatively.
 				In this case, questions 3-5 must be skipped, and section "Suidical Behaviour" should be navigated to. -->
-			<ConditionDef OID="COND_SUICIDAL_IDEATION_1_2_NEGATIVE">
+			<ConditionDef OID="COND_SUICIDAL_IDEATION_1_2_NEGATIVE" Name="Subject answered questions 'Whish to be dead' ('Lifetime' and/or 'Past 1 month') AND
+				question 'Non-specific Active Suicidal Thoughts' ('Lifetime' and/or 'Past 1 month') negatively">
 				<Description>
 					<TranslatedText xml:lang="en">Subject answered questions "Whish to be dead" ("Lifetime" and/or "Past 1 month") AND
 						question "Non-specific Active Suicidal Thoughts" ("Lifetime" and/or "Past 1 month") negatively.</TranslatedText>
@@ -635,6 +656,30 @@
 					<![CDATA[
 						ClinicalData.SubjectData.StudyEventData.ItemGroupData.where(ItemGroupOID='S_SUICIDAL_IDEATION_1' and ItemData.where(ItemOID='Q_IDEATION_TYPE' and Value='1'))
 						.where(ItemData.where(ItemOID='Q_IDEATION_LIFETIME' and Value='N') and (ItemData.where(ItemOID='Q_IDEATION_PASTMONTH' and Value='N') or (ItemData.where(ItemOID='Q_IDEATION_PASTMONTH').not())) )
+					]]>
+				</FormalExpression>
+			</ConditionDef>
+			<!-- Condition that question 'Non-Specific Active Suicidal Thoughts - LifeTime' was answered with "Yes" -->
+			<ConditionDef OID="COND_SUICIDAL_IDEATION_2_POSITIVE" Name="Subject answered question 'Non-Specific Active Suicidal Thoughts - Lifetime' positively">
+				<Description>
+					<TranslatedText xml:lang="en">Subject answered question 'Non-Specific Active Suicidal Thoughts - Lifetime' positively</TranslatedText>
+				</Description>
+				<FormalExpression Context="ODMPath">
+					<![CDATA[
+					ClinicalData.SubjectData.StudyEventData.ItemGroupData.where(ItemGroupOID='S_SUICIDAL_IDEATION_1' and ItemData.where(ItemOID='Q_IDEATION_TYPE' and Value='2'))
+						.where(ItemData.where(ItemOID='Q_IDEATION_LIFETIME' and Value='Y'))
+					]]>
+				</FormalExpression>
+			</ConditionDef>
+			<!--  -->
+			<ConditionDef OID="COND_SUICIDAL_IDEATION_1_POSITIVE" Name="Subject answered question 'Wish to be dead - Lifetime' positively">
+				<Description>
+					<TranslatedText xml:lang="en">Subject answered question 'Wish to be dead - Lifetime' positively</TranslatedText>
+				</Description>
+				<FormalExpression Context="ODMPath">
+					<![CDATA[
+					ClinicalData.SubjectData.StudyEventData.ItemGroupData.where(ItemGroupOID='S_SUICIDAL_IDEATION_1' and ItemData.where(ItemOID='Q_IDEATION_TYPE' and Value='1'))
+						.where(ItemData.where(ItemOID='Q_IDEATION_LIFETIME' and Value='Y'))
 					]]>
 				</FormalExpression>
 			</ConditionDef>
