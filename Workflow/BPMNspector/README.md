@@ -1,0 +1,2 @@
+Utility Java program for BPMN2-XML files, that does validation beyond XML-Schema validation. http://bpmnspector.org/
+To run a validation, edit the file BPMNspector.bat, then run it by double clicking it (Windows).

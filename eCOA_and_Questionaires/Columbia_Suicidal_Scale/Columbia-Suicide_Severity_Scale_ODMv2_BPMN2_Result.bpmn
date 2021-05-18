@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- BPMN2 result of XSLT transformation of file Columbia-Suicide_Severity_Scale_ODMv2.xml -->
+<bpmn2:definitions xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL"
+                   targetNamespace="">
+   <bpmn2:process id="SDY_1">
+      <bpmn2:startEvent id="ODMPATH.001.LIFETIME" name="Workflow start">
+         <bpmn2:outgoing>TR.1-BRANCH-LIFETIME-PAST_1_MONTH</bpmn2:outgoing>
+      </bpmn2:startEvent>
+      <bpmn2:endEvent id="WORKFLOWEND">
+         <bpmn2:incoming>TR.BRANCH_TO_INTENSITY_OF_IDEATION</bpmn2:incoming>
+         <bpmn2:incoming>TR.BRANCH_TO_SUICIDAL_BEHAVIOR</bpmn2:incoming>
+         <bpmn2:incoming>TR.006.DESCRIBE_INTENSITY_OF_IDEATION</bpmn2:incoming>
+         <bpmn2:incoming>TR.5-INTENSITY_OF_IDEATION</bpmn2:incoming>
+      </bpmn2:endEvent>
+      <bpmn2:userTask id="BR.1.LIFETIME_PAST_1_MONTH" name="">
+         <bpmn2:incoming>TR.1-BRANCH-LIFETIME-PAST_1_MONTH</bpmn2:incoming>
+         <bpmn2:outgoing>TR.1-2</bpmn2:outgoing>
+         <bpmn2:outgoing>TR.001.LIFETIME_PAST_1_MONTH</bpmn2:outgoing>
+      </bpmn2:userTask>
+      <bpmn2:userTask id="ODMPATH.002.LIFETIME"
+                      name="Describes cell &#34;Non-Specific Active Suicidal Thoughts&#34; for &#34;Lifetime&#34;">
+         <bpmn2:incoming>TR.1-2</bpmn2:incoming>
+         <bpmn2:incoming>TR.001.DESCRIBE_002</bpmn2:incoming>
+         <bpmn2:outgoing>TR.2-BRANCH-LIFETIME-PAST_1_MONTH</bpmn2:outgoing>
+      </bpmn2:userTask>
+      <bpmn2:userTask id="ODMPATH.001.PAST_1_MONTH"
+                      name="Describes cell &#34;Wish to be dead&#34; for &#34;Past 1 month&#34;">
+         <bpmn2:incoming>TR.001.LIFETIME_PAST_1_MONTH</bpmn2:incoming>
+         <bpmn2:outgoing>TR.001.DESCRIBE</bpmn2:outgoing>
+      </bpmn2:userTask>
+      <bpmn2:userTask id="ODMPATH.001.DESCRIBE"
+                      name="Describes cell &#34;If yes: describe&#34;, for case &#34;wish to be dead&#34; for BOTH &#34;Lifetime&#34; and &#34;Past 1 month&#34;">
+         <bpmn2:incoming>TR.001.DESCRIBE</bpmn2:incoming>
+         <bpmn2:outgoing>TR.001.DESCRIBE_002</bpmn2:outgoing>
+      </bpmn2:userTask>
+      <bpmn2:userTask id="BR.2.LIFETIME_PAST_1_MONTH" name="">
+         <bpmn2:incoming>TR.2-BRANCH-LIFETIME-PAST_1_MONTH</bpmn2:incoming>
+         <bpmn2:outgoing>TR.2_BRANCH_2_OTHER</bpmn2:outgoing>
+         <bpmn2:outgoing>TR.002.LIFETIME_PAST_1_MONTH</bpmn2:outgoing>
+      </bpmn2:userTask>
+      <bpmn2:userTask id="BR.3" name="">
+         <bpmn2:incoming>TR.2_BRANCH_2_OTHER</bpmn2:incoming>
+         <bpmn2:incoming>TR.002.DESCRIBE_BRANCH_2_OTHER</bpmn2:incoming>
+         <bpmn2:outgoing>TR.003.LIFETIME</bpmn2:outgoing>
+         <bpmn2:outgoing>TR.BRANCH_TO_INTENSITY_OF_IDEATION</bpmn2:outgoing>
+         <bpmn2:outgoing>TR.BRANCH_TO_SUICIDAL_BEHAVIOR</bpmn2:outgoing>
+      </bpmn2:userTask>
+      <bpmn2:userTask id="ODMPATH.002.PAST_1_MONTH"
+                      name="Describes cell &#34;Non-Specific Active Suicidal Thoughts&#34; for &#34;Past 1 month&#34;">
+         <bpmn2:incoming>TR.002.LIFETIME_PAST_1_MONTH</bpmn2:incoming>
+         <bpmn2:outgoing>TR.002.DESCRIBE</bpmn2:outgoing>
+      </bpmn2:userTask>
+      <bpmn2:userTask id="ODMPATH.002.DESCRIBE"
+                      name="Describes cell &#34;If yes: describe&#34;, for case &#34;Non-Specific Active Suicidal Thoughts&#34; for BOTH &#34;Lifetime&#34; and &#34;Past 1 month">
+         <bpmn2:incoming>TR.002.DESCRIBE</bpmn2:incoming>
+         <bpmn2:outgoing>TR.002.DESCRIBE_BRANCH_2_OTHER</bpmn2:outgoing>
+      </bpmn2:userTask>
+      <bpmn2:userTask id="ODMPATH.003.LIFETIME"
+                      name="Describes cell &#34;Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act&#34; for &#34;Lifetime&#34;">
+         <bpmn2:incoming>TR.003.LIFETIME</bpmn2:incoming>
+         <bpmn2:outgoing>TR.3-BRANCH-LIFETIME-PAST_1_MONTH</bpmn2:outgoing>
+      </bpmn2:userTask>
+      <bpmn2:userTask id="BR.3.LIFETIME_PAST_1_MONTH" name="">
+         <bpmn2:incoming>TR.3-BRANCH-LIFETIME-PAST_1_MONTH</bpmn2:incoming>
+         <bpmn2:outgoing>TR.003.LIFETIME_PAST_1_MONTH</bpmn2:outgoing>
+         <bpmn2:outgoing>TR.3-4</bpmn2:outgoing>
+      </bpmn2:userTask>
+      <bpmn2:userTask id="ODMPATH.003.PAST_1_MONTH"
+                      name="Describes cell &#34;Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act&#34; for &#34;Past 1 month&#34;">
+         <bpmn2:incoming>TR.003.LIFETIME_PAST_1_MONTH</bpmn2:incoming>
+         <bpmn2:outgoing>TR.003.DESCRIBE</bpmn2:outgoing>
+      </bpmn2:userTask>
+      <bpmn2:userTask id="ODMPATH.003.DESCRIBE"
+                      name="Describes cell &#34;If yes: describe&#34;, for case &#34;Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act&#34; for BOTH &#34;Lifetime&#34; and &#34;Past 1 month&#34;">
+         <bpmn2:incoming>TR.003.DESCRIBE</bpmn2:incoming>
+         <bpmn2:outgoing>TR.003.DESCRIBE_004</bpmn2:outgoing>
+      </bpmn2:userTask>
+      <bpmn2:userTask id="ODMPATH.004.LIFETIME"
+                      name="Describes cell &#34;Active Suicidal Ideation with Some Intent to Act, without Specific Plan&#34; for &#34;Lifetime&#34;">
+         <bpmn2:incoming>TR.003.DESCRIBE_004</bpmn2:incoming>
+         <bpmn2:incoming>TR.3-4</bpmn2:incoming>
+         <bpmn2:outgoing>TR.4-BRANCH-LIFETIME-PAST_1_MONTH</bpmn2:outgoing>
+      </bpmn2:userTask>
+      <bpmn2:userTask id="BR.4.LIFETIME_PAST_1_MONTH" name="">
+         <bpmn2:incoming>TR.4-BRANCH-LIFETIME-PAST_1_MONTH</bpmn2:incoming>
+         <bpmn2:outgoing>TR.004.LIFETIME_PAST_1_MONTH</bpmn2:outgoing>
+         <bpmn2:outgoing>TR.4-5</bpmn2:outgoing>
+      </bpmn2:userTask>
+      <bpmn2:userTask id="ODMPATH.004.PAST_1_MONTH"
+                      name="Describes cell &#34;Active Suicidal Ideation with Some Intent to Act, without Specific Plan&#34; for &#34;Past 1 month&#34;">
+         <bpmn2:incoming>TR.004.LIFETIME_PAST_1_MONTH</bpmn2:incoming>
+         <bpmn2:outgoing>TR.004.DESCRIBE</bpmn2:outgoing>
+      </bpmn2:userTask>
+      <bpmn2:userTask id="ODMPATH.004.DESCRIBE"
+                      name="Describes cell &#34;If yes: describe&#34;, for case &#34;Active Suicidal Ideation with Some Intent to Act, without Specific Plan&#34; for BOTH &#34;Lifetime&#34; and &#34;Past 1 month&#34;">
+         <bpmn2:incoming>TR.004.DESCRIBE</bpmn2:incoming>
+         <bpmn2:outgoing>TR.004.DESCRIBE_005</bpmn2:outgoing>
+      </bpmn2:userTask>
+      <bpmn2:userTask id="ODMPATH.005.LIFETIME"
+                      name="Describes cell &#34;Active Suicidal Ideation with Specific Plan and Intent&#34; for &#34;Lifetime&#34;">
+         <bpmn2:incoming>TR.004.DESCRIBE_005</bpmn2:incoming>
+         <bpmn2:incoming>TR.4-5</bpmn2:incoming>
+         <bpmn2:outgoing>TR.5-BRANCH-LIFETIME-PAST_1_MONTH</bpmn2:outgoing>
+      </bpmn2:userTask>
+      <bpmn2:userTask id="BR.5.LIFETIME_PAST_1_MONTH" name="">
+         <bpmn2:incoming>TR.5-BRANCH-LIFETIME-PAST_1_MONTH</bpmn2:incoming>
+         <bpmn2:outgoing>TR.005.LIFETIME_PAST_1_MONTH</bpmn2:outgoing>
+         <bpmn2:outgoing>TR.5-INTENSITY_OF_IDEATION</bpmn2:outgoing>
+      </bpmn2:userTask>
+      <bpmn2:userTask id="ODMPATH.005.PAST_1_MONTH"
+                      name="Describes cell &#34;Active Suicidal Ideation with Specific Plan and Intent&#34; for &#34;Past 1 month&#34;">
+         <bpmn2:incoming>TR.005.LIFETIME_PAST_1_MONTH</bpmn2:incoming>
+         <bpmn2:outgoing>TR.005.DESCRIBE</bpmn2:outgoing>
+      </bpmn2:userTask>
+      <bpmn2:userTask id="ODMPATH.005.DESCRIBE"
+                      name="Describes cell &#34;If yes: describe&#34;, for case &#34;Active Suicidal Ideation with Specific Plan and Intent&#34; for BOTH &#34;Lifetime&#34; and &#34;Past 1 month&#34;">
+         <bpmn2:incoming>TR.005.DESCRIBE</bpmn2:incoming>
+         <bpmn2:outgoing>TR.006.DESCRIBE_INTENSITY_OF_IDEATION</bpmn2:outgoing>
+      </bpmn2:userTask>
+      <bpmn2:exclusiveGateway id="GATEWAY.BR.1.LIFETIME_PAST_1_MONTH" default="TR.1-2">
+         <bpmn2:incoming>TR.1-BRANCH-LIFETIME-PAST_1_MONTH</bpmn2:incoming>
+         <bpmn2:outgoing>TR.001.LIFETIME_PAST_1_MONTH</bpmn2:outgoing>
+         <bpmn2:outgoing>TR.1-2</bpmn2:outgoing>
+      </bpmn2:exclusiveGateway>
+      <bpmn2:exclusiveGateway id="GATEWAY.BR.2.LIFETIME_PAST_1_MONTH" default="TR.2_BRANCH_2_OTHER">
+         <bpmn2:incoming>TR.2-BRANCH-LIFETIME-PAST_1_MONTH</bpmn2:incoming>
+         <bpmn2:outgoing>TR.002.LIFETIME_PAST_1_MONTH</bpmn2:outgoing>
+         <bpmn2:outgoing>TR.2_BRANCH_2_OTHER</bpmn2:outgoing>
+      </bpmn2:exclusiveGateway>
+      <bpmn2:exclusiveGateway id="GATEWAY.BR.3" default="TR.BRANCH_TO_SUICIDAL_BEHAVIOR">
+         <bpmn2:incoming>TR.2_BRANCH_2_OTHER</bpmn2:incoming>
+         <bpmn2:incoming>TR.002.DESCRIBE_BRANCH_2_OTHER</bpmn2:incoming>
+         <bpmn2:outgoing>TR.003.LIFETIME</bpmn2:outgoing>
+         <bpmn2:outgoing>TR.BRANCH_TO_INTENSITY_OF_IDEATION</bpmn2:outgoing>
+         <bpmn2:outgoing>TR.BRANCH_TO_SUICIDAL_BEHAVIOR</bpmn2:outgoing>
+      </bpmn2:exclusiveGateway>
+      <bpmn2:exclusiveGateway id="GATEWAY.BR.3.LIFETIME_PAST_1_MONTH" default="TR.3-4">
+         <bpmn2:incoming>TR.3-BRANCH-LIFETIME-PAST_1_MONTH</bpmn2:incoming>
+         <bpmn2:outgoing>TR.003.LIFETIME_PAST_1_MONTH</bpmn2:outgoing>
+         <bpmn2:outgoing>TR.3-4</bpmn2:outgoing>
+      </bpmn2:exclusiveGateway>
+      <bpmn2:exclusiveGateway id="GATEWAY.BR.4.LIFETIME_PAST_1_MONTH" default="TR.4-5">
+         <bpmn2:incoming>TR.4-BRANCH-LIFETIME-PAST_1_MONTH</bpmn2:incoming>
+         <bpmn2:outgoing>TR.004.LIFETIME_PAST_1_MONTH</bpmn2:outgoing>
+         <bpmn2:outgoing>TR.4-5</bpmn2:outgoing>
+      </bpmn2:exclusiveGateway>
+      <bpmn2:exclusiveGateway id="GATEWAY.BR.5.LIFETIME_PAST_1_MONTH"
+                              default="TR.5-INTENSITY_OF_IDEATION">
+         <bpmn2:incoming>TR.5-BRANCH-LIFETIME-PAST_1_MONTH</bpmn2:incoming>
+         <bpmn2:outgoing>TR.005.LIFETIME_PAST_1_MONTH</bpmn2:outgoing>
+         <bpmn2:outgoing>TR.5-INTENSITY_OF_IDEATION</bpmn2:outgoing>
+      </bpmn2:exclusiveGateway>
+      <bpmn2:sequenceFlow id="TR.1-BRANCH-LIFETIME-PAST_1_MONTH"
+                          sourceRef="ODMPATH.001.LIFETIME"
+                          targetRef="GATEWAY.BR.1.LIFETIME_PAST_1_MONTH"/>
+      <bpmn2:sequenceFlow id="TR.1-2"
+                          sourceRef="GATEWAY.BR.1.LIFETIME_PAST_1_MONTH"
+                          targetRef="ODMPATH.002.LIFETIME"/>
+      <bpmn2:sequenceFlow id="TR.001.LIFETIME_PAST_1_MONTH"
+                          sourceRef="GATEWAY.BR.1.LIFETIME_PAST_1_MONTH"
+                          targetRef="ODMPATH.001.PAST_1_MONTH">
+         <bpmn2:conditionExpression>
+            <bpmn2:documentation>Subject answered 'Wish to be dead' question with 'Yes' for 'Lifetime'</bpmn2:documentation><![CDATA[
+					
+						ClinicalData.SubjectData.StudyEventData.ItemGroupData.where(ItemGroupOID='S_SUICIDAL_IDEATION_1' and ItemData.where(ItemOID='Q_IDEATION_TYPE' and Value='1'))
+						.ItemData.where(ItemOID='Q_IDEATION_LIFETIME' and Value='Y')
+					
+				]]></bpmn2:conditionExpression>
+      </bpmn2:sequenceFlow>
+      <bpmn2:sequenceFlow id="TR.001.DESCRIBE"
+                          sourceRef="ODMPATH.001.PAST_1_MONTH"
+                          targetRef="ODMPATH.001.DESCRIBE"/>
+      <bpmn2:sequenceFlow id="TR.001.DESCRIBE_002"
+                          sourceRef="ODMPATH.001.DESCRIBE"
+                          targetRef="ODMPATH.002.LIFETIME"/>
+      <bpmn2:sequenceFlow id="TR.2-BRANCH-LIFETIME-PAST_1_MONTH"
+                          sourceRef="ODMPATH.002.LIFETIME"
+                          targetRef="GATEWAY.BR.2.LIFETIME_PAST_1_MONTH"/>
+      <bpmn2:sequenceFlow id="TR.2_BRANCH_2_OTHER"
+                          sourceRef="GATEWAY.BR.2.LIFETIME_PAST_1_MONTH"
+                          targetRef="GATEWAY.BR.3"/>
+      <bpmn2:sequenceFlow id="TR.002.LIFETIME_PAST_1_MONTH"
+                          sourceRef="GATEWAY.BR.2.LIFETIME_PAST_1_MONTH"
+                          targetRef="ODMPATH.002.PAST_1_MONTH">
+         <bpmn2:conditionExpression>
+            <bpmn2:documentation>Subject answered 'Non-Specific Active Suicidal Thoughts' question with 'Yes' for 'Lifetime'</bpmn2:documentation><![CDATA[
+					
+						ClinicalData.SubjectData.StudyEventData.ItemGroupData.where(ItemGroupOID='S_SUICIDAL_IDEATION_1' and ItemData.where(ItemOID='Q_IDEATION_TYPE' and Value='2'))
+						.ItemData.where(ItemOID='Q_IDEATION_LIFETIME' and Value='Y')
+					
+				]]></bpmn2:conditionExpression>
+      </bpmn2:sequenceFlow>
+      <bpmn2:sequenceFlow id="TR.002.DESCRIBE"
+                          sourceRef="ODMPATH.002.PAST_1_MONTH"
+                          targetRef="ODMPATH.002.DESCRIBE"/>
+      <bpmn2:sequenceFlow id="TR.002.DESCRIBE_BRANCH_2_OTHER"
+                          sourceRef="ODMPATH.002.DESCRIBE"
+                          targetRef="GATEWAY.BR.3"/>
+      <bpmn2:sequenceFlow id="TR.003.LIFETIME"
+                          sourceRef="GATEWAY.BR.3"
+                          targetRef="ODMPATH.003.LIFETIME">
+         <bpmn2:conditionExpression>
+            <bpmn2:documentation>Subject answered 'Non-Specific Active Suicidal Thoughts' question with 'Yes' for 'Lifetime'</bpmn2:documentation><![CDATA[
+					
+						ClinicalData.SubjectData.StudyEventData.ItemGroupData.where(ItemGroupOID='S_SUICIDAL_IDEATION_1' and ItemData.where(ItemOID='Q_IDEATION_TYPE' and Value='2'))
+						.ItemData.where(ItemOID='Q_IDEATION_LIFETIME' and Value='Y')
+					
+				]]></bpmn2:conditionExpression>
+      </bpmn2:sequenceFlow>
+      <bpmn2:sequenceFlow id="TR.BRANCH_TO_INTENSITY_OF_IDEATION"
+                          sourceRef="GATEWAY.BR.3"
+                          targetRef="WORKFLOWEND">
+         <bpmn2:conditionExpression>
+            <bpmn2:documentation>Subject answered 'Wish to be dead' question with 'Yes' for 'Lifetime'</bpmn2:documentation><![CDATA[
+					
+						ClinicalData.SubjectData.StudyEventData.ItemGroupData.where(ItemGroupOID='S_SUICIDAL_IDEATION_1' and ItemData.where(ItemOID='Q_IDEATION_TYPE' and Value='1'))
+						.ItemData.where(ItemOID='Q_IDEATION_LIFETIME' and Value='Y')
+					
+				]]></bpmn2:conditionExpression>
+      </bpmn2:sequenceFlow>
+      <bpmn2:sequenceFlow id="TR.BRANCH_TO_SUICIDAL_BEHAVIOR"
+                          sourceRef="GATEWAY.BR.3"
+                          targetRef="WORKFLOWEND"/>
+      <bpmn2:sequenceFlow id="TR.3-BRANCH-LIFETIME-PAST_1_MONTH"
+                          sourceRef="ODMPATH.003.LIFETIME"
+                          targetRef="GATEWAY.BR.3.LIFETIME_PAST_1_MONTH"/>
+      <bpmn2:sequenceFlow id="TR.003.LIFETIME_PAST_1_MONTH"
+                          sourceRef="GATEWAY.BR.3.LIFETIME_PAST_1_MONTH"
+                          targetRef="ODMPATH.003.PAST_1_MONTH">
+         <bpmn2:conditionExpression>
+            <bpmn2:documentation>Subject answered 'Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act' question with 'Yes' for 'Lifetime'</bpmn2:documentation><![CDATA[
+					
+						ClinicalData.SubjectData.StudyEventData.ItemGroupData.where(ItemGroupOID='S_SUICIDAL_IDEATION_1' and ItemData.where(ItemOID='Q_IDEATION_TYPE' and Value='3'))
+						.ItemData.where(ItemOID='Q_IDEATION_LIFETIME' and Value='Y')
+					
+				]]></bpmn2:conditionExpression>
+      </bpmn2:sequenceFlow>
+      <bpmn2:sequenceFlow id="TR.003.DESCRIBE"
+                          sourceRef="ODMPATH.003.PAST_1_MONTH"
+                          targetRef="ODMPATH.003.DESCRIBE"/>
+      <bpmn2:sequenceFlow id="TR.003.DESCRIBE_004"
+                          sourceRef="ODMPATH.003.DESCRIBE"
+                          targetRef="ODMPATH.004.LIFETIME"/>
+      <bpmn2:sequenceFlow id="TR.3-4"
+                          sourceRef="GATEWAY.BR.3.LIFETIME_PAST_1_MONTH"
+                          targetRef="ODMPATH.004.LIFETIME"/>
+      <bpmn2:sequenceFlow id="TR.4-BRANCH-LIFETIME-PAST_1_MONTH"
+                          sourceRef="ODMPATH.004.LIFETIME"
+                          targetRef="GATEWAY.BR.4.LIFETIME_PAST_1_MONTH"/>
+      <bpmn2:sequenceFlow id="TR.004.LIFETIME_PAST_1_MONTH"
+                          sourceRef="GATEWAY.BR.4.LIFETIME_PAST_1_MONTH"
+                          targetRef="ODMPATH.004.PAST_1_MONTH">
+         <bpmn2:conditionExpression>
+            <bpmn2:documentation>Subject answered 'Active Suicidal Ideation with Some Intent to Act, without Specific Plan' question with 'Yes' for 'Lifetime'</bpmn2:documentation><![CDATA[
+					
+						ClinicalData.SubjectData.StudyEventData.ItemGroupData.where(ItemGroupOID='S_SUICIDAL_IDEATION_1' and ItemData.where(ItemOID='Q_IDEATION_TYPE' and Value='4'))
+						.ItemData.where(ItemOID='Q_IDEATION_LIFETIME' and Value='Y')
+					
+				]]></bpmn2:conditionExpression>
+      </bpmn2:sequenceFlow>
+      <bpmn2:sequenceFlow id="TR.004.DESCRIBE"
+                          sourceRef="ODMPATH.004.PAST_1_MONTH"
+                          targetRef="ODMPATH.004.DESCRIBE"/>
+      <bpmn2:sequenceFlow id="TR.004.DESCRIBE_005"
+                          sourceRef="ODMPATH.004.DESCRIBE"
+                          targetRef="ODMPATH.005.LIFETIME"/>
+      <bpmn2:sequenceFlow id="TR.4-5"
+                          sourceRef="GATEWAY.BR.4.LIFETIME_PAST_1_MONTH"
+                          targetRef="ODMPATH.005.LIFETIME"/>
+      <bpmn2:sequenceFlow id="TR.5-BRANCH-LIFETIME-PAST_1_MONTH"
+                          sourceRef="ODMPATH.005.LIFETIME"
+                          targetRef="GATEWAY.BR.5.LIFETIME_PAST_1_MONTH"/>
+      <bpmn2:sequenceFlow id="TR.005.LIFETIME_PAST_1_MONTH"
+                          sourceRef="GATEWAY.BR.5.LIFETIME_PAST_1_MONTH"
+                          targetRef="ODMPATH.005.PAST_1_MONTH">
+         <bpmn2:conditionExpression>
+            <bpmn2:documentation>Subject answered 'Active Suicidal Ideation with Specific Plan and Intent' question with 'Yes' for 'Lifetime'</bpmn2:documentation><![CDATA[
+					
+						ClinicalData.SubjectData.StudyEventData.ItemGroupData.where(ItemGroupOID='S_SUICIDAL_IDEATION_1' and ItemData.where(ItemOID='Q_IDEATION_TYPE' and Value='5'))
+						.ItemData.where(ItemOID='Q_IDEATION_LIFETIME' and Value='Y')
+					
+				]]></bpmn2:conditionExpression>
+      </bpmn2:sequenceFlow>
+      <bpmn2:sequenceFlow id="TR.005.DESCRIBE"
+                          sourceRef="ODMPATH.005.PAST_1_MONTH"
+                          targetRef="ODMPATH.005.DESCRIBE"/>
+      <bpmn2:sequenceFlow id="TR.006.DESCRIBE_INTENSITY_OF_IDEATION"
+                          sourceRef="ODMPATH.005.DESCRIBE"
+                          targetRef="WORKFLOWEND"/>
+      <bpmn2:sequenceFlow id="TR.5-INTENSITY_OF_IDEATION"
+                          sourceRef="GATEWAY.BR.5.LIFETIME_PAST_1_MONTH"
+                          targetRef="WORKFLOWEND"/>
+   </bpmn2:process>
+</bpmn2:definitions>
