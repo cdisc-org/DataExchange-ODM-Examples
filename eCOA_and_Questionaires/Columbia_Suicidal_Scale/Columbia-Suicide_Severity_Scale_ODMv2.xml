@@ -20,8 +20,14 @@
 			<Description><TranslatedText xml:lang="en">Describes cell "Wish to be dead" for "Lifetime"</TranslatedText></Description>
 			<FormalExpression>
 				<![CDATA[
-				ItemGroupData.where(ItemOID='S_SUICIDAL_IDEATION_2').where(ItemData.where(ItemOID='Q_IDEATIONTYPE' and Value='1'))
+				ItemGroupData.where(ItemGroupOID='S_SUICIDAL_IDEATION_2').where(ItemData.where(ItemOID='Q_IDEATIONTYPE' and Value='1'))
 				.ItemData.where(ItemOID='Q_IDEATION_LIFETIME')
+				]]>
+			</FormalExpression>
+			<!-- Alternative expression using XPath, to show how it compares to ODMPath -->
+			<FormalExpression>
+				<![CDATA[
+				ItemGroupData[@ItemGroupOID='S_SUICIDAL_IDEATION_2' and ItemData[@ItemOID='Q_IDEATIONTYPE' and Value='1']]/ItemData[@ItemOID='Q_IDEATION_LIFETIME']
 				]]>
 			</FormalExpression>
 			<!-- Alternative expression using "Def"s -->
@@ -38,8 +44,8 @@
 			<Description><TranslatedText xml:lang="en">Describes cell "Wish to be dead" for "Past 1 month"</TranslatedText></Description>
 			<FormalExpression>
 				<![CDATA[
-				ItemGroupData.where(ItemOID='S_SUICIDAL_IDEATION_2').where(ItemData.where(ItemOID='Q_IDEATIONTYPE' and Value='1'))
-				.ItemData.where(ItemOID='Q_IDEATION')
+				ItemGroupData.where(ItemGroupOID='S_SUICIDAL_IDEATION_2').where(ItemData.where(ItemOID='Q_IDEATIONTYPE' and Value='1'))
+				.ItemData.where(ItemOID='Q_IDEATION_PASTMONTH')
 				]]>
 			</FormalExpression>
 			<!-- Alternative expression using "Def"s -->
@@ -49,7 +55,7 @@
 							OID='T_SUICIDAL_IDEATION' and CodeListItem.CodedValue=1
 						)
 					)
-				).ItemDef.where(OID='Q_IDEATION')		
+				).ItemDef.where(OID='Q_IDEATION_PASTMONTH')		
 				]]></FormalExpression>
 		</ODMPathDef>
 		<ODMPathDef OID="ODMPATH.001.DESCRIBE">
