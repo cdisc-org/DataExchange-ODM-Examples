@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ODM xmlns="http://www.cdisc.org/ns/odm/v2.0" >
+<ODM xmlns="http://www.cdisc.org/ns/odm/v2.0" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    Description="Atlas Questionnaire metadata"
+    FileOID="Atlas_Questionnaire_Metadata"
+    FileType="Snapshot"
+    Granularity="Metadata"
+    ODMVersion="2.0"
+    CreationDateTime="2021-03-21T14:40:00+01:00">
     <!-- Source: CDISC Questionnaires: ATLAS: 
         https://www.cdisc.org/standards/foundational/qrs/age-treatment-systemic-antibiotics-leukocyte-count-serum-albumin-and -->
     <Study OID="ATLAS" StudyName="Age, treatment with systemic antibiotics, leukocyte count, serum albumin, and serum creatinine as a measure of renal function"
         ProtocolName="Example ATLAS protocol">
         <MetaDataVersion OID="MV.ATLAS.001" Name="ATLAS v.1">
-            <Description>
-                <TranslatedText xml:lang="en">Questionnaire: Age, treatment with systemic antibiotics, leukocyte count, serum albumin, and serum creatinine as a measure of renal function</TranslatedText>
-            </Description>
             <!-- The form -->
             <!-- TODO? Is it the responsibility of ODM to take that this form is displayed as a matrix?
                 With the columns containing the scores "0", "1" and "2".
@@ -31,28 +37,29 @@
             <!-- Individual items -->
             <ItemDef OID="IT.AGE" Name="Age" DataType="integer">
                 <Question><TranslatedText xml:lang="en">Age</TranslatedText></Question>
-                <!-- TODO: SDTM coding -->
+                
                 <CodeListRef CodeListOID="CL.AGE"/>
+                <Alias Context="SDTM" Name="RSSTRESN/RSSTRESC where RSTESTCD=ATLAS101"/>
             </ItemDef>
             <ItemDef OID="IT.SYST_ANTIBIOTICS" Name="Treatment with systemic antibiotics" DataType="integer">
                 <Question><TranslatedText xml:lang="en">Treatment with systemic antibiotics during CDI therapy (&gt;= 1 day)</TranslatedText></Question>
-                <!-- TODO: SDTM coding -->
                 <CodeListRef CodeListOID="CL.SYST_ANTIBIOTICS"/>
+                <Alias Context="SDTM" Name="RSSTRESN/RSSTRESC where RSTESTCD=ATLAS102"/>
             </ItemDef>
             <ItemDef OID="IT.LEUKOCYTE_COUNT" Name="Luekocyte count" DataType="integer">
                 <Question><TranslatedText xml:lang="en">Leukocyte count (total)</TranslatedText></Question>
-                <!-- TODO: SDTM coding -->
                 <CodeListRef CodeListOID="CL.LEUKOCYTE_COUNT" />
+                <Alias Context="SDTM" Name="RSSTRESN/RSSTRESC where RSTESTCD=ATLAS103"/>
             </ItemDef>
             <ItemDef OID="IT.ALBUMIN" Name="Serum albumin" DataType="integer">
                 <Question><TranslatedText xml:lang="en">Albumin (serum)</TranslatedText></Question>
-                <!-- TODO: SDTM coding -->
                 <CodeListRef CodeListOID="CL.ALBUMIN" />
+                <Alias Context="SDTM" Name="RSSTRESN/RSSTRESC where RSTESTCD=ATLAS104"/>
             </ItemDef>
             <ItemDef OID="IT.CREATININE" Name="Serum creatinine" DataType="integer">
                 <Question><TranslatedText xml:lang="en">Serum creatinine (as a measure of renal function></TranslatedText></Question>
-                <!-- TODO: SDTM coding -->
                 <CodeListRef CodeListOID="CL.CREATININE" />
+                <Alias Context="SDTM" Name="RSSTRESN/RSSTRESC where RSTESTCD=ATLAS105"/>
             </ItemDef>
             <!-- Total score -->
             <ItemDef OID="IT.TOTAL_SCORE" Name="Total score" DataType="integer">
@@ -65,7 +72,7 @@
             <CodeList OID="CL.AGE" Name="Age" DataType="integer"><!-- coded values are used for the scores -->
                 <!-- TODO: SDTM coding -->
                 <Description><TranslatedText xml:lang="en">Age</TranslatedText></Description>
-                <CodeListItem CodedVaklue="0">
+                <CodeListItem CodedValue="0">
                     <Decode>
                         <TranslatedText xml:lang="en">&lt; 60 years</TranslatedText>
                     </Decode>
@@ -80,12 +87,13 @@
                         <TranslatedText xml:lang="en">&gt;= 80 years</TranslatedText>
                     </Decode>
                 </CodeListItem>
+                <Alias Context="SDTM" Name="RSORRES"/>
             </CodeList>
             <!-- Scores for treatment with systemic antibiotics -->
             <CodeList OID="CL.SYST_ANTIBIOTICS" Name="Treatment with systemic antibiotics" DataType="integer">
                 <!-- TODO: SDTM coding -->
                 <Description><TranslatedText xml:lang="en">Treatment with systemic antibiotics during CDI therapy (&gt;= 1 day)</TranslatedText></Description>
-                <CodeListItem CodedVaklue="0">
+                <CodeListItem CodedValue="0">
                     <Decode>
                         <TranslatedText xml:lang="en">No</TranslatedText>
                     </Decode>
@@ -95,12 +103,13 @@
                         <TranslatedText xml:lang="en">Yes</TranslatedText>
                     </Decode>
                 </CodeListItem>
+                <Alias Context="SDTM" Name="RSORRES"/>
             </CodeList>
             <!-- Scores for leukocyte count -->
             <CodeList OID="CL.LEUKOCYTE_COUNT" Name="Leukocyte count" DataType="integer">
                 <!-- TODO: LOINC and SDTM coding -->
                 <Description><TranslatedText xml:lang="en">Leukocyte count (total)</TranslatedText></Description>
-                <CodeListItem CodedVaklue="0">
+                <CodeListItem CodedValue="0">
                     <Decode>
                         <TranslatedText xml:lang="en">&lt;16,000</TranslatedText>
                     </Decode>
@@ -115,12 +124,13 @@
                         <TranslatedText xml:lang="en">&gt;25,000</TranslatedText>
                     </Decode>
                 </CodeListItem>
+                <Alias Context="SDTM" Name="RSORRES"/>
             </CodeList>
             <!-- Scores for albumin -->
             <CodeList OID="CL.ALBUMIN" Name="Serum Albumin" DataType="integer">
                 <!-- TODO: LOINC and SDTM coding coding -->
                 <Description><TranslatedText xml:lang="en">Albumin (serum)</TranslatedText></Description>
-                <CodeListItem CodedVaklue="0">
+                <CodeListItem CodedValue="0">
                     <Decode>
                         <TranslatedText xml:lang="en">&gt;35 g/L</TranslatedText>
                     </Decode>
@@ -135,12 +145,13 @@
                         <TranslatedText xml:lang="en">&lt;= 25 g/L</TranslatedText>
                     </Decode>
                 </CodeListItem>
+                <Alias Context="SDTM" Name="RSORRES"/>
             </CodeList>
             <!-- Scores for creatinine -->
             <CodeList OID="CL.CREATININE" Name="Serum creatinine" DataType="integer">
                 <!-- TODO: LOINC and SDTM coding coding -->
                 <Description><TranslatedText xml:lang="en">Serum creatinine (as a measure of renal function)</TranslatedText></Description>
-                <CodeListItem CodedVaklue="0">
+                <CodeListItem CodedValue="0">
                     <Decode>
                         <TranslatedText xml:lang="en">&lt;= 120 umol/L</TranslatedText>
                     </Decode>
@@ -155,23 +166,24 @@
                         <TranslatedText xml:lang="en">&gt;= 180 umol/L</TranslatedText>
                     </Decode>
                 </CodeListItem>
+                <Alias Context="SDTM" Name="RSORRES"/>
             </CodeList>
             <!-- Total score calculation -->
             <MethodDef OID="MT.TOTAL_SCORE" Name="ATLAS total score calculation">
                 <Description>
                     <TranslatedText xml:lang="en">The total score is calculated as the sum of the scores of the 5 questions</TranslatedText>
-                    <FormalExpression Context="XPath">
-                        <!-- with XPath, we need to go up to the form level,
+                </Description>
+                <FormalExpression Context="XPath">
+                    <!-- with XPath, we need to go up to the form level,
                         than drill down to the group with questions and to the individual question -->
-                        <Code><![CDATA[
+                    <Code><![CDATA[
                             ../ItemGroupData[@ItemGroupOID='IG.ATLAS_QUESTIONS']/ItemData[@ItemOID='IT.AGE']/Value 
                                 + ../../ItemGroupData[@ItemGroupOID='IG.ATLAS_QUESTIONS']/ItemData[@ItemOID='IT.SYST_ANTIBIOTICS']/Value 
                                 + ../../ItemGroupData[@ItemGroupOID='IG.ATLAS_QUESTIONS']/ItemData[@ItemOID='IT.LEUKOCYTE_COUNT']/Value 
                                 + ../../ItemGroupData[@ItemGroupOID='IG.ATLAS_QUESTIONS']/ItemData[@ItemOID='IT.ALBUMIN']/Value
                                 + ../../ItemGroupData[@ItemGroupOID='IG.ATLAS_QUESTIONS']/ItemData[@ItemOID='IT.CREATININE']/Value
                            ]]></Code>
-                    </FormalExpression>
-                </Description>
+                </FormalExpression>
             </MethodDef>
         </MetaDataVersion>
     </Study>
