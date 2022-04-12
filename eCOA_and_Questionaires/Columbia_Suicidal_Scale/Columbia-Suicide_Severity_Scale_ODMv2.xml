@@ -5,6 +5,9 @@
     <!-- 2021-03-23: TODO: score calculation -->
     <Study OID="STUDY.CSSRS" StudyName="Columbia Suicid Severity Rating Scale Example" ProtocolName="Protocol: Columbia Suicid Severity Rating Scale Example">
         <MetaDataVersion OID="MV.CSSRS.001" Name="MetaDataVersion 1">
+            <Protocol>
+                <StudyEventGroupRef StudyEventGroupOID="SEG.CSSRS" Mandatory="Yes"/>
+            </Protocol>
             <!-- Workflow part: limited to the section "Suicidal Ideation",
                 as the other parts do not have a workflow that is non-linear -->
             <!-- TODO 2021-03-11: adapt for new, improved mechanism for repeats: transitions must go to ItemGroups -->
@@ -165,6 +168,13 @@
                 <!-- Workflow ends when entering group "Intensity of Ideation -->
             </WorkflowDef>
 
+            <!-- StudyEventGroup and StudyEvent -->
+            <StudyEventGroupDef OID="SEG.CSSRS" Name="Columbia Suicid Severity Rating Scale">
+                <StudyEventRef StudyEventOID="SE.CSSRS" Mandatory="Yes"/>
+            </StudyEventGroupDef>
+            <StudyEventDef OID="SE.CSSRS" Name="Columbia Suicid Severity Rating Scale Visit" Repeating="No" Type="Scheduled">
+                <ItemGroupRef ItemGroupOID="FO.C-SSRS_Form" Mandatory="Yes"/>
+            </StudyEventDef>
             <!-- The whole form -->
             <ItemGroupDef OID="FO.C-SSRS_Form" Name="Columbia-Suicide Severity Rating Scale Form" Repeating="No" Type="Form">
                 <ItemGroupRef ItemGroupOID="IG.Risk_assessment" Mandatory="Yes"/>
@@ -1749,14 +1759,18 @@
                 <Description>
                     <TranslatedText xml:lang="en">If question 'Wish to be dead' is answered with 'Yes', go to question 'Description of wishing to be dead'</TranslatedText>
                 </Description>
-                <FormalExpression Context="ODMPath">ItemGroupData.where(ItemGroupOID='IG.Wish_to_bed_Dead_Group_with_Description').ItemGroupData.where(ItemGroupOID='IG.Wish_to_be_Dead').ItemData.where(ItemOID='ItemOID='IT.1.Wish_to_be_Dead' and Value='Y')</FormalExpression>
-                <FormalExpression Context="XPath">../ItemData[@ItemOID='IT.1.Wish_to_be_Dead']/@Value='Y'</FormalExpression>
+                <!-- MethodSignature content: TODO -->
+                <MethodSignature></MethodSignature>
+                <FormalExpression Context="ODMPath"><Code>ItemGroupData.where(ItemGroupOID='IG.Wish_to_bed_Dead_Group_with_Description').ItemGroupData.where(ItemGroupOID='IG.Wish_to_be_Dead').ItemData.where(ItemOID='ItemOID='IT.1.Wish_to_be_Dead' and Value='Y')</Code></FormalExpression>
+                <FormalExpression Context="XPath"><Code>../ItemData[@ItemOID='IT.1.Wish_to_be_Dead']/@Value='Y'</Code></FormalExpression>
             </ConditionDef>
             <ConditionDef OID="COND.Questions_1_and_2_negative" Name="Condition for moving to page/section 'Suicidal Behavior' after questions 1 and 2 of 'Suicidal Iedation'">
                 <Description>
                     <TranslatedText xml:lang="en">If both questions 1 and 2 of section 'Suicidal Ideation' are negative, proceed to section/page 'Suicidal behavior'</TranslatedText>
                 </Description>
-                <FormalExpression Context="XPath">../ItemData[@ItemOID='IT.1.Wish_to_be_Dead']/@Value='N' and ../ItemData[@ItemOID='IT.2.Non-Specific_Active_Suicidal_Thoughts']/@Value='N'</FormalExpression>
+                <!-- MethodSignature content: TODO -->
+                <MethodSignature></MethodSignature>
+                <FormalExpression Context="XPath"><Code>../ItemData[@ItemOID='IT.1.Wish_to_be_Dead']/@Value='N' and ../ItemData[@ItemOID='IT.2.Non-Specific_Active_Suicidal_Thoughts']/@Value='N'</Code></FormalExpression>
             </ConditionDef>
             <ConditionDef OID="COND.Way_to_end_your_life_5_Description"
                 Name="Condition for skipping the question 'If yes, describe', after question 'Or did you do it purely for other reasons / without ANY intention of killing yourself ...'">
@@ -1765,9 +1779,11 @@
                         purely for other reasons / without ANY intention of killing yourself ...'
                         was answered with "No"</TranslatedText>
                 </Description>
+                <!-- MethodSignature content: TODO -->
+                <MethodSignature></MethodSignature>
                 <!-- We use XPath here for the machine-readable expression, but one can of course use any other query or expression language -->
                 <FormalExpression Context="XPath"
-                    >../ItemData[@ItemOID='IT.Way_to_end_your_life_5']/@Value='N'</FormalExpression>
+                    ><Code>../ItemData[@ItemOID='IT.Way_to_end_your_life_5']/@Value='N'</Code></FormalExpression>
             </ConditionDef>
             <ConditionDef OID="COND.Time_starting_something_to_end_life_description"
                 Name="Condition for skipping the question 'If yes, describe', after question 'Has there been a time when you started to do something to end your life but someone stopped you ...'">
@@ -1776,9 +1792,9 @@
                         time when you started to do something to end your life but someone or
                         something stopped you ...' was answered with "No"</TranslatedText>
                 </Description>
+                <MethodSignature></MethodSignature>
                 <!-- We use XPath here for the machine-readable expression, but one can of course use any other query or expression language -->
-                <FormalExpression Context="XPath"
-                    >../ItemData[@ItemOID='IT.Time_starting_something_to_end_life']/@Value='N'</FormalExpression>
+                <FormalExpression Context="XPath"><Code>../ItemData[@ItemOID='IT.Time_starting_something_to_end_life']/@Value='N'</Code></FormalExpression>
             </ConditionDef>
             <ConditionDef OID="COND.Aborted_attempt_description"
                 Name="Condition for skipping the question 'If yes, describe', after question 'Has there been a time when you started to do something to try to end your life but you stopped yourself ...'">
@@ -1787,9 +1803,10 @@
                         time when you started to do something to try to end your life but you
                         stopped yourself ...' was answered with "No"</TranslatedText>
                 </Description>
+                <!-- MethodSignature content: TODO -->
+                <MethodSignature></MethodSignature>
                 <!-- We use XPath here for the machine-readable expression, but one can of course use any other query or expression language -->
-                <FormalExpression Context="XPath"
-                    >../ItemData[@ItemOID='IT.Aborted_attempt']/@Value='N'</FormalExpression>
+                <FormalExpression Context="XPath"><Code>../ItemData[@ItemOID='IT.Aborted_attempt']/@Value='N'</Code></FormalExpression>
             </ConditionDef>
             <ConditionDef OID="COND.Steps_towards_making_suicide_attempt_description"
                 Name="Condition for skipping the question 'If yes, describe', after question 'Have you taken any steps towards making a suicide attempt or preparing to kill yourself ...'">
@@ -1798,9 +1815,10 @@
                         any steps towards making a suicide attempt or preparing to kill yourself
                         ...' was answered with "No"</TranslatedText>
                 </Description>
+                <!-- MethodSignature content: TODO -->
+                <MethodSignature></MethodSignature>
                 <!-- We use XPath here for the machine-readable expression, but one can of course use any other query or expression language -->
-                <FormalExpression Context="XPath"
-                    >../ItemData[@ItemOID='Steps_towards_making_suicide_attempt']/@Value='N'</FormalExpression>
+                <FormalExpression Context="XPath"><Code>../ItemData[@ItemOID='Steps_towards_making_suicide_attempt']/@Value='N'</Code></FormalExpression>
             </ConditionDef>
             <!-- Lethality -->
             <ConditionDef OID="COND.Potential_Lethality"
@@ -1809,95 +1827,97 @@
                     <TranslatedText xml:lang="en">Do not collect when the collected value for the
                         question 'Actual Lethality/Medical Damage' is 0</TranslatedText>
                 </Description>
-                <FormalExpression Context="XPath"
-                    >../../ItemGroupData[@ItemGroupOID='IG.Actual_Lethality']/ItemData[@ItemOID='IT.Actual_Lethality']/@Value=0</FormalExpression>
+                <!-- MethodSignature content: TODO -->
+                <MethodSignature></MethodSignature>
+                <FormalExpression Context="XPath"><Code>../../ItemGroupData[@ItemGroupOID='IG.Actual_Lethality']/ItemData[@ItemOID='IT.Actual_Lethality']/@Value=0</Code></FormalExpression>
             </ConditionDef>
         </MetaDataVersion>
     </Study>
     <ClinicalData StudyOID="STUDY.CSSRS" MetaDataVersionOID="MV.CSSRS.001">
         <SubjectData SubjectKey="001">
-            <!-- TODO: add StudyEventData level -->
-            <!-- we start from the form level here -->
-            <ItemGroupData ItemGroupOID="FO.C-SSRS_Form">
-                <ItemGroupData ItemGroupOID="IG.Risk_assessment">
-                    <!-- "Risk Assessment" section -->
-                    <!-- 1. Section "Suicidal and Self-Injury Behavior (Past week)":
-                    each row has 2 checkboxes -->
-                    <ItemGroupData ItemGroupOID="IG.Suicidal_and_Self-Injury_Behavior">
-                        <!-- First checkbox checked is "Actual Side attempt" with "Past week" -->
-                        <ItemGroupData ItemGroupOID="IG.Actual_suicide_attempt_with_Lifetime">
-                            <ItemData ItemOID="IT.Actual_suicide_attempt" Value="Y"/>
-                            <!-- And the repeat value -->
-                            <ItemData ItemOID="IT.PAST_WEEK_LIFETIME" Value="PAST_WEEK"/><!-- governed by codelist with values "PAST_WEEK" and "LIFETIME" -->
+            <!-- TODO: add StudyEventGroupData level -->
+            <StudyEventData StudyEventOID="SE.CSSRS">
+                <!-- we start from the form level here -->
+                <ItemGroupData ItemGroupOID="FO.C-SSRS_Form">
+                    <ItemGroupData ItemGroupOID="IG.Risk_assessment">
+                        <!-- "Risk Assessment" section -->
+                        <!-- 1. Section "Suicidal and Self-Injury Behavior (Past week)":
+                        each row has 2 checkboxes -->
+                        <ItemGroupData ItemGroupOID="IG.Suicidal_and_Self-Injury_Behavior">
+                            <!-- First checkbox checked is "Actual Side attempt" with "Past week" -->
+                            <ItemGroupData ItemGroupOID="IG.Actual_suicide_attempt_with_Lifetime">
+                                <ItemData ItemOID="IT.Actual_suicide_attempt" Value="Y"/>
+                                <!-- And the repeat value -->
+                                <ItemData ItemOID="IT.PAST_WEEK_LIFETIME" Value="PAST_WEEK"/><!-- governed by codelist with values "PAST_WEEK" and "LIFETIME" -->
+                            </ItemGroupData>
+                            <!-- Second checkbox checked is "Aborted Attempt" with "Lifetime" -->
+                            <ItemGroupData ItemGroupOID="IG.Aborted_attempt_with_Lifetime">
+                                <ItemData ItemOID="IT.Aborted_attempt" Value="Y"/>
+                                <!-- And the repeat value -->
+                                <ItemData ItemOID="IT.PAST_WEEK_LIFETIME" Value="LIFETIME"/><!-- governed by codelist with values "PAST_WEEK" and "LIFETIME" -->
+                            </ItemGroupData>
+                            <!-- Third checkbox checked is "Self-injury behavior" with BOTH checkboxes "Past week" and "Lifetime" checked.
+                            TODO: discuss with team whether the following is the correct approach -->
+                            <ItemGroupData ItemGroupOID="IG.Self-injury_behavior">
+                                <ItemData ItemOID="IT.Self-injury_behavior" Value="Y"/>
+                                <ItemData ItemOID="IT.PAST_WEEK_LIFETIME" Value="LIFETIME"/>
+                            </ItemGroupData>
+                        </ItemGroupData><!-- end of section "Suicidal and Self-Injury Behavior (Past week)" -->
+                        <!-- Section "Suicide Ideation (Most Severe in Past Week)" -->
+                        <ItemGroupData ItemGroupOID="IG.Suicidal_Ideation">
+                            <!-- Section "Suicide Ideation (Most Severe in Past Week)": only 1 checkbox per row, no repeat -->
+                            <!-- Checkboxes "Suicidal thoughts" and "Suicidal intent with specific plan" have been checked -->
+                            <!-- TODO: there are subsections -->
+                            <ItemData ItemOID="IT.Suicidal_thoughts" Value="Y"/>                
+                            <ItemData ItemOID="IT.Suicidal_intent_with_specific_plan" Value="Y"/>
                         </ItemGroupData>
-                        <!-- Second checkbox checked is "Aborted Attempt" with "Lifetime" -->
-                        <ItemGroupData ItemGroupOID="IG.Aborted_attempt_with_Lifetime">
-                            <ItemData ItemOID="IT.Aborted_attempt" Value="Y"/>
-                            <!-- And the repeat value -->
-                            <ItemData ItemOID="IT.PAST_WEEK_LIFETIME" Value="LIFETIME"/><!-- governed by codelist with values "PAST_WEEK" and "LIFETIME" -->
+                        <!-- Section "Activating Events (Recent)" -->
+                        <ItemGroupData ItemGroupOID="IG.Activating_Events_Recent">
+                            <!-- "Recent loss or other significant negative event" has been checked -->
+                            <ItemData ItemOID="IT.Recent_loss_or_other_significant_negative_event" Value="1"/>
+                            
+                            <!-- with additional description "dog died" -->
+                            <ItemData ItemOID="IT.Recent_loss_or_other_significant_negative_event_Description" Value="Dog died"/>
+                            <!-- Checkbox "Current or pending isolation or feeling alone" has been checked -->
+                            <ItemData ItemOID="IT.Current_or_pending_isolation_or_feeling_alone" Value="Y"/>                        
                         </ItemGroupData>
-                        <!-- Third checkbox checked is "Self-injury behavior" with BOTH checkboxes "Past week" and "Lifetime" checked.
-                        TODO: discuss with team whether the following is the correct approach -->
-                        <ItemGroupData ItemGroupOID="IG.Self-injury_behavior">
-                            <ItemData ItemOID="IT.Self-injury_behavior" Value="Y"/>
-                            <ItemData ItemOID="IT.PAST_WEEK_LIFETIME" Value="LIFETIME"/>
+                        <!-- Section "Treatment History" -->
+                        <ItemGroupData ItemGroupOID="IG.Treatment_History">
+                            <!-- Only checkbox "noncompliant with treatment has been checked -->
+                            <ItemData ItemOID="IT.Noncompliant_with_treatment" Value="Y"/>                        
                         </ItemGroupData>
-                    </ItemGroupData><!-- end of section "Suicidal and Self-Injury Behavior (Past week)" -->
-                    <!-- Section "Suicide Ideation (Most Severe in Past Week)" -->
-                    <ItemGroupData ItemGroupOID="IG.Suicidal_Ideation">
-                        <!-- Section "Suicide Ideation (Most Severe in Past Week)": only 1 checkbox per row, no repeat -->
-                        <!-- Checkboxes "Suicidal thoughts" and "Suicidal intent with specific plan" have been checked -->
-                        <!-- TODO: there are subsections -->
-                        <ItemData ItemOID="IT.Suicidal_thoughts" Value="Y"/>                
-                        <ItemData ItemOID="IT.Suicidal_intent_with_specific_plan" Value="Y"/>
-                    </ItemGroupData>
-                    <!-- Section "Activating Events (Recent)" -->
-                    <ItemGroupData ItemGroupOID="IG.Activating_Events_Recent">
-                        <!-- "Recent loss or other significant negative event" has been checked -->
-                        <ItemData ItemOID="IT.Recent_loss_or_other_significant_negative_event" Value="1"/>
-                        
-                        <!-- with additional description "dog died" -->
-                        <ItemData ItemOID="IT.Recent_loss_or_other_significant_negative_event_Description" Value="Dog died"/>
-                        <!-- Checkbox "Current or pending isolation or feeling alone" has been checked -->
-                        <ItemData ItemOID="IT.Current_or_pending_isolation_or_feeling_alone" Value="Y"/>                        
-                    </ItemGroupData>
-                    <!-- Section "Treatment History" -->
-                    <ItemGroupData ItemGroupOID="IG.Treatment_History">
-                        <!-- Only checkbox "noncompliant with treatment has been checked -->
-                        <ItemData ItemOID="IT.Noncompliant_with_treatment" Value="Y"/>                        
-                    </ItemGroupData>
-                    <!-- Section "Other Risk factors" -->
-                    <ItemGroupData ItemGroupOID="IT.Other_Risk_Factors">
-                        <!-- The checkbox "Other Risk Factors" has been checked, 
-                        and two entries (2 rows) were provided: "Mountaineering" and "Skiing" -->
-                        <ItemData ItemOID="IT.Other_Risk_Factors" Value="Y"/>
-                        <!-- TODO?: shouldn't this be a repeating ItemGroup -->
-                        <ItemData ItemOID="IT.Other_Risk_Factors_Description" Value="Mountaineering and skiing"/>
-                    </ItemGroupData>
-                    <!-- Section "Clinical Status" -->
-                    <ItemGroupData ItemGroupOID="IG.Clinical_Status_Recent">
-                        <!-- Only "Highly impulsive behavior" and "Aggressive behavior towards others" are checked -->
-                        <ItemData ItemOID="IT.Highly_impulsive_behavior" Value="Y"/>                        
-                        <ItemData ItemOID="IT.Any_suicidal_self-injury_or_aggressive_behavior" Value="Y"/>                        
-                    </ItemGroupData>
-                    <!-- Section "Protective factors" -->
-                    <ItemGroupData ItemGroupOID="IG.Protective_factors">
-                        <ItemData ItemOID="IT.Fear_of_death" Value="Y"/>                        
-                    </ItemGroupData>
-                    <!-- Section "Other protective factors -->
-                    <ItemGroupData ItemGroupOID="IG.Other_Protective_Factors">
-                        <!-- "Other protective factors" checkbox is checked, 
-                        with additional text "wears protector when skiing" -->
-                        <ItemData ItemOID="IT.Other_Protective_Factors" Value="Y"/>
-                        <ItemData ItemOID="IT.Other_Protective_Factors_Description" Value="wearing protector when skiing"/>
-                    </ItemGroupData>
-                </ItemGroupData><!-- End of page 1: "Risk Assessment" -->                
-                <!-- Page "SUICIDAL IDEATION" -->
-                <!-- The 5 first questions in this form (section Suicidal and Self-Injury Behavior (Past week)), 
-                has two checkboxes, one for "Lifetime: Time Most Suicidal Lifetime: Time He/She Felt Most Suicidal", 
-                and one for "Past 1 month" -->
-            </ItemGroupData><!-- End of complete form -->
+                        <!-- Section "Other Risk factors" -->
+                        <ItemGroupData ItemGroupOID="IT.Other_Risk_Factors">
+                            <!-- The checkbox "Other Risk Factors" has been checked, 
+                            and two entries (2 rows) were provided: "Mountaineering" and "Skiing" -->
+                            <ItemData ItemOID="IT.Other_Risk_Factors" Value="Y"/>
+                            <!-- TODO?: shouldn't this be a repeating ItemGroup -->
+                            <ItemData ItemOID="IT.Other_Risk_Factors_Description" Value="Mountaineering and skiing"/>
+                        </ItemGroupData>
+                        <!-- Section "Clinical Status" -->
+                        <ItemGroupData ItemGroupOID="IG.Clinical_Status_Recent">
+                            <!-- Only "Highly impulsive behavior" and "Aggressive behavior towards others" are checked -->
+                            <ItemData ItemOID="IT.Highly_impulsive_behavior" Value="Y"/>                        
+                            <ItemData ItemOID="IT.Any_suicidal_self-injury_or_aggressive_behavior" Value="Y"/>                        
+                        </ItemGroupData>
+                        <!-- Section "Protective factors" -->
+                        <ItemGroupData ItemGroupOID="IG.Protective_factors">
+                            <ItemData ItemOID="IT.Fear_of_death" Value="Y"/>                        
+                        </ItemGroupData>
+                        <!-- Section "Other protective factors -->
+                        <ItemGroupData ItemGroupOID="IG.Other_Protective_Factors">
+                            <!-- "Other protective factors" checkbox is checked, 
+                            with additional text "wears protector when skiing" -->
+                            <ItemData ItemOID="IT.Other_Protective_Factors" Value="Y"/>
+                            <ItemData ItemOID="IT.Other_Protective_Factors_Description" Value="wearing protector when skiing"/>
+                        </ItemGroupData>
+                    </ItemGroupData><!-- End of page 1: "Risk Assessment" -->                
+                    <!-- Page "SUICIDAL IDEATION" -->
+                    <!-- The 5 first questions in this form (section Suicidal and Self-Injury Behavior (Past week)), 
+                    has two checkboxes, one for "Lifetime: Time Most Suicidal Lifetime: Time He/She Felt Most Suicidal", 
+                    and one for "Past 1 month" -->
+                </ItemGroupData><!-- End of complete form -->
+            </StudyEventData>
         </SubjectData>
-        
     </ClinicalData>
 </ODM>
