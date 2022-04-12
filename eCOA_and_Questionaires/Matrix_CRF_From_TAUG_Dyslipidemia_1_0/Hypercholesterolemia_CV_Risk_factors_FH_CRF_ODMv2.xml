@@ -3,7 +3,14 @@
 <ODM xmlns="http://www.cdisc.org/ns/odm/v2.0" FileOID="MATRIX EXAMPLE" FileType="Snapshot" CreationDateTime="2021-03-04T10:58:37" ODMVersion="2.0" Originator="" SourceSystem="" SourceSystemVersion="">
     <Study OID="MATRIX EXAMPLE" StudyName="Example of Matrix-CRF" ProtocolName="Example of Matrix-CRF protocol">
         <Description><TranslatedText xml:lang="en">Example of Matrix-CRF implementation: Hypercholesterolemia Family Risk Factors from CDISC TAUG Dyslipidemia v.1.0</TranslatedText></Description>
-        <MetaDataVersion OID="MV.1.0" Name="Data acquisition" Description="Example of Matrix-CRF: Hypercholesterolemia Family Risk Factors from CDISC TAUG Dyslipidemia v.1.0">
+        <MetaDataVersion OID="MV.1.0" Name="Data acquisition">
+            <Description><TranslatedText xml:lang="en">Example of Matrix-CRF: Hypercholesterolemia Family Risk Factors from CDISC TAUG Dyslipidemia v.1.0</TranslatedText></Description>
+            <Protocol>
+                <StudyEventGroupRef StudyEventGroupOID="SEG.HYPERCHOLESTEROLEMIA_FAMILY_RISK_FACTORS" Mandatory="Yes"/>
+            </Protocol>
+            <StudyEventGroupDef OID="SEG.HYPERCHOLESTEROLEMIA_FAMILY_RISK_FACTORS" Name="Hypercholesterolemia Family Factors">
+                <StudyEventRef StudyEventOID="SE.MH" Mandatory="Yes"/>
+            </StudyEventGroupDef>
             <StudyEventDef Name="Medical History - Family History" OID="SE.MH" Repeating="No" Type="Scheduled">
                 <ItemGroupRef ItemGroupOID="IG.HYPERCHOLESTEROLEMIA_FAMILY_RISK_FACTORS" Mandatory="Yes"/>
             </StudyEventDef>
@@ -122,6 +129,7 @@
     </Study>
     <ClinicalData StudyOID="MATRIX EXAMPLE" MetaDataVersionOID="MV.1.0">
         <SubjectData SubjectKey="001">
+            <!-- TODO: StudyEventGroupData -->
             <StudyEventData StudyEventOID="SE.MH">
                     <ItemGroupData ItemGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP" ItemGroupRepeatKey="1">
                         <!-- This is the value for the repeat item. Value="1" is "History of Hypercholeserolemia" -->
