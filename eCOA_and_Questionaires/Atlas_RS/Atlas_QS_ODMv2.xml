@@ -225,19 +225,19 @@
                 <ItemGroupData ItemGroupOID="IG.ATLAS_FORM">
                     <ItemGroupData ItemGroupOID="IG.ATLAS_QUESTIONS">
                         <!-- Age between 60 and 79 years: 1 point -->
-                        <ItemData ItemOID="IT.AGE" Value="1"/>
+                        <ItemData ItemOID="IT.AGE"><Value>1</Value></ItemData>
                         <!-- No treatment with systemic antibiotics: 0 points -->
-                        <ItemData ItemOID="IT.SYST_ANTIBIOTICS" Value="0"/>
+                        <ItemData ItemOID="IT.SYST_ANTIBIOTICS"><Value>0</Value></ItemData>
                         <!-- Leukocyte count &gt; 25,000: 2 points -->
-                        <ItemData ItemOID="IT.LEUKOCYTE_COUNT" Value="2"/>
+                        <ItemData ItemOID="IT.LEUKOCYTE_COUNT"><Value>2</Value></ItemData>
                         <!-- Albumin Serum between 26 and 35 g/L: 1 point -->
-                        <ItemData ItemOID="IT.ALBUMIN" Value="2"/>
+                        <ItemData ItemOID="IT.ALBUMIN"><Value>2</Value></ItemData>
                         <!-- Serum creatinine larger than 180 umol/L: 2 points -->
-                        <ItemData ItemOID="IT.CREATININE" Value="2"/>
+                        <ItemData ItemOID="IT.CREATININE"><Value>2</Value></ItemData>
                     </ItemGroupData>
                     <ItemGroupData ItemGroupOID="IG.ATLAS_SCORE">
                         <!-- Total score = 1 + 0 + 2 + 2 + 2 = 7 -->
-                        <ItemData ItemOID="IT.TOTAL_SCORE" Value="7"/>
+                        <ItemData ItemOID="IT.TOTAL_SCORE"><Value>7</Value></ItemData>
                     </ItemGroupData>
                 </ItemGroupData>
             </StudyEventData>
