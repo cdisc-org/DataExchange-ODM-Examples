@@ -1846,21 +1846,21 @@
                         <ItemGroupData ItemGroupOID="IG.Suicidal_and_Self-Injury_Behavior">
                             <!-- First checkbox checked is "Actual Side attempt" with "Past week" -->
                             <ItemGroupData ItemGroupOID="IG.Actual_suicide_attempt_with_Lifetime">
-                                <ItemData ItemOID="IT.Actual_suicide_attempt" Value="Y"/>
+                                <ItemData ItemOID="IT.Actual_suicide_attempt"><Value>Y</Value></ItemData>
                                 <!-- And the repeat value -->
-                                <ItemData ItemOID="IT.PAST_WEEK_LIFETIME" Value="PAST_WEEK"/><!-- governed by codelist with values "PAST_WEEK" and "LIFETIME" -->
+                                <ItemData ItemOID="IT.PAST_WEEK_LIFETIME"><Value>PAST_WEEK</Value></ItemData><!-- governed by codelist with values "PAST_WEEK" and "LIFETIME" -->
                             </ItemGroupData>
                             <!-- Second checkbox checked is "Aborted Attempt" with "Lifetime" -->
                             <ItemGroupData ItemGroupOID="IG.Aborted_attempt_with_Lifetime">
-                                <ItemData ItemOID="IT.Aborted_attempt" Value="Y"/>
+                                <ItemData ItemOID="IT.Aborted_attempt"><Value>Y</Value></ItemData>
                                 <!-- And the repeat value -->
-                                <ItemData ItemOID="IT.PAST_WEEK_LIFETIME" Value="LIFETIME"/><!-- governed by codelist with values "PAST_WEEK" and "LIFETIME" -->
+                                <ItemData ItemOID="IT.PAST_WEEK_LIFETIME"><Value>LIFETIME</Value></ItemData><!-- governed by codelist with values "PAST_WEEK" and "LIFETIME" -->
                             </ItemGroupData>
                             <!-- Third checkbox checked is "Self-injury behavior" with BOTH checkboxes "Past week" and "Lifetime" checked.
                             TODO: discuss with team whether the following is the correct approach -->
                             <ItemGroupData ItemGroupOID="IG.Self-injury_behavior">
-                                <ItemData ItemOID="IT.Self-injury_behavior" Value="Y"/>
-                                <ItemData ItemOID="IT.PAST_WEEK_LIFETIME" Value="LIFETIME"/>
+                                <ItemData ItemOID="IT.Self-injury_behavior"><Value>Y</Value></ItemData>
+                                <ItemData ItemOID="IT.PAST_WEEK_LIFETIME"><Value>LIFETIME</Value></ItemData>
                             </ItemGroupData>
                         </ItemGroupData><!-- end of section "Suicidal and Self-Injury Behavior (Past week)" -->
                         <!-- Section "Suicide Ideation (Most Severe in Past Week)" -->
@@ -1868,48 +1868,48 @@
                             <!-- Section "Suicide Ideation (Most Severe in Past Week)": only 1 checkbox per row, no repeat -->
                             <!-- Checkboxes "Suicidal thoughts" and "Suicidal intent with specific plan" have been checked -->
                             <!-- TODO: there are subsections -->
-                            <ItemData ItemOID="IT.Suicidal_thoughts" Value="Y"/>                
-                            <ItemData ItemOID="IT.Suicidal_intent_with_specific_plan" Value="Y"/>
+                            <ItemData ItemOID="IT.Suicidal_thoughts"><Value>Y</Value></ItemData>                
+                            <ItemData ItemOID="IT.Suicidal_intent_with_specific_plan"><Value>Y</Value></ItemData>
                         </ItemGroupData>
                         <!-- Section "Activating Events (Recent)" -->
                         <ItemGroupData ItemGroupOID="IG.Activating_Events_Recent">
                             <!-- "Recent loss or other significant negative event" has been checked -->
-                            <ItemData ItemOID="IT.Recent_loss_or_other_significant_negative_event" Value="1"/>
+                            <ItemData ItemOID="IT.Recent_loss_or_other_significant_negative_event"><Value>1</Value></ItemData>
                             
                             <!-- with additional description "dog died" -->
-                            <ItemData ItemOID="IT.Recent_loss_or_other_significant_negative_event_Description" Value="Dog died"/>
+                            <ItemData ItemOID="IT.Recent_loss_or_other_significant_negative_event_Description"><Value>Dog died</Value></ItemData>
                             <!-- Checkbox "Current or pending isolation or feeling alone" has been checked -->
-                            <ItemData ItemOID="IT.Current_or_pending_isolation_or_feeling_alone" Value="Y"/>                        
+                            <ItemData ItemOID="IT.Current_or_pending_isolation_or_feeling_alone"><Value>Y</Value></ItemData>                        
                         </ItemGroupData>
                         <!-- Section "Treatment History" -->
                         <ItemGroupData ItemGroupOID="IG.Treatment_History">
                             <!-- Only checkbox "noncompliant with treatment has been checked -->
-                            <ItemData ItemOID="IT.Noncompliant_with_treatment" Value="Y"/>                        
+                            <ItemData ItemOID="IT.Noncompliant_with_treatment"><Value>Y</Value></ItemData>                        
                         </ItemGroupData>
                         <!-- Section "Other Risk factors" -->
                         <ItemGroupData ItemGroupOID="IT.Other_Risk_Factors">
                             <!-- The checkbox "Other Risk Factors" has been checked, 
                             and two entries (2 rows) were provided: "Mountaineering" and "Skiing" -->
-                            <ItemData ItemOID="IT.Other_Risk_Factors" Value="Y"/>
+                            <ItemData ItemOID="IT.Other_Risk_Factors"><Value>Y</Value></ItemData>
                             <!-- TODO?: shouldn't this be a repeating ItemGroup -->
-                            <ItemData ItemOID="IT.Other_Risk_Factors_Description" Value="Mountaineering and skiing"/>
+                            <ItemData ItemOID="IT.Other_Risk_Factors_Description"><Value>Mountaineering and skiing</Value></ItemData>
                         </ItemGroupData>
                         <!-- Section "Clinical Status" -->
                         <ItemGroupData ItemGroupOID="IG.Clinical_Status_Recent">
                             <!-- Only "Highly impulsive behavior" and "Aggressive behavior towards others" are checked -->
-                            <ItemData ItemOID="IT.Highly_impulsive_behavior" Value="Y"/>                        
-                            <ItemData ItemOID="IT.Any_suicidal_self-injury_or_aggressive_behavior" Value="Y"/>                        
+                            <ItemData ItemOID="IT.Highly_impulsive_behavior"><Value>Y</Value></ItemData>                        
+                            <ItemData ItemOID="IT.Any_suicidal_self-injury_or_aggressive_behavior"><Value>Y</Value></ItemData>                        
                         </ItemGroupData>
                         <!-- Section "Protective factors" -->
                         <ItemGroupData ItemGroupOID="IG.Protective_factors">
-                            <ItemData ItemOID="IT.Fear_of_death" Value="Y"/>                        
+                            <ItemData ItemOID="IT.Fear_of_death"><Value>Y</Value></ItemData>                        
                         </ItemGroupData>
                         <!-- Section "Other protective factors -->
                         <ItemGroupData ItemGroupOID="IG.Other_Protective_Factors">
                             <!-- "Other protective factors" checkbox is checked, 
                             with additional text "wears protector when skiing" -->
-                            <ItemData ItemOID="IT.Other_Protective_Factors" Value="Y"/>
-                            <ItemData ItemOID="IT.Other_Protective_Factors_Description" Value="wearing protector when skiing"/>
+                            <ItemData ItemOID="IT.Other_Protective_Factors"><Value>Y</Value></ItemData>
+                            <ItemData ItemOID="IT.Other_Protective_Factors_Description"><Value>wearing protector when skiing</Value></ItemData>
                         </ItemGroupData>
                     </ItemGroupData><!-- End of page 1: "Risk Assessment" -->                
                     <!-- Page "SUICIDAL IDEATION" -->
