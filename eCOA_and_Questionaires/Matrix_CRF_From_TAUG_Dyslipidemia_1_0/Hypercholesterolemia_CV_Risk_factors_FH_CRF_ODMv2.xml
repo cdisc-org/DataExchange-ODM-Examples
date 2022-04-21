@@ -136,48 +136,48 @@
                         <ItemData ItemOID="I.MHTERM" Value="1"/>
                         <!-- The values below are the responses to the question "History of Hypercholeserolemia"
                         for "Father", "Mother", "Brothers", "Sisters", "Sons" and "Daughters" -->
-                        <ItemData ItemOID="I.MHFATHER" Value="Y"/>
-                        <ItemData ItemOID="I.MHMOTHER" Value="N"/>
-                        <ItemData ItemOID="I.MHBROTHERS" Value="NA"/>                 
-                        <ItemData ItemOID="I.MHSISTERS" Value="UNK"/>                       
-                        <ItemData ItemOID="I.MHSONS" Value="N"/>
-                        <ItemData ItemOID="I.MHDAUGHTERS" Value="N"/>
+                        <ItemData ItemOID="I.MHFATHER"><Value>Y</Value></ItemData>
+                        <ItemData ItemOID="I.MHMOTHER"><Value>N</Value></ItemData>
+                        <ItemData ItemOID="I.MHBROTHERS"><Value>NA</Value></ItemData>                 
+                        <ItemData ItemOID="I.MHSISTERS"><Value>UNK</Value></ItemData>                       
+                        <ItemData ItemOID="I.MHSONS"><Value>N</Value></ItemData>
+                        <ItemData ItemOID="I.MHDAUGHTERS"><Value>N</Value></ItemData>
                     </ItemGroupData>
                     <ItemGroupData ItemGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP" ItemGroupRepeatKey="2">
                         <!-- This is the value for the repeat item. Value="2" is "History of Premature Cardiovascular Disease" -->
-                        <ItemData ItemOID="I.MHTERM" Value="2"/>
+                        <ItemData ItemOID="I.MHTERM"><Value>2</Value></ItemData>
                         <!-- The values below are the responses to the question "History of Premature Cardiovascular Disease"
                         for "Father", "Mother", "Brothers", "Sisters", "Sons" and "Daughters" -->
-                        <ItemData ItemOID="I.MHFATHER" Value="Y"/>
-                        <ItemData ItemOID="I.MHMOTHER" Value="UNK"/>
-                        <ItemData ItemOID="I.MHBROTHERS" Value="NA"/>
-                        <ItemData ItemOID="I.MHSISTERS" Value="N"/>
-                        <ItemData ItemOID="I.MHSONS" Value="UNK"/>
-                        <ItemData ItemOID="I.MHDAUGHTERS" Value="N"/>
+                        <ItemData ItemOID="I.MHFATHER"><Value>Y</Value></ItemData>
+                        <ItemData ItemOID="I.MHMOTHER"><Value>UNK</Value></ItemData>
+                        <ItemData ItemOID="I.MHBROTHERS"><Value>NA</Value></ItemData>
+                        <ItemData ItemOID="I.MHSISTERS"><Value>N</Value></ItemData>
+                        <ItemData ItemOID="I.MHSONS"><Value>UNK</Value></ItemData>
+                        <ItemData ItemOID="I.MHDAUGHTERS"><Value>N</Value></ItemData>
                     </ItemGroupData>
                     <ItemGroupData ItemGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP" ItemGroupRepeatKey="3">
                         <!-- This is the value for the repeat item. Value="3" is "History of Premature Myocardial Infarction" -->
-                        <ItemData ItemOID="I.MHTERM" Value="3"/>
+                        <ItemData ItemOID="I.MHTERM"><Value>3</Value></ItemData>
                         <!-- The values below are the responses to the question "History of Premature Myocardial Infarction"
                         for "Father", "Mother", "Brothers", "Sisters", "Sons" and "Daughters" -->
-                        <ItemData ItemOID="I.MHFATHER" Value="N"/>
-                        <ItemData ItemOID="I.MHMOTHER" Value="N"/>
-                        <ItemData ItemOID="I.MHBROTHERS" Value="NA"/>
-                        <ItemData ItemOID="I.MHSISTERS" Value="UNK"/>
-                        <ItemData ItemOID="I.MHSONS" Value="N"/>
-                        <ItemData ItemOID="I.MHDAUGHTERS" Value="N"/>
+                        <ItemData ItemOID="I.MHFATHER"><Value>N</Value></ItemData>
+                        <ItemData ItemOID="I.MHMOTHER"><Value>N</Value></ItemData>
+                        <ItemData ItemOID="I.MHBROTHERS"><Value>NA</Value></ItemData>
+                        <ItemData ItemOID="I.MHSISTERS"><Value>UNK</Value></ItemData>
+                        <ItemData ItemOID="I.MHSONS"><Value>N</Value></ItemData>
+                        <ItemData ItemOID="I.MHDAUGHTERS"><Value>N</Value></ItemData>
                     </ItemGroupData>
                     <ItemGroupData ItemGroupOID="IG.MH_TERM_FAMILY_RELATIONSHIP" ItemGroupRepeatKey="4">
                         <!-- This is the value for the repeat item. Value="4" is "History of Premature Stroke" -->
-                        <ItemData ItemOID="I.MHTERM" Value="4"/>
+                        <ItemData ItemOID="I.MHTERM"><Value>4</Value></ItemData>
                         <!-- The values below are the responses to the question "History of Premature Stroke"
                         for "Father", "Mother", "Brothers", "Sisters", "Sons" and "Daughters" -->
-                        <ItemData ItemOID="I.MHFATHER" Value="UNK"/>
-                        <ItemData ItemOID="I.MHMOTHER" Value="N"/>
-                        <ItemData ItemOID="I.MHBROTHERS" Value="NA"/>
-                        <ItemData ItemOID="I.MHSISTERS" Value="N"/>
-                        <ItemData ItemOID="I.MHSONS" Value="N"/>
-                        <ItemData ItemOID="I.MHDAUGHTERS" Value="Y"/>
+                        <ItemData ItemOID="I.MHFATHER"><Value>UNK</Value></ItemData>
+                        <ItemData ItemOID="I.MHMOTHER"><Value>N</Value></ItemData>
+                        <ItemData ItemOID="I.MHBROTHERS"><Value>NA</Value></ItemData>
+                        <ItemData ItemOID="I.MHSISTERS"><Value>N</Value></ItemData>
+                        <ItemData ItemOID="I.MHSONS"><Value>N</Value></ItemData>
+                        <ItemData ItemOID="I.MHDAUGHTERS"><Value>Y</Value></ItemData>
                     </ItemGroupData>
             </StudyEventData>
         </SubjectData>
